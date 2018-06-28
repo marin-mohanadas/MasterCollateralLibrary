@@ -1,0 +1,253 @@
+﻿
+<h2>Pack Formula Variables</h2>
+<div>NOTE:   Use plant currency</div>
+<br/>
+
+
+<div ng-controller="packFormulasController">
+    
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="">Formula Id</label>
+                        <input type="text" class="form-control" ng-model="formula.id" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Formula Name</label>
+                        <input type="text" class="form-control" ng-model="formula.formula_name">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Plant (Location of Production)</label>
+                        <select type="text" class="form-control" ng-model="selectedPlant" 
+                                ng-options="option.plant_name for option in plants track by option.id"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <br/>
+                        <h4>Sterilization</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Sterilization Cost</label>
+                        <input type="text" class="form-control" ng-model="formula.formula_strlzn">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Sterilization Load Size</label>
+                        <input type="text" class="form-control" ng-model="formula.formula_strlzn_load">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <h4>Labor Calculations</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Labor Rate (Hourly)</label>
+                        <input type="text" class="form-control" ng-model="formula.formula_labor_rate">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Labor Time</label>
+                        <input type="text" class="form-control" ng-model="formula.formula_labor_time">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Labor Factor</label>
+                        <input type="text" class="form-control" ng-model="formula.formula_labor_factor">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <h4>General Costs</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Manufacturing Overhead Rate %</label>
+                        <input type="text" class="form-control" ng-model="formula.formula_OH">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">General and Administrative Rate %</label>
+                        <input type="text" class="form-control" ng-model="formula.formula_GA">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Finance Cost %</label>
+                        <input type="text" class="form-control" ng-model="formula.formula_finance">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Warehousing Cost Rate %</label>
+                        <input type="text" class="form-control" ng-model="formula.formula_warehouse">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <h4>Freight and Shipping</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">Import Component Shipping Rate</label>
+                    <input type="text" class="form-control" ng-model="formula.formula_import_ship_rate">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">Inland Freight</label>
+                    <input type="text" class="form-control" ng-model="formula.formula_inlndfrgt">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">Inland Freight Container Size</label>
+                    <input type="text" class="form-control" ng-model="formula.formula_inlndfrgt_size">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">Ocean Freight</label>
+                    <input type="text" class="form-control" ng-model="formula.formula_oceanfrgt">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">Ocean Freight Container Size</label>
+                    <input type="text" class="form-control" ng-model="formula.formula_oceanfrgt_size">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <h4>Taxes and Duties</h4>
+                </div>
+            </div>
+        </div>
+        <!--
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">HS Code</label>
+                    <input type="text" class="form-control" ng-model="formula.formula_OH">
+                </div>
+            </div>
+        </div>
+        -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">Import Duty Rate %</label>
+                    <input type="text" class="form-control" ng-model="formula.formula_imprtdty">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">Excise Tax Rate %</label>
+                    <input type="text" class="form-control" ng-model="formula.formula_excisetx">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <h4>Margin</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">Margin %</label>
+                    <input type="text" class="form-control" ng-model="formula.formula_MAR">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    <br />
+    <div class="row">
+        <div class="col-md-1"><button class="btn btn-default" ng-click="cancel()">Cancel</button></div>
+        <div class="col-md-1"><button class="btn btn-primary" ng-click="save()">Save</button></div>
+        <div class="col-md-1"><button class="btn btn-default" ng-click="replicate()">Replicate Formula</button></div>
+    </div>
+
+</div>

@@ -1,0 +1,30 @@
+﻿<h2>Sales Reps</h2>
+<div ng-controller="salesRepsIndexController">
+    <br />
+    <div class="row">
+        <div class="col-md-1"><button class="btn btn-warning" ng-click="newBtnClicked()">New</button></div>        
+    </div>
+    <br />
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>     
+                <th rowspan="2">ID</th>
+                <th style="cursor:pointer" ng-click="doSortBy('rep_lname')"><i ng-class="sortIcon('rep_lname')"></i>Last</th>
+                <th style="cursor:pointer" ng-click="doSortBy('rep_fname')"><i ng-class="sortIcon('rep_fname')"></i>First</th>
+            </tr>
+            <tr>
+                <th><input type="text" ng-model="param.rep_lname" ng-change="filterChanged()" /></th>
+                <th><input type="text" ng-model="param.rep_fname" ng-change="filterChanged()" /></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in items">                
+                <td width="100px"><span style="cursor:pointer" ng-click="editBtnClicked(item)">{{item.id}}</span></td>
+                <td>{{item.rep_lname}}</td>
+                <td>{{item.rep_fname}}</td>                
+            </tr>
+        </tbody>
+    </table>
+    <ul uib-pagination class="pagination-sm" total-items="total" num-pages="numberPages" ng-model="param.PageNumber" ng-change="pageChanged()" 
+        max-size="maxSize" boundary-links="true" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+</div>

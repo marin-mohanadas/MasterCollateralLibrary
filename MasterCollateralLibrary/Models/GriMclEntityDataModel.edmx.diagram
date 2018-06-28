@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2cd792d690a641bf99adff47a8488301" Name="Diagram1">
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_acct" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_boxes" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_brand" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_cat1" Width="1.5" PointX="6" PointY="27.75" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_cat2" Width="1.5" PointX="6" PointY="25.25" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_CEclass" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_comp" Width="1.5" PointX="3" PointY="12" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_coo" Width="1.5" PointX="0.75" PointY="18.375" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_cst_type" Width="1.5" PointX="9" PointY="25.5" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_currncy" Width="1.5" PointX="9" PointY="8.125" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_formulas" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_grpFAB" Width="1.5" PointX="2.75" PointY="5.75" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_grpHdr" Width="1.5" PointX="3" PointY="9.5" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_grpLbl" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_grppix" Width="1.5" PointX="5.75" PointY="6.75" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_lang" Width="1.5" PointX="6" PointY="22.375" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_lbl" Width="1.5" PointX="8.25" PointY="15.25" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_life_cycle" Width="1.5" PointX="8.75" PointY="5.75" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_material" Width="1.5" PointX="4.25" PointY="23.875" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_plant" Width="1.5" PointX="9" PointY="22.625" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_prodmgr" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_purch" Width="1.5" PointX="11.25" PointY="12.875" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_qtdtl" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_qtdtl_replicate" Width="1.5" PointX="10.75" PointY="3.75" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_qthdr" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_qtstatus" Width="1.5" PointX="11.75" PointY="8.75" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_rep" Width="1.5" PointX="13.75" PointY="8.75" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_spclty" Width="1.5" PointX="6" PointY="9.5" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_stat" Width="1.5" PointX="0.75" PointY="20.75" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_strlty" Width="1.5" PointX="13.75" PointY="13.75" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_techhdng" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_trait" Width="1.5" PointX="14.75" PointY="3.75" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_uom" Width="1.5" PointX="15.75" PointY="6.75" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_users" Width="1.5" PointX="15.75" PointY="9.75" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_vend" Width="1.5" PointX="0.75" PointY="15.125" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_vendDtl" Width="1.5" PointX="15.75" PointY="12.75" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_X_cat" Width="1.5" PointX="8.25" PointY="19" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_X_grpcomp" Width="1.5" PointX="5.25" PointY="12.375" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_X_material" Width="1.5" PointX="5.25" PointY="15.125" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_X_ref" Width="1.5" PointX="5.25" PointY="39" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_X_spclty" Width="1.5" PointX="8.25" PointY="12.375" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_X_trait" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_HScode" Width="1.5" PointX="16.75" PointY="3.75" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_pix" Width="1.5" PointX="5.25" PointY="19.375" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_tech" Width="1.5" PointX="13.75" PointY="16.75" />
+        <EntityTypeShape EntityType="GRI_MCLModel.tbl_uom_old" Width="1.5" PointX="15.75" PointY="16.75" />
+        <AssociationConnector Association="GRI_MCLModel.FK__tbl_X_cat__cat_c__607251E5" />
+        <AssociationConnector Association="GRI_MCLModel.FK__tbl_X_cat__cat_c__30C33EC3" />
+        <AssociationConnector Association="GRI_MCLModel.FK__tbl_comp__comp_c__2DE6D218" />
+        <AssociationConnector Association="GRI_MCLModel.FK__tbl_comp__comp_m__2A164134" />
+        <AssociationConnector Association="GRI_MCLModel.FK__tbl_comp__comp_p__2CF2ADDF" />
+        <AssociationConnector Association="GRI_MCLModel.FK__tbl_comp__comp_s__2BFE89A6" />
+        <AssociationConnector Association="GRI_MCLModel.FK__tbl_comp__comp_v__29221CFB" />
+        <AssociationConnector Association="GRI_MCLModel.FK__tbl_lbl__lbl_com__3587F3E0" />
+        <AssociationConnector Association="GRI_MCLModel.FK__tbl_pix__pix_com__37703C52" />
+        <AssociationConnector Association="GRI_MCLModel.FK__tbl_purch__purch__282DF8C2" />
+        <AssociationConnector Association="GRI_MCLModel.FK__tbl_X_cat__cat_c__2EDAF651" />
+        <AssociationConnector Association="GRI_MCLModel.FK__tbl_X_grp__grpco__51300E55" />
+        <AssociationConnector Association="GRI_MCLModel.FK__tbl_X_mat__mater__55009F39" />
+        <AssociationConnector Association="GRI_MCLModel.FK__tbl_X_ref__xref___57DD0BE4" />
+        <AssociationConnector Association="GRI_MCLModel.FK__tbl_X_spc__spclt__5BAD9CC8" />
+        <AssociationConnector Association="GRI_MCLModel.FK__tbl_purch__purch__17036CC0" />
+        <AssociationConnector Association="GRI_MCLModel.FK__tbl_purch__purch__151B244E" />
+        <AssociationConnector Association="GRI_MCLModel.FK__tbl_X_grp__grpco__5224328E" />
+        <AssociationConnector Association="GRI_MCLModel.FK__tbl_lbl__lbl_lan__367C1819" />
+        <AssociationConnector Association="GRI_MCLModel.FK__tbl_X_mat__mater__55F4C372" />
+        <AssociationConnector Association="GRI_MCLModel.FK__tbl_purch__purch__160F4887" />
+        <AssociationConnector Association="GRI_MCLModel.FK__tbl_X_spc__spclt__5CA1C101" />
+        <AssociationConnector Association="GRI_MCLModel.FK__tbl_X_ref__xref___58D1301D" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,138 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Create Sub Assembly</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" ng-model="item.name" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Location</label>
+                    <select type="text" class="form-control" ng-model="item.type"
+                            ng-options="option for option in types track by option"></select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <p>What will be used to contain the subassembly?</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Type</label>
+                    <select type="text" class="form-control" ng-model="item.build"
+                            ng-options="option for option in builds track by option"></select>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div style="overflow:auto;max-height:200px">
+                <table class="table table-condensed table-hover table-striped">
+                    <caption>Selected</caption>
+                    <thead>
+                        <tr>
+                            <th>Component ID</th>                            
+                            <th>Description (original)</th>
+                            <th>Vendor Name</th>
+                            <th>Vendor / Supplier PN</th>
+                            <th>Quantity</th>
+                            <th>Level</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in selectedItems">
+                            <td>{{item.tbl_comp.id}}</td>                            
+                            <td>{{item.tbl_comp.comp_desc_orig}}</td>
+                            <td>{{item.tbl_comp.tbl_vend.vend_child_name}}</td>
+                            <td>{{item.tbl_comp.comp_vend_pn}}</td>
+                            <td><input type="number" style="width:100px" ng-model="item.new_qty" min="1" max="{{item.qtdtl_comp_qty}}" /></td>
+                            <td>{{item.qtdtl_comp_case}}</td>
+                            <td><i class="glyphicon glyphicon-trash" style="cursor:pointer" ng-click="removeSelectedItem(item)"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <table class="table table-condensed table-hover table-striped">
+                    <caption>Available</caption>
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Select</th>
+                            <th rowspan="2">Qty</th>
+                            <th style="cursor:pointer" ng-click="doSortBy('compId')"><i ng-class="sortIcon('compId')"></i>Component ID</th>
+                            <th style="cursor:pointer" ng-click="doSortBy('compDescOrg')"><i ng-class="sortIcon('compDescOrg')"></i>Description (original)</th>
+                            <th style="cursor:pointer" ng-click="doSortBy('compVendor')"><i ng-class="sortIcon('compVendor')"></i>Vendor Name</th>
+                            <th style="cursor:pointer" ng-click="doSortBy('compVendorPart')"><i ng-class="sortIcon('compVendorPart')"></i>Vendor / Supplier PN</th>
+                            <th style="cursor:pointer" ng-click="doSortBy('compAcl')"><i ng-class="sortIcon('compAcl')"></i>ACL</th>
+                            <th style="cursor:pointer" ng-click="doSortBy('compLatex')"><i ng-class="sortIcon('compLatex')"></i>Latex</th>
+                            <th style="cursor:pointer" ng-click="doSortBy('compSterility')"><i ng-class="sortIcon('compSterility')"></i>Sterility</th>
+                            <th>Monthly Usage</th>
+                        </tr>
+                        <tr>                            
+                            <th><input type="text" ng-model="filterParam.compId" ng-change="filterChanged()" /></th>
+                            <th><input type="text" ng-model="filterParam.compDescOrg" ng-change="filterChanged()" /></th>
+                            <th><input type="text" ng-model="filterParam.compVendor" ng-change="filterChanged()" /></th>
+                            <th><input type="text" ng-model="filterParam.compVendorPart" ng-change="filterChanged()" /></th>
+                            <th><input type="checkbox" ng-model="filterParam.compAcl" ng-change="filterChanged()" /></th>
+                            <th><input type="checkbox" ng-model="filterParam.compLatex" ng-change="filterChanged()" /></th>
+                            <th><input type="text" ng-model="filterParam.compSterility" ng-change="filterChanged()" /></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in items">
+                            <td><input type="radio" name="items" ng-click="setSelected(item)" ng-disabled="item.isSelected" /></td>
+                            <td>{{item.qtdtl_comp_qty}}</td>
+                            <td>{{item.tbl_comp.id}}</td>
+                            <td>{{item.tbl_comp.comp_desc_orig}}</td>
+                            <td>{{item.tbl_comp.tbl_vend.vend_child_name}}</td>
+                            <td style="width:250px">{{item.tbl_comp.comp_vend_pn}}</td>
+                            <td><input type="checkbox" ng-model="item.tbl_comp.comp_acl" ng-disabled="true" /></td>
+                            <td><input type="checkbox" ng-model="item.tbl_comp.comp_latex" ng-disabled="true" /></td>
+                            <td>{{item.tbl_comp.tbl_strlty.strlty_desc}}</td>
+                            <td>{{item.tbl_comp.MonthlyAMU}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <ul uib-pagination class="pagination-sm" total-items="total" items-per-page="filterParam.PageSize" ng-model="filterParam.PageNumber" ng-change="pageChanged()"
+                max-size="5" boundary-links="true" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+            <!--
+            <table class="table table-condensed table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Line ID</th>
+                        <th>Component ID</th>
+                        <th>Part #</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="i in items">
+                        <td><input type="checkbox" ng-model="i.selected" ng-click="setSelected(i)" /></td>
+                        <td>{{i.id}}</td>
+                        <td>
+                            <span ng-if="!i.tbl_comp.comp_acl">M</span>{{i.tbl_comp.id}}
+                        </td>
+                        <td>{{i.tbl_comp.comp_vend_pn}}</td>
+                        <td>{{i.tbl_comp.comp_desc_orig}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            -->
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()" ng-disabled="selectedItems.length < 1 || !item.name || item.name.length == 0">Ok</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

@@ -1,0 +1,74 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Account and Client</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <div class="form-group">
+        <label for="">Name</label>
+        <input type="text" class="form-control" >
+    </div>
+    
+    <uib-tabset active="active">
+        <uib-tab index="0" heading="Address">
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">City</label>
+                        <input type="text" class="form-control" >
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">State or Province</label>
+                        <input type="text" class="form-control" >
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Account Code</label>
+                        <input type="text" class="form-control" >
+                    </div>
+                </div>
+            </div>            
+        </uib-tab>
+        <uib-tab index="1" heading="Profile">
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Warehousing Cost</label>
+                        <input type="text" class="form-control" >
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Contract Start Date</label>
+                        <input type="date" class="form-control" >
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Freight Cost</label>
+                        <input type="text" class="form-control" >
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Contract End Date</label>
+                        <input type="date" class="form-control" >
+                    </div>
+                </div>
+            </div>
+        </uib-tab>
+    </uib-tabset>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">Save</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

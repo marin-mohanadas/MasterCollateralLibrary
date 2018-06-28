@@ -1,0 +1,58 @@
+﻿<h2>Quote Status List</h2>
+<div ng-controller="quoteStatusController">
+    <br />
+    <div class="row">
+        <div class="col-md-1"><button class="btn btn-warning" ng-click="newBtnClicked()">New</button></div>        
+    </div>
+    <br />
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>     
+                <th>ID</th>
+                <th style="cursor:pointer" ng-click="doSortBy('qtstatus_desc')"><i ng-class="sortIcon('qtstatus_desc')"></i>Status Name</th>
+                <th style="cursor:pointer" ng-click="doSortBy('qtstatus_desc')"><i ng-class="sortIcon('qtstatus_defn')"></i>Status Definition</th>
+                <th style="cursor:pointer" ng-click="doSortBy('qtstatus_desc')"><i ng-class="sortIcon('qtstatus_qc_sbmt')"></i>Status QC Submit</th>
+                <th style="cursor:pointer" ng-click="doSortBy('qtstatus_desc')"><i ng-class="sortIcon('qtstatus_sls_sbmt')"></i>Status SLS Submit</th>
+                <th style="cursor:pointer" ng-click="doSortBy('qtstatus_desc')"><i ng-class="sortIcon('qtstatus_lock')"></i>Status Lock</th>
+                <th style="cursor:pointer" ng-click="doSortBy('qtstatus_desc')"><i ng-class="sortIcon('qtstatus_output')"></i>Status Output</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in items">                
+                <td width="100px">{{item.id}}</td>
+                <td>
+                    <span ng-show="item.id !== selectedLine.id">{{item.qtstatus_desc}}</span>
+                    <input type="text" ng-show="selectedLine.id === item.id" ng-model="selectedLine.qtstatus_desc" />
+                </td>
+                <td>
+                    <span ng-show="item.id !== selectedLine.id">{{item.qtstatus_defn}}</span>
+                    <input type="text" ng-show="selectedLine.id === item.id" ng-model="selectedLine.qtstatus_defn" />
+                </td>
+                <td>
+                    <input type="checkbox" ng-hide="selectedLine.id === item.id" ng-checked="item.qtstatus_qc_sbmt" ng-disabled="true" />
+                    <input type="checkbox" ng-model="selectedLine.qtstatus_qc_sbmt" ng-hide="selectedLine.id !== item.id" ng-checked="item.qtstatus_qc_sbmt" />
+                </td>
+                <td>
+                    <input type="checkbox" ng-hide="selectedLine.id === item.id" ng-checked="item.qtstatus_sls_sbmt" ng-disabled="true" />
+                    <input type="checkbox" ng-model="selectedLine.qtstatus_sls_sbmt" ng-hide="selectedLine.id !== item.id" ng-checked="item.qtstatus_sls_sbmt" />
+                </td>
+                <td>
+                    <input type="checkbox" ng-hide="selectedLine.id === item.id" ng-checked="item.qtstatus_lock" ng-disabled="true" />
+                    <input type="checkbox" ng-model="selectedLine.qtstatus_lock" ng-hide="selectedLine.id !== item.id" ng-checked="item.qtstatus_lock" />
+                </td>
+                <td>
+                    <input type="checkbox" ng-hide="selectedLine.id === item.id" ng-checked="item.qtstatus_output" ng-disabled="true" />
+                    <input type="checkbox" ng-model="selectedLine.qtstatus_output" ng-hide="selectedLine.id !== item.id" ng-checked="item.qtstatus_output" />
+                </td>
+                <td style="width:50px">
+                    <i class="glyphicon glyphicon-pencil" style="cursor:pointer" ng-hide="selectedLine.id === item.id" ng-click="editBtnClicked(item)"></i>
+                    <i class="glyphicon glyphicon-ok" style="cursor:pointer" ng-show="item.id === selectedLine.id" ng-click="editBtnOkClicked(item)"></i>
+                    <i class="glyphicon glyphicon-remove" style="cursor:pointer" ng-show="item.id === selectedLine.id" ng-click="editBtnCancelClicked(item)"></i>
+                    <i class="glyphicon glyphicon-trash" style="cursor:pointer" ng-hide="item.id === selectedLine.id" ng-click="deleteBtnClicked(item)"></i>
+                </td> 
+            </tr>
+        </tbody>
+    </table>
+    <ul uib-pagination class="pagination-sm" total-items="total" num-pages="numberPages" ng-model="param.PageNumber" ng-change="pageChanged()" 
+        max-size="maxSize" boundary-links="true" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+</div>

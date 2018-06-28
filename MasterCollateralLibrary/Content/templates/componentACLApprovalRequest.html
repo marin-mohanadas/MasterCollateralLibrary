@@ -1,0 +1,17 @@
+﻿<html>
+<head>
+    <title>ACL Approval Request</title>
+    <link href="@ViewBag.SiteURL/Content/bootstrap.css" rel="stylesheet" />
+    <link href="@ViewBag.SiteURL/Content/Site.css" rel="stylesheet" />
+</head>
+<body>
+    Hello,<br />
+    Rep @Model.requestUser has requested MCL item be approved to ACL
+    <br /><br />
+    Request Reason<br />
+    @Model.requestReason
+    <br /><br />
+    Please use the following link to goto this component to review.<br />
+    <a href="@ViewBag.SiteURL/ComponentList/Edit/@Model.compDTO.id?requester=@Model.requestUser&quoteID=@Model.quoteID&quoteQN=@Model.quoteQN">Click Here to review component!</a>
+</body>
+</html>

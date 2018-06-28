@@ -1,0 +1,33 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Ref Component</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <div class="form-group">
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Life Cycle</th>
+                    <th>ID</th>
+                    <th>Description (original)</th>
+                    <th>Vendor Name</th>
+                    <th>Vendor / Supplier PN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in items">
+                    <td><input type="radio" name="items" ng-click="setSelected(item)" /></td>
+                    <td>{{item.tbl_life_cycle.life_cycle_desc}}</td>
+                    <td>{{item.tbl_comp_equiv.id}}</td>
+                    <td>{{item.tbl_comp_equiv.comp_desc_orig}}</td>
+                    <td>{{item.tbl_comp_equiv.tbl_vend.vend_child_name}}</td>
+                    <td>{{item.tbl_comp_equiv.comp_vend_pn}}</td>
+                </tr>
+            </tbody>
+        </table>        
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">Ok</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

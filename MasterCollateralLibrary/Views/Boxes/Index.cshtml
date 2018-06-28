@@ -1,0 +1,84 @@
+﻿<h2>Boxes for Packs</h2>
+<div ng-controller="boxesController">
+    <br />
+    <div class="row">
+        <div class="col-md-1"><button class="btn btn-warning" ng-click="newBtnClicked()">New</button></div>        
+    </div>
+    <br />
+    <table class="table table-hover table-striped">
+        <thead>
+        <tr>     
+            <th>ID</th>
+            <th style="cursor:pointer" >Description</th>
+            <th style="cursor:pointer" >Brand</th>
+            <th style="cursor:pointer" >L (cm)</th>
+            <th style="cursor:pointer" >W (cm)</th>
+            <th style="cursor:pointer" >H (cm)</th>
+            <th style="cursor:pointer" >Weight (kg)</th>
+            <th style="cursor:pointer" >Active</th>
+        </tr>
+
+        @*<tr>     
+                <th>ID</th>
+                <th style="cursor:pointer" ng-click="doSortBy('box_desc')"><i ng-class="sortIcon('box_desc')"></i>Description</th>
+                <th style="cursor:pointer" ng-click="doSortBy('box_brand')"><i ng-class="sortIcon('box_brand')"></i>Brand</th>
+                <th style="cursor:pointer" ng-click="doSortBy('box_lngth')"><i ng-class="sortIcon('box_lngth')"></i>L (cm)</th>
+                <th style="cursor:pointer" ng-click="doSortBy('box_wdth')"><i ng-class="sortIcon('box_wdth')"></i>W (cm)</th>
+                <th style="cursor:pointer" ng-click="doSortBy('box_hght')"><i ng-class="sortIcon('box_hght')"></i>H (cm)</th>
+                <th style="cursor:pointer" ng-click="doSortBy('box_wght')"><i ng-class="sortIcon('box_wght')"></i>Weight (kg)</th>
+                <th style="cursor:pointer" ng-click="doSortBy('box_active')"><i ng-class="sortIcon('box_active')"></i>Active</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th><input type="text" ng-model="param.box_desc" ng-change="filterChanged()" /></th>
+                <th><input type="text" ng-model="param.box_brand" ng-change="filterChanged()" /></th>
+                <th><input type="text" ng-model="param.box_lngth" ng-change="filterChanged()" /></th>
+                <th><input type="text" ng-model="param.box_wdth" ng-change="filterChanged()" /></th>
+                <th><input type="text" ng-model="param.box_hght" ng-change="filterChanged()" /></th>
+                <th><input type="text" ng-model="param.box_wght" ng-change="filterChanged()" /></th>
+                <th></th>
+            </tr>*@
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in items">                
+                <td width="100px">{{item.id}}</td>
+                <td>
+                    <span ng-show="item.id !== selectedLine.id">{{item.box_desc}}</span>
+                    <input type="text" ng-show="selectedLine.id === item.id" ng-model="selectedLine.box_desc" />
+                </td>
+                <td>
+                    <span ng-show="item.id !== selectedLine.id">{{item.box_brand}}</span>
+                    <input type="text" ng-show="selectedLine.id === item.id" ng-model="selectedLine.box_brand" />
+                </td>
+                <td>
+                    <span ng-show="item.id !== selectedLine.id">{{item.box_lngth}}</span>
+                    <input type="number" ng-show="selectedLine.id === item.id" ng-model="selectedLine.box_lngth" />
+                </td>
+                <td>
+                    <span ng-show="item.id !== selectedLine.id">{{item.box_wdth}}</span>
+                    <input type="number" ng-show="selectedLine.id === item.id" ng-model="selectedLine.box_wdth" />
+                </td>
+                <td>
+                    <span ng-show="item.id !== selectedLine.id">{{item.box_hght}}</span>
+                    <input type="number" ng-show="selectedLine.id === item.id" ng-model="selectedLine.box_hght" />
+                </td>
+                <td>
+                    <span ng-show="item.id !== selectedLine.id">{{item.box_wght}}</span>
+                    <input type="number" ng-show="selectedLine.id === item.id" ng-model="selectedLine.box_wght" />
+                </td>
+                <td>
+                    <input type="checkbox" ng-show="selectedLine.id !== item.id" ng-disabled="selectedLine.id !== item.id" ng-model="item.box_active" />
+                    <input type="checkbox" ng-show="selectedLine.id === item.id" ng-model="selectedLine.box_active"/>
+                </td>
+                <td style="width:50px">
+                    <i class="glyphicon glyphicon-pencil" style="cursor:pointer" ng-hide="selectedLine.id === item.id" ng-click="editBtnClicked(item)"></i>
+                    <i class="glyphicon glyphicon-ok" style="cursor:pointer" ng-show="item.id === selectedLine.id" ng-click="editBtnOkClicked(item)"></i>
+                    <i class="glyphicon glyphicon-remove" style="cursor:pointer" ng-show="item.id === selectedLine.id" ng-click="editBtnCancelClicked(item)"></i>
+                    <i class="glyphicon glyphicon-trash" style="cursor:pointer" ng-hide="item.id === selectedLine.id" ng-click="deleteBtnClicked(item)"></i>
+                </td> 
+            </tr>
+        </tbody>
+    </table>
+    <ul uib-pagination class="pagination-sm" total-items="total" num-pages="numberPages" ng-model="param.PageNumber" ng-change="pageChanged()" 
+        max-size="maxSize" boundary-links="true" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+</div>

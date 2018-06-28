@@ -1,0 +1,105 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Sub-Assembly</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <div class="form-group">
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Sub-assembly</label>
+                    <input type="text" class="form-control" ng-model="item.qtdtl_assembly_name"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Type</label>
+                    <select type="text" class="form-control" ng-model="item.qtdtl_assembly_type"
+                            ng-options="option for option in types track by option"></select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Build</label>
+                    <select type="text" class="form-control" ng-model="item.qtdtl_assembly_build"
+                            ng-options="option for option in builds track by option"></select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-5">
+                <div style="overflow:auto;max-height:400px">
+                    <table class="table table-condensed table-striped table-hover">
+                        <caption>Available</caption>
+                        <thead>
+                            <tr>                     
+                                <th>Qty</th>
+                                <th>Component ID</th>
+                                <th>Part #</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="i in availableItems" style="cursor:pointer" ng-class="select.id == i.id ? 'success' : ''" ng-click="setSelect(i)">
+                                <td>{{i.qtdtl_comp_qty}}</td>
+                                <td>{{i.tbl_comp.id}}</td>
+                                <td>{{i.tbl_comp.comp_vend_pn}}</td>
+                                <td>{{i.tbl_comp.comp_desc_orig}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-2" style="vertical-align:middle;text-align:center">
+                <div class="row">
+                    <br /><br /><br />
+                    <div class="col-md-12">
+                        <button class="glyphicon glyphicon-arrow-right btn btn-default" ng-click="btnSelectClicked()" ng-disabled="select === null"></button>                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">                        
+                        <br />
+                        <button class="glyphicon glyphicon-arrow-left btn btn-default" ng-click="btnDeselectClicked()" ng-disabled="deselect === null"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div style="overflow:auto;max-height:400px">
+                    <table class="table table-condensed table-striped table-hover">
+                        <caption>Selected</caption>
+                        <thead>
+                            <tr>                                
+                                <th>Qty</th>
+                                <th>Component ID</th>
+                                <th>Part #</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="i in selectedItems" style="cursor:pointer" ng-class="deselect.id == i.id ? 'success' : ''" ng-click="setDeselect(i)">
+                                <td>{{i.qtdtl_comp_qty}}</td>
+                                <td>{{i.tbl_comp.id}}</td>
+                                <td>{{i.tbl_comp.comp_vend_pn}}</td>
+                                <td>{{i.tbl_comp.comp_desc_orig}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">Ok</button>    
+    <button class="btn btn" type="button" ng-click="cancel()">Cancel</button>
+</div>

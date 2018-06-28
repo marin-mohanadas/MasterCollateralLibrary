@@ -1,0 +1,33 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Search Quote</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <div class="form-group">
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th ng-click="doSortBy('id')"><i ng-class="sortIcon('id')"></i>Quote Number</th>
+                    <th ng-click="doSortBy('qthdr_name')"><i ng-class="sortIcon('qthdr_name')"></i>Pack Quote Name</th>
+                    <th ng-click="doSortBy('acct_name')"><i ng-class="sortIcon('acct_name')"></i>Account Name</th>
+                    <th ng-click="doSortBy('qthdr_date')"><i ng-class="sortIcon('qthdr_date')"></i>Date of Quote</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in items">
+                    <td><input type="radio" name="items" ng-click="setSelected(item)" /></td>
+                    <td>{{item.id}}</td>
+                    <td>{{item.qthdr_name}}</td>
+                    <td>{{item.tbl_acct.acct_name}}</td>
+                    <td>{{item.qthdr_date | date:'MM/dd/yyyy'}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <ul uib-pagination class="pagination-sm" total-items="total" ng-model="pageNumber" ng-change="pageChanged()"
+            max-size="5" boundary-links="true" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">Ok</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

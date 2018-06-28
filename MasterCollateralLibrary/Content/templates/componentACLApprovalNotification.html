@@ -1,0 +1,20 @@
+﻿<html>
+<head>
+    <title>ACL Approval Request</title>
+    <link href="@ViewBag.SiteURL/Content/bootstrap.css" rel="stylesheet" />
+    <link href="@ViewBag.SiteURL/Content/Site.css" rel="stylesheet" />
+</head>
+<body>
+    Hello,<br />
+    Your ACL request has been approved!<br />
+    Component ID: @Model.compID<br />
+    Vendor Part Number: @Model.comp_data.comp_vend_pn<br />
+    Description: @Model.comp_data.comp_desc_orig<br />
+    <br /><br />
+    Please use the following link to goto this component to review.<br />
+    <a href="@ViewBag.SiteURL/ComponentList/Edit/@Model.compID">Click Here to review component!</a>
+    <br />
+    <a href="@ViewBag.SiteURL/QuoteMaster/Edit/@Model.quoteID">Requested from Quote @Model.quoteQN</a>
+    
+</body>
+</html>

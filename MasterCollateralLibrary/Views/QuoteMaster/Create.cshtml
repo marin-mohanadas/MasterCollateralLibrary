@@ -1,0 +1,145 @@
+﻿<div ng-controller="quoteCreateController">
+    <p>Pack Processing</p>
+
+    <!-- create -->
+    <div class="panel panel-default">
+        <div class="panel-heading">Add</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Pack Name</label>
+                        <input type="text" class="form-control" ng-model="quote.qthdr_name">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Account Name</label>
+                        <select type="text" class="form-control" ng-model="selectedAccount" ng-change="selectedAccountChanged()"
+                                ng-options="option.acct_name for option in accounts track by option.id"></select>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="form-group">
+                        <label>&nbsp;</label>
+                        <button class="btn btn-default form-control" ng-click="btnAddAccountClicked()">Add</button>
+                    </div>
+                </div>
+            </div>
+            <!--
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Component Source</label>
+                        <select type="text" class="form-control" ng-model="selectedComponentSource"
+                                ng-options="option for option in componentSources track by option"></select>
+                    </div>
+                </div>
+            </div>
+            -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Tray #</label>
+                        <input type="text" class="form-control" ng-model="quote.qthdr_tray_no" ng-blur="validateTrayNo()">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Rev</label>
+                        <input type="text" class="form-control" ng-model="quote.qthdr_rev" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Sales Rep</label>
+                        <select type="text" class="form-control" ng-model="selectedRep"
+                                ng-options="option.rep_fname + ' ' + option.rep_lname for option in reps track by option.id"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        @*<label>Quoted Annual Usage</label>*@
+                        <label>Monthly Usage (Pack)</label>
+                        <input type="number" class="form-control" ng-model="quote.qthdr_amu" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label></label>
+                        Create New <input type="radio" name="packOption" ng-model="packOption" value="new" ng-change="packOptionChanged()" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label></label>
+                        Copy Existing <input type="radio" name="packOption" ng-model="packOption" value="copy" ng-change="packOptionChanged()" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label></label>
+                        From Template <input type="radio" name="packOption" ng-model="packOption" value="temp" ng-change="packOptionChanged()" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label></label>
+                        Upload <input type="radio" name="packOption" ng-model="packOption" value="upload" ng-change="packOptionChanged()" />
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-hide="packOption === 'new' || packOption == 'upload'">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label>Location</label>
+                        <select type="text" class="form-control" ng-model="selectedCopyAccount" ng-change="copyAccountChanged()"
+                                ng-options="option.acct_name for option in accounts track by option.id"></select>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label>Pack</label>
+                        <select type="text" class="form-control" ng-model="selectedCopyQuote" ng-change="copyQuoteChanged()"
+                                ng-options="option.qthdr_name for option in originalQuotes track by option.id"></select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Rev</label>
+                        <select type="text" class="form-control" ng-model="selectedCopyQuoteRev"
+                                ng-options="option.qthdr_rev for option in quoteRevs track by option.id"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-show="packOption === 'upload'">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <button class="btn" ngf-select ng-model="file" ngf-multiple="false">Select</button>
+                        {{file.name}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <button class="btn btn-primary" ng-click="createPackBtnClicked()"
+                            ng-disabled="((packOption === 'copy' || packOption === 'temp') && !selectedCopyQuoteRev) || (quote.qthdr_name.length < 1) || (!quote.qthdr_tray_no.length || quote.qthdr_tray_no.length < 1) || isTrayExist || (packOption === 'upload' && !file)">
+                        Create Pack
+                    </button>
+                </div>
+                <div class="col-md-5">
+                    <button class="btn btn-default" ng-click="cancelBtnClicked()">Cancel</button>
+                </div>
+            </div>
+            <p style="color:red" ng-show="isTrayExist">Tray exists. Please create a new tray</p>
+        </div>
+    </div>
+</div>

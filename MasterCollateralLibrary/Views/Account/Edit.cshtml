@@ -1,0 +1,127 @@
+﻿<h2>Accounts</h2>
+<br />
+<div ng-controller="accountEditController">
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Email</label>
+                        <input type="text" class="form-control" ng-model="item.Email" ng-disabled="item.Id">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Password</label>
+                        <input type="password" class="form-control" ng-model="item.Password">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Confirm Password</label>
+                        <input type="password" class="form-control" ng-model="item.ConfirmPassword">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Roles</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <span>Available</span>
+                                    <ul class="list-group">
+                                        <li ng-class="selectedAvailRole == role ? 'list-group-item active' : 'list-group-item'"
+                                            style="cursor:pointer"
+                                            ng-repeat="role in roles"
+                                            ng-click="setSelectedAvailRole(role)">
+                                            {{role}}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-2">
+                                    <button class="btn btn-default form-control" ng-click="addRole()" ng-disabled="!selectedAvailRole">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    </button>
+                                    <button class="btn btn-default form-control" ng-click="removeRole()" ng-disabled="!selectedRole">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    </button>
+                                </div>
+                                <div class="col-md-5">
+                                    <span>Selected</span>
+                                    <ul class="list-group">
+                                        <li ng-class="selectedRole == role ? 'list-group-item active' : 'list-group-item'"
+                                            style="cursor:pointer"
+                                            ng-repeat="role in item.Roles"
+                                            ng-click="setSelectedRole(role)">
+                                            {{role}}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">Claims</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="">Key</label>
+                                <input type="text" class="form-control" ng-model="claim.Key">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="">Value</label>
+                                <input type="text" class="form-control" ng-model="claim.Value">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button class="btn btn-default" ng-click="addClaim()" ng-disabled="!claim.Key || !claim.Value">Add</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-danger" ng-click="removeClaim()" ng-disabled="!selectedClaim">Remove</button>
+                        </div>
+                    </div>
+                    <br />
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Key</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="claim in item.Claims" ng-click="setClaim(claim)"
+                                ng-class="selectedClaim == claim ? 'success' : ''">
+                                <td>{{claim.Key}}</td>
+                                <td>{{claim.Value}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1"><button class="btn btn-primary" ng-click="saveBtnClicked()">Save</button></div>
+        <div class="col-md-1"><button class="btn btn-default" ng-click="backBtnClicked()">Back</button></div>
+    </div>
+</div>

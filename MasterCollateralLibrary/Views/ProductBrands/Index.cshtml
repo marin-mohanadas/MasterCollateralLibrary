@@ -1,0 +1,44 @@
+﻿<h2>Product Brands</h2>
+<div ng-controller="brandIndexController">
+    <br />
+    <div class="row">
+        <div class="col-md-1"><button class="btn btn-warning" ng-click="newBtnClicked()">New</button></div>        
+    </div>
+    <br />
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>     
+                <th rowspan="2">ID</th>
+                @*<th style="cursor:pointer" ng-click="doSortBy('id')"><i ng-class="sortIcon('id')"></i>Id</th>*@
+                <th style="cursor:pointer" ng-click="doSortBy('brand_name')"><i ng-class="sortIcon('brand_name')"></i>Name</th>
+                <th style="cursor:pointer" ng-click="doSortBy('brand_city')"><i ng-class="sortIcon('brand_city')"></i>City</th>
+                <th style="cursor:pointer" ng-click="doSortBy('brand_state')"><i ng-class="sortIcon('brand_state')"></i>State</th>
+                <th style="cursor:pointer" ng-click="doSortBy('brand_zip')"><i ng-class="sortIcon('brand_zip')"></i>Zip</th>
+                @*<th style="cursor:pointer" ng-click="doSortBy('vendorPart')"><i ng-class="sortIcon('vendorPart')"></i>Vendor / Supplier PN</th>*@
+                @*<th rowspan="2"></th>*@
+            </tr>
+            <tr>
+                @*<th><input type="text" ng-model="param.id" ng-change="filterChanged()" /></th>*@
+                <th><input type="text" ng-model="param.brand_name" ng-change="filterChanged()" /></th>
+                <th><input type="text" ng-model="param.brand_city" ng-change="filterChanged()" /></th>
+                <th><input type="text" ng-model="param.brand_state" ng-change="filterChanged()" /></th>
+                <th><input type="text" ng-model="param.brand_zip" ng-change="filterChanged()" /></th>
+                @*<th><input type="text" ng-model="param.vendorPart" ng-change="filterChanged()" /></th>*@
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in items">                
+                <td width="100px"><span style="cursor:pointer" ng-click="editBtnClicked(item)">{{item.id}}</span></td>
+                <td>{{item.brand_name}}</td>
+                <td>{{item.brand_city}}</td>
+                <td>{{item.brand_state}}</td>
+                <td>{{item.brand_zip}}</td>
+                <td>                    
+                    <i class="glyphicon glyphicon-trash" style="cursor:pointer" ng-click="deleteBtnClicked(item)"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <ul uib-pagination class="pagination-sm" total-items="total" num-pages="numberPages" ng-model="param.PageNumber" ng-change="pageChanged()" 
+        max-size="maxSize" boundary-links="true" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+</div>

@@ -1,0 +1,73 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Reports.master.cs" Inherits="MasterCollateralLibrary.Pages.Reports.Reports" %>
+
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+        <telerik:RadStyleSheetManager ID="RadStyleSheetManager1" runat="server" OutputCompression="Forced" />
+    </asp:ContentPlaceHolder>
+    <style>
+        .mainbody {
+            background-color: white;
+            -webkit-border-radius: 15px;
+            -moz-border-radius: 15px;
+            border-radius: 0 0 15px 15px;
+            border: solid;
+            border-width: 1px;
+            /*padding-left:20px;*/
+            /*padding-top: 25px;*/
+            top: 0px;
+            right: 0px;
+            left: 0px;
+            bottom: 1px;
+            position: absolute;
+            z-index: 0;
+        }
+        .PVTButton {
+            position: absolute;
+            top: 27px;
+            right: 10px;
+            font-size: small;
+            z-index: 9999999 !important;
+            color: #FFFFFF;
+            font-weight: bolder;
+        }
+        .PVT_export_Button {
+            position: absolute;
+            bottom: 27px;
+            left: 10px;
+            font-size: small;
+            z-index: 9999999 !important;
+            color: #FFFFFF;
+            font-weight: bolder;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <telerik:RadScriptManager ID="RadScriptManager1" runat="server" OutputCompression="Forced">
+            <Scripts>
+                <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.Core.js" />
+                <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.jQuery.js" />
+                <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.jQueryInclude.js" />
+            </Scripts>
+        </telerik:RadScriptManager>
+
+        <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server">Please Wait.... Loading....</telerik:RadAjaxLoadingPanel>
+        <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" DefaultLoadingPanelID="RadAjaxLoadingPanel1">
+        </telerik:RadAjaxManager>
+        <telerik:RadPersistenceManager ID="RadPersistenceManager1" runat="server"></telerik:RadPersistenceManager>
+        <telerik:RadFormDecorator ID="RadFormDecorator1" runat="server" DecoratedControls="All" />
+
+        <div class="mainbody">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

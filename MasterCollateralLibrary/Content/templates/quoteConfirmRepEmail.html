@@ -1,0 +1,13 @@
+﻿<html>
+<head>
+    <title>Quote Confirmed</title>
+    <link href="@ViewBag.SiteURL/Content/bootstrap.css" rel="stylesheet" />
+    <link href="@ViewBag.SiteURL/Content/Site.css" rel="stylesheet" />
+</head>
+<body>
+    Hello @Model.tbl_rep.rep_fname @Model.tbl_rep.rep_lname,<br />
+    A quote for @Model.tbl_acct.acct_name <br />
+    Quote Number @Model.qthdr_qn_basis-@Model.qthdr_rev "@Model.qthdr_name" has been confirmed!<br /><br />
+    <a href="@ViewBag.SiteURL/QuoteMaster/Edit/@Model.id">Click Here to view the quote!</a>
+</body>
+</html>

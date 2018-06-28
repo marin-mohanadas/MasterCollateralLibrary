@@ -1,0 +1,43 @@
+﻿<h2>Product Manager List</h2>
+<div ng-controller="productManagersController">
+    <br />
+    <div class="row">
+        <div class="col-md-1"><button class="btn btn-warning" ng-click="newBtnClicked()">New</button></div>        
+    </div>
+    <br />
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>     
+                <th>ID</th>
+                <th style="cursor:pointer" ng-click="doSortBy('prodmgr_Fname')"><i ng-class="sortIcon('prodmgr_Fname')"></i>FirstName</th>
+                <th style="cursor:pointer" ng-click="doSortBy('prodmgr_Lname')"><i ng-class="sortIcon('prodmgr_Lname')"></i>LastName</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th><input type="text" ng-model="param.prodmgr_Fname" ng-change="filterChanged()" /></th>
+                <th><input type="text" ng-model="param.prodmgr_Lname" ng-change="filterChanged()" /></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in items">                
+                <td width="100px">{{item.id}}</td>
+                <td>
+                    <span ng-show="item.id !== selectedLine.id">{{item.prodmgr_Fname}}</span>
+                    <input type="text" ng-show="selectedLine.id === item.id" ng-model="selectedLine.prodmgr_Fname" />
+                </td>
+                <td>
+                    <span ng-show="item.id !== selectedLine.id">{{item.prodmgr_Lname}}</span>
+                    <input type="text" ng-show="selectedLine.id === item.id" ng-model="selectedLine.prodmgr_Lname" />
+                </td>
+                <td style="width:50px">
+                    <i class="glyphicon glyphicon-pencil" style="cursor:pointer" ng-hide="selectedLine.id === item.id" ng-click="editBtnClicked(item)"></i>
+                    <i class="glyphicon glyphicon-ok" style="cursor:pointer" ng-show="item.id === selectedLine.id" ng-click="editBtnOkClicked(item)"></i>
+                    <i class="glyphicon glyphicon-remove" style="cursor:pointer" ng-show="item.id === selectedLine.id" ng-click="editBtnCancelClicked(item)"></i>
+                    <i class="glyphicon glyphicon-trash" style="cursor:pointer" ng-hide="item.id === selectedLine.id" ng-click="deleteBtnClicked(item)"></i>
+                </td> 
+            </tr>
+        </tbody>
+    </table>
+    <ul uib-pagination class="pagination-sm" total-items="total" num-pages="numberPages" ng-model="param.PageNumber" ng-change="pageChanged()" 
+        max-size="maxSize" boundary-links="true" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+</div>

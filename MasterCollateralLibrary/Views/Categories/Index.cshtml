@@ -1,0 +1,51 @@
+﻿<div ng-controller="categoriesIndexController">
+    <br />
+    <uib-progressbar class="progress-striped active" value="100" ng-show="busy">Please wait...</uib-progressbar>
+
+    <div class="row" ng-hide="busy">
+        <!--<div class="col-md-2">
+            <button class="btn btn-primary">Add</button>
+        </div>-->
+        <div class="col-md-2">
+            <button class="btn btn-default" ng-click="expandAll()">Expand all</button>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-default" ng-click="collapseAll()">Collapse all</button>
+        </div>
+    </div>
+
+    <div class="row" ng-hide="busy">               
+        <div class="col-md-6">
+            <div ui-tree="treeOptions" id="tree-root">
+                <ol ui-tree-nodes ng-model="items">
+                    <li ng-repeat="node in items" ui-tree-node collapsed="true" ng-include="'nodes_renderer.html'"></li>
+                </ol>
+
+            </div>
+        </div>        
+    </div>    
+</div>
+
+<!--https://github.com/angular-ui-tree/angular-ui-tree/blob/master/examples/views/basic-example.html-->
+<script type="text/ng-template" id="nodes_renderer.html">
+    <div ui-tree-handle class="tree-node tree-node-content">
+        <a class="btn btn-success btn-xs" ng-if="node.children && node.children.length > 0" data-nodrag ng-click="toggle(this)">
+            <span class="glyphicon"
+                  ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed}"></span>
+        </a>
+        {{node.cat_desc}}        
+        <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="removeCat(this)">
+            <span class="glyphicon glyphicon-remove"></span>
+        </a>
+        <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem(this)" style="margin-right: 8px;">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+        <a class="pull-right btn btn-default btn-xs" data-nodrag ng-click="updateCat(this)" style="margin-right: 8px;">
+            <span class="glyphicon glyphicon-pencil"></span>
+        </a>
+    </div>
+    <ol ui-tree-nodes="" ng-model="node.children" ng-class="{hidden: collapsed}">
+        <li ng-repeat="node in node.children" ui-tree-node collapsed="true" ng-include="'nodes_renderer.html'">
+        </li>
+    </ol>
+</script>

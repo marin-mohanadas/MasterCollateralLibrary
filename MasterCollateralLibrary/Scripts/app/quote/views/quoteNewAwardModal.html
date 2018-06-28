@@ -1,0 +1,28 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">New Award</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <div class="row">
+        <div class="col-md-12" ng-if="errors">
+            <ul style="color:red" ng-repeat="err in errors">
+                <li>{{err}}</li>
+            </ul>
+        </div>
+        <!--<div class="col-md-12" ng-if="recommends">
+            <ul style="color:green" ng-repeat="rec in recommends">
+                <li>{{rec}}</li>
+            </ul>
+        </div>-->
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Finished Good</label>
+                <input type="text" class="form-control" ng-model="qthdr_fg_num" ng-change="fgnumChanged()" />
+            </div>
+        </div>
+    </div>
+    <p style="color:red" ng-if="error"><b>Finished good # already exists</b></p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()" ng-disabled="errors && errors.length > 0">Ok</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

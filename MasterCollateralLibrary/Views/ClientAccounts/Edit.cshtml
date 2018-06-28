@@ -1,0 +1,326 @@
+﻿
+<h2>Accounts</h2>
+<br/>
+
+
+<div ng-controller="clientAccountsController">
+    <div class="row" ng-if="errors">
+        <div class="col-md-12">
+            <ul ng-repeat="err in errors">
+                <li style="color:red">{{err}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="">ID</label>
+                        <input type="text" class="form-control" ng-model="clientAccount.id" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Account Name</label>
+                        <input type="text" class="form-control" ng-model="clientAccount.acct_name">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Street Address</label>
+                        <input type="text" class="form-control" ng-model="clientAccount.acct_address">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">City</label>
+                        <input type="text" class="form-control" ng-model="clientAccount.acct_city">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">State or Province</label>
+                        <input type="text" class="form-control" ng-model="clientAccount.acct_state">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">Zip</label>
+                        <input type="text" class="form-control" ng-model="clientAccount.acct_zip">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Country</label>
+                        <input type="text" class="form-control" ng-model="clientAccount.acct_cntry">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Account Code</label>
+                        <input type="text" class="form-control" ng-model="clientAccount.acct_3code" maxlength="3">
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Primary Contact</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="">Name</label>
+                                        <input type="text" class="form-control" ng-model="clientAccount.acct_primary_contact_name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="">Department</label>
+                                        <input type="text" class="form-control" ng-model="clientAccount.acct_primary_contact_dept">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="">Phone</label>
+                                        <input type="text" class="form-control" ng-model="clientAccount.acct_primary_contact_phone">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="">Email</label>
+                                        <input type="text" class="form-control" ng-model="clientAccount.acct_primary_contact_email">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Secondary Contact</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="">Name</label>
+                                        <input type="text" class="form-control" ng-model="clientAccount.acct_secondary_contact_name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="">Department</label>
+                                        <input type="text" class="form-control" ng-model="clientAccount.acct_secondary_contact_dept">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="">Phone</label>
+                                        <input type="text" class="form-control" ng-model="clientAccount.acct_secondary_contact_phone">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="">Email</label>
+                                        <input type="text" class="form-control" ng-model="clientAccount.acct_secondary_contact_email">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Authorized Distributor</label>
+                        <select class="form-control" ng-model="selectedDistributor"
+                                ng-options="option.dist_name for option in distributors track by option.id"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Distributor Address</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="">Street 1</label>
+                                        <input type="text" class="form-control" ng-model="clientAccount.acct_dist_street1" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="">Street 2</label>
+                                        <input type="text" class="form-control" ng-model="clientAccount.acct_dist_street2" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="">City</label>
+                                        <input type="text" class="form-control" ng-model="clientAccount.acct_dist_city" readonly="readonly">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="">State</label>
+                                        <input type="text" class="form-control" ng-model="clientAccount.acct_dist_state" readonly="readonly">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="">Zip</label>
+                                        <input type="text" class="form-control" ng-model="clientAccount.acct_dist_zip" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="">Country</label>
+                                        <input type="text" class="form-control" ng-model="clientAccount.acct_dist_country" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Category</label>
+                        <select class="form-control" ng-model="selectedCategory"
+                                ng-options="option.cat_name for option in categories track by option.id"></select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Company Association</label>
+                        <select type="text" class="form-control" ng-model="selectedCompany"
+                                ng-options="option.brand_name for option in brands track by option.id"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">GPO</label>
+                        <select class="form-control" ng-model="selectedGPO"
+                                ng-options="option.gpo_name for option in gpos track by option.id"></select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Sales Rep</label>
+                        <select class="form-control" ng-model="selectedRep"
+                                ng-options="option.rep_fname + ' ' + option.rep_lname for option in reps track by option.id"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Warehousing Cost %</label>
+                        <input type="text" class="form-control" ng-model="clientAccount.acct_whrhs">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Contract Start Date</label>
+                        <input type="date" class="form-control" ng-model="clientAccount.acct_contract_start">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Freight Cost</label>
+                        <input type="text" class="form-control" ng-model="clientAccount.acct_frght">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Contract End Date</label>
+                        <input type="date" class="form-control" ng-model="clientAccount.acct_contract_end">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Misc.</label>
+                        <input type="text" class="form-control" ng-model="clientAccount.acct_misc">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Logistics Fees</label>
+                        <input type="text" class="form-control" ng-model="clientAccount.acct_logstcs">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Administration Fees</label>
+                        <input type="text" class="form-control" ng-model="clientAccount.acct_admin">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">SPIF Fees (%)</label>
+                        <input type="text" class="form-control" ng-model="clientAccount.acct_spif_percent_fee">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Marketing Fees (%)</label>
+                        <input type="text" class="form-control" ng-model="clientAccount.acct_marketing_percent_fee">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">GPO fees (%)</label>
+                        <input type="text" class="form-control" ng-model="clientAccount.acct_gpo_percent_fee">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <br />
+    <div class="row">
+        <div class="col-md-1"><button class="btn btn-default" ng-click="cancel()">Cancel</button></div>
+        <div class="col-md-1"><button class="btn btn-primary" ng-click="save()">Save</button></div>
+    </div>
+
+</div>

@@ -1,0 +1,101 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Component</h3>
+</div>
+<div class="modal-body" id="modal-body">
+
+    <div class="form-group" ng-hide="dup">
+        <div style="overflow:auto;max-height:250px">
+            <table class="table table-condensed table-hover table-striped">
+                <caption>Selected</caption>
+                <thead>
+                    <tr>
+                        <th>Component ID</th>
+                        <th>Description (original)</th>
+                        <th>Vendor Name</th>
+                        <th>Vendor / Supplier PN</th>
+                        <th>Quantity</th>
+                        <th>Level</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in selectedItems">
+                        <td>{{item.id}}</td>
+                        <td>{{item.comp_desc_orig}}</td>
+                        <td>{{item.tbl_vend.vend_child_name}}</td>
+                        <td>{{item.comp_vend_pn}}</td>
+                        <td><input type="text" style="width:100px" ng-model="item.quantity" /></td>
+                        <td>
+                            <select type="text" style="width:100px"
+                                    ng-model="item.level"
+                                    ng-options="option for option in complevels track by option"></select>
+                        </td>
+                        <td><i class="glyphicon glyphicon-trash" style="cursor:pointer" ng-click="removeSelectedItem(item)"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="overflow:auto;">
+            <table class="table table-condensed table-hover table-striped">
+                <caption>Available</caption>
+                <thead>
+                    <tr>
+                        <th rowspan="2">Select</th>
+                        <th style="cursor:pointer" ng-click="doSortBy('id')"><i ng-class="sortIcon('id')"></i>Component ID</th>
+                        <th style="cursor:pointer" ng-click="doSortBy('desc')"><i ng-class="sortIcon('desc')"></i>Description (original)</th>
+                        <th style="cursor:pointer" ng-click="doSortBy('vendor')"><i ng-class="sortIcon('vendor')"></i>Vendor Name</th>
+                        <th style="cursor:pointer" ng-click="doSortBy('vendorPart')"><i ng-class="sortIcon('vendorPart')"></i>Vendor / Supplier PN</th>
+                        <th style="cursor:pointer" ng-click="doSortBy('comp_acl')"><i ng-class="sortIcon('comp_acl')"></i>ACL</th>
+                        <th style="cursor:pointer" ng-click="doSortBy('comp_latex')"><i ng-class="sortIcon('comp_latex')"></i>Latex</th>
+                        <th style="cursor:pointer" ng-click="doSortBy('strlty_desc')"><i ng-class="sortIcon('strlty_desc')"></i>Sterility</th>
+                        <th>Monthly Usage</th>
+                        <th>cost</th>
+                    </tr>
+                    <tr>
+                        <th><input type="text" ng-model="param.id" ng-change="filterChanged()" /></th>
+                        <th><input type="text" ng-model="param.desc" ng-change="filterChanged()" /></th>
+                        <th><input type="text" ng-model="param.vendor" ng-change="filterChanged()" /></th>
+                        <th><input type="text" ng-model="param.vendorPart" ng-change="filterChanged()" /></th>
+                        <th><input type="checkbox" ng-model="param.acl" ng-change="filterChanged()" /></th>
+                        <th><input type="checkbox" ng-model="param.latex" ng-change="filterChanged()" /></th>
+                        <th><input type="text" ng-model="param.sterility" ng-change="filterChanged()" /></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in items">
+                        <td><input type="radio" name="items" ng-click="setSelected(item)" /></td>
+                        <td>{{item.id}}</td>
+                        <td>{{item.comp_desc_orig}}</td>
+                        <td>{{item.tbl_vend.vend_child_name}}</td>
+                        <td style="width:250px">{{item.comp_vend_pn}}</td>
+                        <!--<td><input type="checkbox" ng-model="item.acl_cb" ng-disabled="true" /></td>
+                        <td><input type="checkbox" ng-model="item.latex_cb" ng-disabled="true" /></td>-->
+                        <td><input type="checkbox" ng-model="item.comp_acl" ng-disabled="true" /></td>
+                        <td><input type="checkbox" ng-model="item.comp_latex" ng-disabled="true" /></td>
+                        <td>{{item.tbl_strlty.strlty_desc}}</td><!--<td>{{item.comp_strlty_desc}}</td>-->
+                        <td>{{item.MonthlyAMU}}</td>
+                        <td>{{item.cost_display}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <ul uib-pagination class="pagination-sm" total-items="total" items-per-page="param.PageSize" ng-model="param.PageNumber" ng-change="pageChanged()"
+            max-size="5" boundary-links="true" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+    </div>
+
+    <div ng-show="dup">
+        <span>Selected item exists. Are you sure you want to add this item?</span>
+    </div>
+
+</div>
+<div class="modal-footer" ng-hide="dup">
+    <button class="btn btn-default pull-left" type="button" ng-click="btnAddNewClicked()" ng-disabled="!profile.CanCreateComponent">Add New</button>
+    <button class="btn btn-primary" type="button" ng-click="ok()" ng-disabled="selectedItems.length < 1">Ok</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>
+<div class="modal-footer" ng-show="dup">
+    <button class="btn btn-primary" type="button" ng-click="addDupClicked()">Add</button>
+    <button class="btn btn-warning" type="button" ng-click="cancelDupClicked()">Cancel</button>
+</div>

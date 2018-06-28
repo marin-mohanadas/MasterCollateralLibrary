@@ -1,0 +1,78 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterCollateralLibrary", "MasterCollateralLibrary\MasterCollateralLibrary.csproj", "{F14C9FF6-181F-4495-9578-D115EF5A8ABD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterCollateralLibrary.Tests", "MasterCollateralLibrary.Tests\MasterCollateralLibrary.Tests.csproj", "{60920272-D5F6-4097-99CB-785DBCA5AEE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCL.EF", "MCL.EF\MCL.EF.csproj", "{853E3EDF-8714-414F-BC68-45E275C596CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCL.DTOs", "MCL.DTOs\MCL.DTOs.csproj", "{BAD48073-13FF-460E-A8BB-A99E70580DDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCL.Services", "MCL.Services\MCL.Services.csproj", "{72E83324-E38B-47C1-8586-64C893A1E0F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{44B236E8-A1F8-4EA5-A29E-4378FDA34CD8}"
+	ProjectSection(SolutionItems) = preProject
+		20171115_ChangeScript.sql = 20171115_ChangeScript.sql
+		20171116_ChangeScript.sql = 20171116_ChangeScript.sql
+		20171117_ChangeScript.sql = 20171117_ChangeScript.sql
+		20171120_ChangeScript.sql = 20171120_ChangeScript.sql
+		20171127_ChangeScript.sql = 20171127_ChangeScript.sql
+		20171128_ChangeScript.sql = 20171128_ChangeScript.sql
+		20171213_ChangeScript.sql = 20171213_ChangeScript.sql
+		20171219_ChangeScript.sql = 20171219_ChangeScript.sql
+		20180103_ChangeScript.sql = 20180103_ChangeScript.sql
+		20180123_ChangeScript.sql = 20180123_ChangeScript.sql
+		20180125ChangeScript.sql = 20180125ChangeScript.sql
+		20180201ChangeScript.sql = 20180201ChangeScript.sql
+		20180206_ChangeScript.sql = 20180206_ChangeScript.sql
+		20180301_ChangeScript.sql = 20180301_ChangeScript.sql
+		ChangeRevNumbering.sql = ChangeRevNumbering.sql
+		DB_ChangeScript.sql = DB_ChangeScript.sql
+		Notes.txt = Notes.txt
+		README.txt = README.txt
+		sp_PackQuote.sql = sp_PackQuote.sql
+		TODOs.txt = TODOs.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sprint1", "Sprint1", "{DA30C4E0-D593-4564-9A8E-AE4E203DB342}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F14C9FF6-181F-4495-9578-D115EF5A8ABD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F14C9FF6-181F-4495-9578-D115EF5A8ABD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F14C9FF6-181F-4495-9578-D115EF5A8ABD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F14C9FF6-181F-4495-9578-D115EF5A8ABD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60920272-D5F6-4097-99CB-785DBCA5AEE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60920272-D5F6-4097-99CB-785DBCA5AEE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60920272-D5F6-4097-99CB-785DBCA5AEE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60920272-D5F6-4097-99CB-785DBCA5AEE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{853E3EDF-8714-414F-BC68-45E275C596CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{853E3EDF-8714-414F-BC68-45E275C596CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{853E3EDF-8714-414F-BC68-45E275C596CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{853E3EDF-8714-414F-BC68-45E275C596CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAD48073-13FF-460E-A8BB-A99E70580DDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAD48073-13FF-460E-A8BB-A99E70580DDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAD48073-13FF-460E-A8BB-A99E70580DDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAD48073-13FF-460E-A8BB-A99E70580DDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72E83324-E38B-47C1-8586-64C893A1E0F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72E83324-E38B-47C1-8586-64C893A1E0F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72E83324-E38B-47C1-8586-64C893A1E0F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72E83324-E38B-47C1-8586-64C893A1E0F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DA30C4E0-D593-4564-9A8E-AE4E203DB342} = {44B236E8-A1F8-4EA5-A29E-4378FDA34CD8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AD82B32C-07A8-4650-AD6F-CE7C16AE69A0}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <img src="~/resources/@ViewBag.Logo" alt="GRI Logo" />
+    <h1>Intelligent Pack Analytics &amp; Kitting System (iPAKS)</h1>
+    <p class="lead">[Including Pack Quote System]</p>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Main Functions</h2>
+        <p>
+            <ul class="list-group">
+                <li class="list-group-item">@Html.ActionLink("Component List Master", "Index", "ComponentList")</li>
+                <li class="list-group-item">@Html.ActionLink("Pack Quotes", "Index", "QuoteMaster")</li>
+                <li class="list-group-item">@Html.ActionLink("Proposal", "Proposal", "QuoteMaster")</li>
+                <li class="list-group-item">@Html.ActionLink("Product Groups", "Index", "ProductGroups")</li>
+                <li class="list-group-item">@Html.ActionLink("Vendors", "Index", "Vendors")</li>
+
+            </ul>
+        </p>
+
+    </div>
+    <div class="col-md-6">
+        <h2>Additional Functions</h2>
+        <p>
+            <ul class="list-group">
+                @*<li class="list-group-item">@Html.ActionLink("Report Menu", "Index", "Report")</li>*@
+                <li class="list-group-item"><a href="~/Pages/Reports/ReportMenu.aspx" target="_blank">Report Menu</a></li>
+                <li class="list-group-item">@Html.ActionLink("Maintenance Menu", "Index", "Maintenance")</li>
+                <li class="list-group-item">@Html.ActionLink("Market Intelligence", "Index", "Market")</li>
+            </ul>
+        </p>
+        
+    </div>
+</div>

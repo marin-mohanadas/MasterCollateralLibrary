@@ -1,0 +1,90 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Request new component</h3>
+</div>
+<div class="modal-body" id="modal-body">
+
+    <div class="row">
+
+        <!--<div class="col-md-6">
+            <div class="form-group">
+                <label for="desc">Vendor/Supplier</label>
+                <select type="text" class="form-control" ng-model="selectedVendor"
+                        ng-options="option.vend_parent_name for option in vendors track by option.id" required></select>
+            </div>
+        </div>-->
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="">Manufacturer</label>
+                <select type="text" class="form-control" ng-model="selectedMfg"
+                        ng-options="option.vend_parent_name for option in vendors track by option.id"></select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="lifeCycle">Vendor Part Number</label>
+                <input type="text" class="form-control" ng-model="item.comp_vend_pn" required>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="vendor">Status</label>
+                <input type="text" class="form-control" value="Temp" readonly>
+                <!--<select type="text" class="form-control" ng-model="selectedStat" disabled
+                        ng-options="option.stat_desc for option in stats track by option.id"></select>-->
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="">Description</label>
+                <textarea rows="2" class="form-control" ng-model="item.comp_desc_orig" required></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="vendor">Quantity</label>
+                <input type="text" class="form-control" ng-model="item.quantity" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="vendor">Account GPO</label>
+            <input type="text" class="form-control" value="{{account.gpo}}" readonly>
+            <!--<div class="form-group">
+                <label for="vendor">Level</label>
+                <select type="text" class="form-control" ng-model="item.level"
+                        ng-options="option for option in levels track by option"></select>
+            </div>-->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="vendor">Comments</label>
+                <textarea type="text" class="form-control" ng-model="item.comp_comments" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="vendor">Account Authorized Distributor</label>
+                <input type="text" class="form-control" value="{{account.auth_dist}}" readonly>
+                <div></div>
+            </div>
+        </div>
+        <div ng-if="errors.length > 0">
+            <ul ng-repeat="err in errors">
+                <li style="color:red">{{err}}</li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button ng-if="item.ID > 0" class="btn btn-danger pull-left" type="button" ng-click="remove()">Remove</button>
+        <button class="btn btn-primary" type="button" ng-click="ok()">Ok</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</div>

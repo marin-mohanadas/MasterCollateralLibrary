@@ -1,0 +1,943 @@
+﻿<div ng-controller="componentEditController">
+    <br />
+    <div class="row">
+        <div class="col-md-1"><button class="btn btn-primary" ng-click="save()" ng-disabled="!profile.CanUpdateComponent">Save</button></div>
+        <div class="col-md-1"><button class="btn btn-danger" ng-click="remove()" ng-disabled="!profile.CanUpdateComponent">Delete</button></div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Component ID</label>
+                        <input type="text" class="form-control" ng-model="item.id" readonly>
+                    </div>
+                </div>
+                <div class="col-md-6" ng-if="item.comp_deleted">
+                    <div class="form-group">
+                        <label>&nbsp;</label>
+                        <span class="form-control" style="background-color:red;color:white"><b>DELETED</b></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Vendor/Supplier</label>
+                        <select type="text" class="form-control" ng-model="selectedVendor" required
+                                ng-options="option.vend_parent_name for option in vendors track by option.id"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Manufacturer</label>
+                        <select type="text" class="form-control" ng-model="selectedMfg" required
+                                ng-options="option.vend_parent_name for option in vendors track by option.id"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Vendor Part Number</label>
+                        <input type="text" class="form-control" ng-model="item.comp_vend_pn" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Description (original)</label>
+                        <textarea rows="2" class="form-control" ng-model="item.comp_desc_orig" required></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Published Description</label>
+                        <textarea rows="2" class="form-control" ng-model="item.comp_pub_desc"></textarea>
+                    </div>
+                </div>
+            </div>
+            <!--
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Noun</label>
+                        <input type="text" class="form-control" ng-model="item.comp_desc_noun">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Attribute</label>
+                        <input type="text" class="form-control" ng-model="item.comp_desc_attrbt">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Adjective</label>
+                        <input type="text" class="form-control" ng-model="item.comp_desc_adj">
+                    </div>
+                </div>
+            </div>
+            -->
+            <!--
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Brand Name</label>
+                        <input type="text" class="form-control" ng-model="item.comp_brand">
+                    </div>
+                </div>
+            </div>
+            -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Alternate Description</label>
+                        <input type="text" class="form-control" ng-model="item.comp_desc_alt">
+                    </div>
+                </div>
+            </div>
+            <!--
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Search Keywords</label>
+                        <input type="text" class="form-control" ng-model="item.comp_desc_kywrd">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Color</label>
+                        <input type="text" class="form-control" ng-model="item.comp_desc_color">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Side (e.g.,L or R)</label>
+                        <input type="text" class="form-control" ng-model="item.comp_desc_side">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Component Size (Imperial)</label>
+                        <input type="text" class="form-control" ng-model="item.comp_size_imp">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Component Size (Metric)</label>
+                        <input type="text" class="form-control" ng-model="item.comp_size_met">
+                    </div>
+                </div>
+            </div>
+            -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Country of Origin</label>
+                        <select type="text" class="form-control" ng-model="selectedCountry" required
+                                ng-options="option.coo_desc for option in countries track by option.id"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Sterility</label>
+                        <select type="text" class="form-control" ng-model="selectedSterility"
+                                ng-options="option.strlty_desc for option in sterilities track by option.id"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">HS Code</label>
+                        <input type="text" class="form-control" ng-model="item.comp_HS_code">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Comments</label>
+                        <textarea rows="2" class="form-control" ng-model="item.comp_comments"></textarea>
+                    </div>
+                </div>
+            </div>
+            <!--
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Minimum Order Quantity (in purchase UOM)</label>
+                        <input type="number" class="form-control" ng-model="item.comp_moq">
+                    </div>
+                </div>
+            </div>
+            -->
+        </div>
+        <div class="col-md-8">
+            <div class="col-md-6">
+                <span>
+                    <button class="btn btn-primary" ng-click="requestACLApproval()" ng-show="!activeACLApprovalProcess && !item.comp_acl">Request ACL Approval</button>
+                    <button class="btn btn-danger" ng-click="rejectACLApproval()" ng-show="activeACLApprovalProcess && !item.comp_acl">Reject ACL Approval</button>
+                    <br />
+                    <input type="checkbox" ng-model="item.comp_acl" ng-disabled="!profile.IsACLApprover"> ACL (Approved Component List)
+
+                    
+                </span>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="item.comp_npe"> Component Evaluation on File
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="item.comp_deleted" ng-disabled="!profile.IsAdmin"> Delete
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="item.comp_use_vendor_contract" ng-disabled="!profile.IsAdmin"> Use Vendor Contract Pricing
+                    </label>
+                </div>
+                <span>                    
+                    <input type="checkbox" ng-model="item.comp_latex" ng-disabled="!profile.IsAdmin"> Latex
+                    @*<input type="checkbox" ng-model="item.comp_strlty" ng-true-value="{{1}}" ng-false-value="{{0}}" ng-disabled="!profile.IsAdmin"> Sterile*@
+                    <input type="checkbox" ng-model="strlty_cb" ng-disabled="true"> Sterile
+                </span>
+                <div>
+                    <table width="400px">
+                        <tr>
+                            <td>Todays Exchange Rate</td>
+                            <td align="right">{{ExchangeRates}}</td>
+                        </tr>
+                        <tr>
+                            <td>Current IPAKS Exchange Rate</td>
+                            <td align="right">{{IPAKSExchangeRatesEUR}} {{IPAKSExchangeRatesRMB}}</td>
+                        </tr>
+                    </table>                      
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="">Status</label>
+                    <select type="text" class="form-control" ng-model="selectedStat"
+                            ng-options="option.stat_desc for option in stats track by option.id"></select>
+                </div>
+                <div class="form-group">
+                    <label for="">Product Manager</label>
+                    <select type="text" class="form-control" ng-model="selectedProdMgr"
+                            ng-options="option.prodmgr_Lname + ' ' + option.prodmgr_Fname for option in prodMgrs track by option.id"></select>
+                </div>
+            </div>
+
+            <uib-tabset active="active">
+                <uib-tab index="0" heading="Purchasing">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Date Created</th>
+                                                <th>Date Expired</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="p in item.tbl_purch" style="cursor:pointer" ng-class="selectedPurchase.id == p.id ? 'success' : ''">
+                                                <td ng-click="editPurchaseBtnClicked(p)">{{p.id}}</td>
+                                                <td ng-click="editPurchaseBtnClicked(p)">{{p.purch_date_create | date:'MM/dd/yyyy'}}</td>
+                                                <td ng-click="editPurchaseBtnClicked(p)">{{p.purch_date_expry | date:'MM/dd/yyyy'}}</td>
+                                                <td>
+                                                    <button class="btn btn-xs" ng-disabled="!profile.CanUpdateComponent" ng-if="selectedPurchase.id == p.id">
+                                                        <i class="glyphicon glyphicon-ok"
+                                                           ng-click="editPurchaseOkBtnClicked(selectedPurchase)"></i>
+                                                    </button>
+                                                    <button class="btn btn-xs" ng-disabled="!profile.CanUpdateComponent" ng-if="selectedPurchase.id == p.id">
+                                                        <i class="glyphicon glyphicon-remove"
+                                                           ng-click="editPurchaseCancelBtnClicked(selectedPurchase)"></i>
+                                                    </button>
+                                                    <button class="btn btn-xs" ng-disabled="!profile.CanUpdateComponent" ng-if="selectedPurchase.id != p.id">
+                                                        <i class="glyphicon glyphicon-trash"
+                                                           ng-click="removePurchase(selectedPurchase)"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="">Base Currency</label>
+                                                <select type="text" class="form-control" ng-model="selectedPurchase.selectedCurrency" required
+                                                        ng-options="option.currncy_name for option in currencies track by option.id"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="">Plant/Location</label>
+                                                <select type="text" class="form-control" ng-model="selectedPurchase.selectedPlant" required
+                                                        ng-options="option.plant_name for option in plants track by option.id"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="">Acquisition Cost (case)</label>
+                                                <input type="number" class="form-control" ng-model="selectedPurchase.purch_aqsn_cost" required
+                                                       ng-change="recalcAcquisitionCost(selectedPurchase)" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="">Inbound Freight (case)</label>
+                                                <input type="number" class="form-control" ng-model="selectedPurchase.purch_inbnd_fgt" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="">Import Duty Rate (%)</label>
+                                                <input type="text" class="form-control" ng-model="selectedPurchase.purch_import_duty" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="">VAT Refund (%)</label>
+                                                <input type="text" class="form-control" ng-model="selectedPurchase.purch_VAT_refund" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="">Cost Type</label>
+                                                <select type="text" class="form-control" ng-model="selectedPurchase.selectedCostType" required
+                                                        ng-options="option.cst_type_desc for option in costTypes track by option.id"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">Unit of Measure</div>
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-7">
+                                                            <div class="form-group">
+                                                                <label for="">Purchasing Unit</label>
+                                                                <select type="text" class="form-control" ng-model="selectedPurchase.selectedPurchaseUom"
+                                                                        ng-options="option.uom_desc for option in uoms track by option.uom_code"></select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <div class="form-group">
+                                                                <label for="">Qty</label>
+                                                                <input type="number" class="form-control" ng-model="selectedPurchase.purch_puom_qty" required
+                                                                       ng-change="recalcAcquisitionCost(selectedPurchase)" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-7">
+                                                            <div class="form-group">
+                                                                <label for="">Selling Unit</label>
+                                                                <select type="text" class="form-control" ng-model="selectedPurchase.selectedSellingUom"
+                                                                        ng-options="option.uom_desc for option in uoms track by option.uom_code"></select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <div class="form-group">
+                                                                <label for="">Qty</label>
+                                                                <input type="number" class="form-control" ng-model="selectedPurchase.purch_suom_qty" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-7">
+                                                            <div class="form-group">
+                                                                <label for="">Usage Unit</label>
+                                                                <select type="text" class="form-control" ng-model="selectedPurchase.selectedUsageUom"
+                                                                        ng-options="option.uom_desc for option in uoms track by option.uom_code"></select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <div class="form-group">
+                                                                <label for="">Qty</label>
+                                                                <input type="number" class="form-control" ng-model="selectedPurchase.purch_uuom_qty" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="">Acquisition Cost (each)</label>
+                                                <input type="number" class="form-control" ng-model="selectedPurchase.purch_aqsn_cost_each" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">Shipping Carton Dims</div>
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label for="">Measurement UOM</label>
+                                                                <select type="text" class="form-control" ng-model="selectedShipping.selectedShippingMeasurementUom"
+                                                                        ng-options="option.uom_desc for option in uoms |filter:measurementUomFilter track by option.uom_code"></select>
+                                                                <label for="">Weight UOM</label>
+                                                                <select type="text" class="form-control" ng-model="selectedShipping.selectedShippingWeightUom"
+                                                                        ng-options="option.uom_desc for option in uoms | filter:weightUomFilter track by option.uom_code"></select>
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label for="">length</label>
+                                                                <input type="number" class="form-control" ng-model="selectedPurchase.purch_cartn_lgt" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label for="">width</label>
+                                                                <input type="number" class="form-control" ng-model="selectedPurchase.purch_cartn_wdt" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label for="">height</label>
+                                                                <input type="number" class="form-control" ng-model="selectedPurchase.purch_cartn_hgt" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label for="">weight</label>
+                                                                <input type="number" class="form-control" ng-model="selectedPurchase.purch_cartn_wgt" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="">Scrap rate (%)</label>
+                                                <input type="number" class="form-control" ng-model="selectedPurchase.purch_scrap" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="">Date Created</label>
+                                                <input type="date" class="form-control" ng-model="selectedPurchase.purch_date_create" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group" style="margin-top:30px;text-align:center">
+                                                Expired? <input type="checkbox" ng-model="selectedPurchase.purch_expry" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="">Date Expired</label>
+                                                <input type="date" class="form-control" ng-model="selectedPurchase.purch_date_expry" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <br />
+                                            <button class="btn btn-default" ng-click="btnDupPurchaseClicked()" ng-disabled="selectedPurchase.id <= 0 || !profile.CanUpdateComponent">Duplicate Purchase Record</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </uib-tab>
+
+                <uib-tab index="1" heading="Cross Reference">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <!--tree-->
+                                    <div ui-tree id="tree-root" style="overflow:auto;max-height:500px" data-nodrop-enabled="true" data-drag-enabled="false" ng-if="crossRefTree.length > 0">
+                                        <ol ui-tree-nodes ng-model="crossRefTree">
+                                            <li ng-repeat="node in crossRefTree" ui-tree-node ng-include="'crossRef_renderer.html'"></li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <table class="table table-condensed table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Desc (orig)</th>
+                                                <th>Exact</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="crossRef in item.tbl_X_ref">
+                                                <td>
+                                                    <span ng-if="crossRef.tbl_comp_equiv.comp_desc_orig">{{crossRef.tbl_comp_equiv.comp_desc_orig}}</span>
+                                                    <span ng-if="!crossRef.tbl_comp_equiv.comp_desc_orig">{{crossRef.tbl_comp_equiv.comp_vend_pn}}</span>
+                                                </td>
+                                                <td><input type="checkbox" ng-model="crossRef.xref_exact" disabled /></td>
+                                                <td>
+                                                    <button class="btn btn-xs" ng-disabled="!profile.CanUpdateComponent">
+                                                        <i class="glyphicon glyphicon-pencil" ng-click="openCrossRefFromGrid(crossRef)"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </uib-tab>
+
+                <uib-tab index="2" heading="Categories">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <span>{{selectedCatFullPath}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!--tree-->
+                                    <div ui-tree="catTreeOptions" id="tree-root" style="overflow:auto;max-height:500px" data-nodrop-enabled="true" data-drag-enabled="false">
+                                        <ol ui-tree-nodes ng-model="categories">
+                                            <li ng-repeat="node in categories" ui-tree-node collapsed="true" ng-include="'cats_renderer.html'"></li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </uib-tab>
+                <!--
+        <uib-tab index="3" heading="Traits">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Trait Desc <button class="btn btn-default btn-xs btn-primary" ng-click="addTrait()">add</button></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="trait in item.tbl_X_trait">
+                                <td>
+                                    <span ng-show="trait.ID !== selectedCompTrait.ID">{{trait.tbl_trait.trait_desc}}</span>
+
+                                    <select type="text" ng-show="trait.ID === selectedCompTrait.ID" ng-model="selectedCompTrait.selectedTrait"
+                                            ng-options="option.trait_desc for option in traits track by option.id"></select>
+                                </td>
+                                <td style="width:50px">
+                                    <i class="glyphicon glyphicon-pencil" style="cursor:pointer" ng-hide="trait.ID === selectedCompTrait.ID" ng-click="editTraitBtnClicked(trait)"></i>
+                                    <i class="glyphicon glyphicon-ok" style="cursor:pointer" ng-show="trait.ID === selectedCompTrait.ID" ng-click="editTraitBtnOkClicked(selectedCompTrait)"></i>
+                                    <i class="glyphicon glyphicon-remove" style="cursor:pointer" ng-show="trait.ID === selectedCompTrait.ID" ng-click="editTraitBtnCancelClicked(trait)"></i>
+                                    <i class="glyphicon glyphicon-trash" style="cursor:pointer" ng-hide="trait.ID === selectedCompTrait.ID" ng-click="removeTrait(trait)"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </uib-tab>
+        <uib-tab index="4" heading="Materials">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Material(s) <button class="btn btn-default btn-xs btn-primary" ng-click="addMaterial()">add</button></th>
+                                <th>Abbreviation</th>
+                                <th>Primary Material</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="material in item.tbl_X_material">
+                                <td>
+                                    <span ng-hide="material.ID === selectedCompMaterial.ID">{{material.tbl_material.material_desc}}</span>
+                                    <select type="text" ng-show="material.ID === selectedCompMaterial.ID" ng-model="selectedCompMaterial.selectedMaterial"
+                                            ng-options="option.material_desc for option in materials track by option.id"></select>
+                                </td>
+                                <td>
+                                    <span ng-hide="material.ID === selectedCompMaterial.ID">{{material.tbl_material.material_abbv}}</span>
+                                    <span ng-show="material.ID === selectedCompMaterial.ID">{{selectedCompMaterial.selectedMaterial.material_abbv}}</span>
+                                </td>
+                                <td>
+                                    <input type="checkbox" ng-hide="material.ID === selectedCompMaterial.ID" ng-model="material.material_primary" disabled="disabled" />
+                                    <input type="checkbox" ng-show="material.ID === selectedCompMaterial.ID" ng-model="selectedCompMaterial.material_primary" />
+                                </td>
+                                <td style="width:50px">
+                                    <i class="glyphicon glyphicon-pencil" style="cursor:pointer" ng-hide="material.ID === selectedCompMaterial.ID" ng-click="editMaterialBtnClicked(material)"></i>
+                                    <i class="glyphicon glyphicon-ok" style="cursor:pointer" ng-show="material.ID === selectedCompMaterial.ID" ng-click="editMaterialBtnOkClicked(material)"></i>
+                                    <i class="glyphicon glyphicon-remove" style="cursor:pointer" ng-show="material.ID === selectedCompMaterial.ID" ng-click="editMaterialBtnCancelClicked(material)"></i>
+                                    <i class="glyphicon glyphicon-trash" style="cursor:pointer" ng-hide="material.ID === selectedCompMaterial.ID" ng-click="removeMaterial(material)"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </uib-tab>
+        <uib-tab index="5" heading="Specialties">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Specialty(ies) Related Product <button class="btn btn-default btn-xs btn-primary" ng-click="addSpecialty()">add</button></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="specialty in item.tbl_X_spclty">
+                                <td>
+                                    <span ng-hide="specialty.ID === selectedCompSpecialty.ID">{{specialty.tbl_spclty.spclty_name}}</span>
+                                    <select type="text" ng-show="specialty.ID === selectedCompSpecialty.ID" ng-model="selectedCompSpecialty.selectedSpecialty"
+                                            ng-options="option.spclty_name for option in specialties track by option.id"></select>
+                                </td>
+                                <td style="width:50px">
+                                    <i class="glyphicon glyphicon-pencil" style="cursor:pointer" ng-hide="specialty.ID === selectedCompSpecialty.ID" ng-click="editSpecialtyBtnClicked(specialty)"></i>
+                                    <i class="glyphicon glyphicon-ok" style="cursor:pointer" ng-show="specialty.ID === selectedCompSpecialty.ID" ng-click="editSpecialtyBtnOkClicked(specialty)"></i>
+                                    <i class="glyphicon glyphicon-remove" style="cursor:pointer" ng-show="specialty.ID === selectedCompSpecialty.ID" ng-click="editSpecialtyBtnCancelClicked(specialty)"></i>
+                                    <i class="glyphicon glyphicon-trash" style="cursor:pointer" ng-hide="specialty.ID === selectedCompSpecialty.ID" ng-click="removeSpecialty(specialty)"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </uib-tab>
+        -->
+                <uib-tab index="3" heading="Label Languages">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>Language <button class="btn btn-default btn-xs btn-primary" ng-click="addLabel()" ng-disabled="!profile.CanUpdateComponent">add</button></th>
+                                        <th>Label Description</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="label in item.tbl_lbl">
+                                        <td>
+                                            <span ng-hide="label.id === selectedCompLabel.id">{{label.tbl_lang.lang_desc_en}}</span>
+                                            <select type="text" ng-show="label.id === selectedCompLabel.id" ng-model="selectedCompLabel.selectedLanguage"
+                                                    ng-options="option.lang_desc_en for option in languages track by option.id"></select>
+                                        </td>
+                                        <td>
+                                            <span ng-hide="label.id === selectedCompLabel.id">{{label.lbl_desc}}</span>
+                                            <input type="text" ng-show="label.id === selectedCompLabel.id" ng-model="selectedCompLabel.lbl_desc" />
+                                        </td>
+                                        <td style="width:50px">
+                                            <button class="btn btn-xs" ng-disabled="!profile.CanUpdateComponent"
+                                                    ng-hide="label.id === selectedCompLabel.id"
+                                                    ng-click="editLabelBtnClicked(label)">
+                                                <i class="glyphicon glyphicon-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-xs" ng-disabled="!profile.CanUpdateComponent"
+                                                    ng-show="label.id === selectedCompLabel.id"
+                                                    ng-click="editLabelBtnOkClicked(label)">
+                                                <i class="glyphicon glyphicon-ok"></i>
+                                            </button>
+                                            <button class="btn btn-xs" ng-disabled="!profile.CanUpdateComponent"
+                                                    ng-show="label.id === selectedCompLabel.id"
+                                                    ng-click="editLabelBtnCancelClicked(label)">
+                                                <i class="glyphicon glyphicon-remove"></i>
+                                            </button>
+                                            <button class="btn btn-xs" ng-disabled="!profile.CanUpdateComponent"
+                                                    ng-hide="label.id === selectedCompLabel.id"
+                                                    ng-click="removeLabel(label)">
+                                                <i class="glyphicon glyphicon-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </uib-tab>
+                <uib-tab index="4" heading="Pictures">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>Description <button class="btn btn-default btn-xs btn-primary" ng-click="addPix()" ng-disabled="!profile.CanUpdateComponent">add</button></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="pix in item.tbl_pix">
+                                        <td>
+                                            <span ng-hide="pix.id === selectedPix.id">{{pix.pix_desc}}</span>
+                                            <input type="text" ng-show="pix.id == selectedPix.id" ng-model="selectedPix.pix_desc" />
+                                        </td>
+                                        <td>
+                                            <img style="height:150px" ng-hide="pix.id === selectedPix.id" ng-src="~/Content/componentPix/{{pix.id}}{{pix.pix_pix}}" />
+                                            <span ng-show="pix.id === selectedPix.id">
+                                                <button class="btn btn-xs" ngf-select ng-model="selectedPix.file" ngf-multiple="false">Select</button>
+                                                {{selectedPix.file.name}}
+                                            </span>
+                                        </td>
+                                        <td style="width:50px">
+                                            <button class="btn btn-xs" ng-disabled="!profile.CanUpdateComponent"
+                                                    ng-hide="pix.id === selectedPix.id" ng-click="editPixBtnClicked(pix)">
+                                                <i class="glyphicon glyphicon-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-xs" ng-disabled="!profile.CanUpdateComponent"
+                                                    ng-show="pix.id === selectedPix.id" ng-click="editPixBtnOkClicked(pix)">
+                                                <i class="glyphicon glyphicon-ok"></i>
+                                            </button>
+                                            <button class="btn btn-xs" ng-disabled="!profile.CanUpdateComponent"
+                                                    ng-show="pix.id === selectedPix.id" ng-click="editPixBtnCancelClicked(pix)">
+                                                <i class="glyphicon glyphicon-remove"></i>
+                                            </button>
+                                            <button class="btn btn-xs" ng-disabled="!profile.CanUpdateComponent"
+                                                    ng-hide="pix.id === selectedPix.id" ng-click="removePix(pix)">
+                                                <i class="glyphicon glyphicon-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </uib-tab>
+                <uib-tab index="5" heading="Documents">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            @*<table class="table table-condensed">
+                            <thead>
+                            <tr>
+                                <th>Description <button class="btn btn-default btn-xs btn-primary" ng-click="addPix()">add</button></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="pix in item.tbl_pix">
+                                <td>
+                                    <span ng-hide="pix.id === selectedPix.id">{{pix.pix_desc}}</span>
+                                    <input type="text" ng-show="pix.id == selectedPix.id" ng-model="selectedPix.pix_desc" />
+                                </td>
+                                <td>
+                                    <img style="height:150px" ng-hide="pix.id === selectedPix.id" ng-src="~/Content/componentPix/{{pix.id}}{{pix.pix_pix}}"/>
+                                    <span ng-show="pix.id === selectedPix.id">
+                                        <button class="btn btn-xs" ngf-select ng-model="selectedPix.file" ngf-multiple="false">Select</button>
+                                        {{selectedPix.file.name}}
+                                    </span>
+                                </td>
+                                <td style="width:50px">
+                                    <i class="glyphicon glyphicon-pencil" style="cursor:pointer" ng-hide="pix.id === selectedPix.id" ng-click="editPixBtnClicked(pix)"></i>
+                                    <i class="glyphicon glyphicon-ok" style="cursor:pointer" ng-show="pix.id === selectedPix.id" ng-click="editPixBtnOkClicked(pix)"></i>
+                                    <i class="glyphicon glyphicon-remove" style="cursor:pointer" ng-show="pix.id === selectedPix.id" ng-click="editPixBtnCancelClicked(pix)"></i>
+                                    <i class="glyphicon glyphicon-trash" style="cursor:pointer" ng-hide="pix.id === selectedPix.id" ng-click="removePix(pix)"></i>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>*@
+                        </div>
+                    </div>
+                </uib-tab>
+                <uib-tab index="6" heading="Trays">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            Sum of tray components in new awards: {{Total}} <br />
+                            Monthly usage: {{amuTotal}}
+
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Quote No</th>
+                                        <th>Tray Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-show="busy">
+                                        <td colspan="6">
+                                            <uib-progressbar class="progress-striped active" value="100">Please wait...</uib-progressbar>
+                                        </td>
+                                    </tr>
+                                    <tr ng-repeat="tray in Trays" ng-hide="busy">
+                                        <td width="100px">
+                                            <span style="cursor:pointer">
+                                                {{tray.qthdr_qn_basis}}-{{tray.qthdr_rev}}
+                                            </span>
+                                        </td>
+                                        <td>{{tray.qthdr_name}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </uib-tab>
+                <uib-tab index="7" heading="ACL Exception Accounts" ng-click="getACLAccountExeptions()" ng-hide="!profile.IsACLApprover">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            Accounts with ACL Exceptions<br />
+                            <button class="btn btn-primary" ng-click="addACLException()" >Add Account</button>
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Account</th>
+                                        <th>Expiration</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-show="busy">
+                                        <td colspan="6">
+                                            <uib-progressbar class="progress-striped active" value="100">Please wait...</uib-progressbar>
+                                        </td>
+                                    </tr>
+                                    <tr ng-repeat="exception in ACLAccountExeptions" ng-hide="busy">
+                                        <td>
+                                            <span style="cursor:pointer">
+                                                {{exception.tbl_acct.acct_name}}
+                                            </span>
+                                        </td>
+                                       @* <td>{{exception.expiration_date | date:'MM/dd/yyyy'}}</td>*@
+                                        <td><input type="date" ng-model="exception.expiration_date" /></td>
+                                        <td>
+                                            <button class="btn btn-xs">
+                                                <i class="glyphicon glyphicon-floppy-save"
+                                                   ng-click="updateACLException(exception)"></i>
+                                            </button>
+                                            <button class="btn btn-xs">
+                                                <i class="glyphicon glyphicon-trash"
+                                                   ng-click="removeACLException(exception)"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </uib-tab>
+            </uib-tabset>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="cats_renderer.html">
+    <div ui-tree-handle class="tree-node tree-node-content">
+        <a class="btn btn-success btn-xs" ng-if="node.HasChildren || node.HasItem" data-nodrag ng-click="toggle(this)">
+            <span class="glyphicon"
+                  ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed}"></span>
+        </a>
+        <span ng-if="!node.IsItem">{{node.Name}}</span>
+        <span class="label label-primary" ng-if="node.IsItem">{{node.Name}}</span>
+        <a ng-if="!node.HasChildren && !node.IsItem && node.Id !== item.comp_cat_id" class="pull-right btn btn-default btn-xs" data-nodrag ng-click="setCategory(node)" ng-disabled="!profile.CanUpdateComponent">
+            <span class="glyphicon glyphicon-pushpin"></span>
+        </a>
+        <a ng-if="node.IsItem && item.id != node.Id" class="pull-right btn btn-default btn-xs" data-nodrag ng-click="openEquivComp(node)">
+            <span class="glyphicon glyphicon-new-window"></span>
+        </a>
+        <a ng-if="node.IsItem && item.id != node.Id && item.comp_cat_id === node.CatId" class="pull-right btn btn-default btn-xs" data-nodrag ng-click="openCrossRef(node)" style="margin-right:8px;">
+            <span class="glyphicon glyphicon-transfer"></span>
+        </a>
+
+    </div>
+    <ol ui-tree-nodes="" ng-model="node.Children" ng-class="{hidden: collapsed}">
+        <li ng-repeat="node in node.Children" ui-tree-node collapsed="true" ng-include="'cats_renderer.html'">
+        </li>
+    </ol>
+</script>
+
+<script type="text/ng-template" id="crossRef_renderer.html">
+    <div ui-tree-handle class="tree-node tree-node-content">
+        <a class="btn btn-success btn-xs" ng-if="node.HasChildren || node.HasItem" data-nodrag ng-click="toggle(this)">
+            <span class="glyphicon"
+                  ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed}"></span>
+        </a>
+        <span ng-if="!node.IsItem">{{node.Name}}</span>
+        <span class="label label-primary" ng-if="node.IsItem">{{node.Name}}</span>
+        <a ng-if="!node.HasChildren && !node.IsItem && node.Id !== item.comp_cat_id" class="pull-right btn btn-default btn-xs" data-nodrag ng-click="setCategory(node)" ng-disabled="!profile.CanUpdateComponent">
+            <span class="glyphicon glyphicon-pushpin"></span>
+        </a>
+        <a ng-if="node.IsItem && item.id != node.Id" class="pull-right btn btn-default btn-xs" data-nodrag ng-click="openEquivComp(node)">
+            <span class="glyphicon glyphicon-new-window"></span>
+        </a>
+        <a ng-if="node.IsItem && item.id != node.Id && item.comp_cat_id === node.CatId" class="pull-right btn btn-default btn-xs" data-nodrag ng-click="openCrossRef(node)" style="margin-right:8px;">
+            <span class="glyphicon glyphicon-transfer"></span>
+        </a>
+
+    </div>
+    <ol ui-tree-nodes="" ng-model="node.Children" ng-class="{hidden: collapsed}">
+        <li ng-repeat="node in node.Children" ui-tree-node ng-include="'crossRef_renderer.html'"></li>
+    </ol>
+</script>

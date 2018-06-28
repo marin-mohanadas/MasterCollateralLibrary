@@ -1,0 +1,172 @@
+﻿<div ng-controller="productGroupController">
+    <br />
+    <div class="row">
+        <div class="col-md-1"><button class="btn btn-warning" ng-click="clear()">Clear</button></div>
+        <div class="col-md-1"><button class="btn btn-primary" ng-click="save()">Save</button></div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="">Product ID Group</label>
+                <input type="text" class="form-control" ng-model="item.id" readonly>
+            </div>
+        </div>
+        <div class="col-md-1">
+            <div class="form-group">
+                <label for="">&nbsp;</label>
+                <button type="submit" class="btn btn-default form-control" ng-click="openSearch()">Search</button>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="form-group">
+                <label for="">Group Name</label>
+                <input type="text" class="form-control" ng-model="item.grphdr_name">
+            </div>
+        </div>        
+    </div>
+
+    <uib-tabset active="active">
+        <uib-tab index="0" heading="Components">
+            <br />
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Vendor P/N <button class="btn btn-default btn-xs btn-primary" ng-click="openSearchComponent()">Search Component</button></th>
+                        <th>Description</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in components">
+                        <td>{{item.tbl_comp.comp_vend_pn}}</td>
+                        <td>{{item.tbl_comp.comp_desc_orig}}</td>
+                        <td><i class="glyphicon glyphicon-ban-circle" ng-click="removeComponent(item)"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </uib-tab>
+        <uib-tab index="1" heading="Features">
+            <br />
+            
+            <div style="overflow:auto;max-height:400px">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Features <button class="btn btn-default btn-xs" ng-click="addFeature()">Add</button></th>
+                            <th>Benefits</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in features">
+                            <td><textarea class="form-control" rows="6" ng-model="item.grpFAB_Feat"></textarea></td>
+                            <td><textarea class="form-control" rows="6" ng-model="item.grpFAB_Ben"></textarea></td>
+                            <td><i class="glyphicon glyphicon-ban-circle" ng-click="removeFeature(item)"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </uib-tab>
+        <uib-tab index="2" heading="Technical">
+            <br />
+            <div style="overflow:auto;max-height:400px">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Heading <button class="btn btn-default btn-xs" ng-click="addTechnical()">Add</button></th>
+                            <th>Description</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in technicals">
+                            <td>
+                                <select class="form-control" 
+                                        ng-model="item.selectedTechnicalHeading" 
+                                        ng-options="h as h.techhdng_desc for h in technicalHeadings track by h.id">                                    
+                                </select>                                
+                            </td>
+                            <td><textarea class="form-control" rows="3" ng-model="item.tech_desc"></textarea></td>
+                            <td><i class="glyphicon glyphicon-ban-circle" ng-click="removeTechnical(item)"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </uib-tab>
+        <uib-tab index="3" heading="Group Pictures">
+            <br />
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Order</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in pictures">
+                        <td><input type="text" class="form-control input-sm" ng-model="item.grppix_order"/></td>
+                        <td>{{item.grppix_pix}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </uib-tab>
+        <uib-tab index="4" heading="Labelling">
+            <br />
+            <table>
+                <tr>
+                    <td colspan="2">Include the Following Symbols</td>
+                    <td colspan="2">
+                        <div class="form-group">
+                            <label>CE Class</label>
+                            <select class="form-control"
+                                    ng-model="label.selectedCeClass"
+                                    ng-options="c as c.CEclass_desc for c in ceClasses track by c.CEclass_ID"></select>
+                        </div>                        
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td style="text-align:right">Consult IFU <input type="checkbox" ng-model="label.grpLbl_consultIFU" /></td>
+                    <td><img src="~/Content/images/consult_ifu.png" /></td>
+                    <td style="text-align:right">Do Not Resterilize <input type="checkbox" ng-model="label.grpLbl_Resterilize" /></td>
+                    <td><img src="~/Content/images/do_not_resterilize.png" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right">Caution, Refer to Instructions <input type="checkbox" ng-model="label.grpLbl_Caution" /></td>
+                    <td><img src="~/Content/images/caution_refer_to_instruction.png" /></td>
+                    <td style="text-align:right">Do Not Use if Damaged <input type="checkbox" ng-model="label.grpLbl_Damage" /></td>
+                    <td><img src="~/Content/images/do_not_use_if_damaged.png" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right">Do Not Reuse <input type="checkbox" ng-model="label.grpLbl_SingleUse" /></td>
+                    <td><img src="~/Content/images/do_not_reuse.png" /></td>
+                    <td style="text-align:right">Date of Manufacture <input type="checkbox" ng-model="label.grpLbl_MfgDate" /></td>
+                    <td><img src="~/Content/images/date_of_mfg.png" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right">Not Made with Latex <input type="checkbox" ng-model="label.grpLbl_Latex" /></td>
+                    <td><img src="~/Content/images/not_made_with_latex.png" /></td>
+                    <td style="text-align:right">Expiration Date <input type="checkbox" ng-model="label.grpLbl_Expry" /></td>
+                    <td><img src="~/Content/images/exp_date.png" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right">Store in a Cool Dry Place <input type="checkbox" ng-model="label.grpLbl_Flame" /></td>
+                    <td><img src="~/Content/images/store_in_cool_dry_place.png" /></td>
+                    <td>"Keep away from ignition sources" statement <input type="checkbox" /></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right">Keep Out of Direct Sunlight <input type="checkbox" ng-model="label.grpLbl_StoreDark" /></td>
+                    <td><img src="~/Content/images/keep_out_of_sunlight.png" /></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            
+            
+        </uib-tab>
+    </uib-tabset>
+</div>

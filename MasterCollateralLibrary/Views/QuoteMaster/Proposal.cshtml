@@ -1,0 +1,96 @@
+﻿<div ng-controller="quoteProposalController">
+    <br />
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Location</label>
+                <select type="text" class="form-control" ng-model="selectedAccount" ng-disabled="busy" ng-change="accountChanged()"
+                        ng-options="option.acct_name for option in accounts track by option.id"></select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div style="overflow:auto;max-height:450px">
+                <table class="table table-condensed table-hover table-striped">
+                    <caption></caption>
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Select</th>
+                            <th rowspan="2">Quote No</th>
+                            <th rowspan="2">Rev</th>
+                            <th style="cursor:pointer" ng-click="doSortBy('name')"><i ng-class="sortIcon('name')"></i>Name</th>
+                            <th style="cursor:pointer" ng-click="doSortBy('tray_no')"><i ng-class="sortIcon('tray_no')"></i>Tray No</th>
+                            <th style="cursor:pointer" ng-click="doSortBy('status')"><i ng-class="sortIcon('status')"></i>Status</th>
+                            <th rowspan="2"></th>
+                        </tr>
+                        <tr>
+                            <th><input type="text" ng-model="param.name" ng-change="filterChanged()" /></th>
+                            <th><input type="text" ng-model="param.tray_no" ng-change="filterChanged()" /></th>
+                            <th>
+                                <select type="text" id="status" ng-change="filterChanged()" ng-model="selectedQuoteStatus"
+                                        ng-options="option.qtstatus_desc for option in quoteStatuses track by option.id"></select>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-show="busy">
+                            <td colspan="5">
+                                <uib-progressbar class="progress-striped active" value="100">Please wait...</uib-progressbar>
+                            </td>
+                        </tr>
+                        <tr ng-repeat="item in items" ng-hide="busy">
+                            <td width="100px"><input type="radio" name="items" ng-click="setSelected(item)" /></td>
+                            <td width="100px">{{item.qthdr_qn_basis}}</td>
+                            <td width="100px">{{item.qthdr_rev}}</td>
+                            <td>{{item.qthdr_name}}</td>
+                            <td>{{item.qthdr_tray}}</td>
+                            <td>{{item.tbl_qtstatus.qtstatus_desc}}</td>
+                            <td width="100px">
+                                <i class="glyphicon glyphicon-new-window" style="cursor:pointer" ng-click="editBtnClicked(item)"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <ul uib-pagination class="pagination-sm" total-items="total" num-pages="numberPages" ng-model="param.PageNumber" ng-change="pageChanged()"
+                    max-size="maxSize" boundary-links="true" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row text-center" ng-if="selectedItems.length > 0">
+        <button class="btn btn-primary" ng-click="exportExternalExcel()">External Proposal</button> <button class="btn btn-primary" ng-click="exportInternalExcel()">Internal Proposal</button>
+    </div>
+
+    <div class="row" ng-if="selectedItems.length > 0">
+        <div class="col-md-12">
+            <div style="overflow:auto;max-height:250px">
+                <table class="table table-condensed table-hover table-striped">
+
+                    <thead>
+                        <tr>
+                            <th>Quote #</th>
+                            <th>Name</th>
+                            <th>Tray</th>
+                            <th>Rev</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in selectedItems">
+                            <td width="100px">{{item.qthdr_qn_basis}}</td>
+                            <td>{{item.qthdr_name}}</td>
+                            <td>{{item.qthdr_tray}}</td>
+                            <td width="100px">{{item.qthdr_rev}}</td>
+                            <td width="100px"><i class="glyphicon glyphicon-trash" style="cursor:pointer" ng-click="removeSelectedItem(item)"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>

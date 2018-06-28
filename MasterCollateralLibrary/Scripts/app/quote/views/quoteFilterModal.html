@@ -1,0 +1,14 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Quote Filter</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <div class="form-group">
+        <label for="">Account Name</label>
+        <select type="text" class="form-control" ng-model="filterAccount"
+                ng-options="option.acct_name for option in accounts track by option.acct_id"></select>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Clear</button>
+</div>

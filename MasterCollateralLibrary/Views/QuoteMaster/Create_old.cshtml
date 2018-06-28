@@ -1,0 +1,318 @@
+﻿<div ng-controller="quoteCreateController">
+    <p>Pack Processing</p>
+
+    <!-- create -->
+    <div class="panel panel-default" ng-hide="mode === 'edit'">
+        <div class="panel-heading">Add</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Pack Name</label>
+                        <input type="text" class="form-control" ng-model="quote.qthdr_name">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Account Name</label>
+                        <select type="text" class="form-control" ng-model="selectedAccount"
+                                ng-options="option.acct_name for option in accounts track by option.id"></select>
+                    </div>
+                </div>
+            </div>
+            <!--
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Component Source</label>
+                        <select type="text" class="form-control" ng-model="selectedComponentSource"
+                                ng-options="option for option in componentSources track by option"></select>
+                    </div>
+                </div>
+            </div>
+            -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Tray #</label>
+                        <input type="text" class="form-control" ng-model="quote.qthdr_tray_no" ng-blur="validateTrayNo()">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Rev</label>
+                        <input type="text" class="form-control" ng-model="quote.qthdr_rev" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Quoted Annual Usage</label>
+                        <input type="number" class="form-control" ng-model="quote.annual_usage" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label></label>
+                        Create New <input type="radio" name="packOption" ng-model="packOption" value="new" ng-change="packOptionChanged()" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label></label>
+                        Copy Existing <input type="radio" name="packOption" ng-model="packOption" value="copy" ng-change="packOptionChanged()" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label></label>
+                        From Template <input type="radio" name="packOption" ng-model="packOption" value="temp" ng-change="packOptionChanged()" />
+                    </div>
+                </div>    
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label></label>
+                        Upload <input type="radio" name="packOption" ng-model="packOption" value="upload" ng-change="packOptionChanged()" />
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-hide="packOption === 'new' || packOption == 'upload'">                
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label>Location</label>
+                        <select type="text" class="form-control" ng-model="selectedCopyAccount" ng-change="copyAccountChanged()"
+                                ng-options="option.acct_name for option in accounts track by option.id"></select>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label>Pack</label>
+                        <select type="text" class="form-control" ng-model="selectedCopyQuote" ng-change="copyQuoteChanged()"
+                                ng-options="option.qthdr_name for option in originalQuotes track by option.id"></select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Rev</label>
+                        <select type="text" class="form-control" ng-model="selectedCopyQuoteRev"
+                                ng-options="option.qthdr_rev for option in quoteRevs track by option.id"></select>
+                    </div>
+                </div>
+            </div>   
+            <div class="row" ng-show="packOption === 'upload'">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <button class="btn" ngf-select ng-model="file" ngf-multiple="false">Select</button>             
+                        {{file.name}}
+                    </div>                    
+                </div>
+                
+
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <button class="btn btn-primary" ng-click="createPackBtnClicked()" 
+                            ng-disabled="((packOption === 'copy' || packOption === 'temp') && !selectedCopyQuoteRev) || (quote.qthdr_name.length < 1) || (!quote.qthdr_tray_no.length || quote.qthdr_tray_no.length < 1) || isTrayExist || (packOption === 'upload' && !file)">Create Pack</button>
+                </div>
+                <div class="col-md-5">
+                    <button class="btn btn-default" ng-click="cancelBtnClicked()">Cancel</button>
+                </div>
+            </div>
+            <p style="color:red" ng-show="isTrayExist">Tray exists. Please create a new tray</p>
+        </div>
+    </div>
+
+    <!-- edit -->
+    <div class="panel panel-default" ng-show="mode == 'edit'">
+        <div class="panel-heading">Edit</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>&nbsp;</label>
+                        <button class="form-control btn btn-default" ng-click="createNewPackBtnClicked()">Create New Pack</button>
+                    </div>                    
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>&nbsp;</label>
+                        <button class="form-control btn btn-danger" ng-click="deleteQuoteBtnClicked(quote)">Delete Pack</button>
+                    </div>                    
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Account Name</label>
+                        <select type="text" class="form-control" ng-model="selectedAccount" ng-change="selectedAccountChanged()"
+                                ng-options="option.acct_name for option in accounts track by option.id"></select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Pack</label>
+                        <select type="text" class="form-control" ng-model="selectedQuote" ng-change="selectedQuoteChanged()"
+                                ng-options="option.qthdr_name for option in originalQuotes track by option.id"></select>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="form-group">
+                        <label>Rev</label>
+                        <select type="text" class="form-control" ng-model="selectedRev" ng-change="selectedRevChanged()"
+                                ng-options="option.qthdr_rev for option in quoteRevs track by option.id"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9">
+                    <uib-tabset active="active">
+                        <uib-tab index="0" heading="Pack">
+                            <br />
+                            <div style="overflow:auto;max-height:640px">
+                                <table class="table table-condensed table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>MCL#</th>
+                                            <th>Qty</th>                                            
+                                            <th>Part #</th>
+                                            <th>Description <button class="btn btn-default btn-xs btn-primary" ng-click="addLineBtnClicked()">add</button></th>
+                                            <th>Level</th>
+                                            <th></th>                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="item in quote.tbl_qtdtl">
+                                            <td>{{item.tbl_comp.id}}</td>
+                                            <td style="width:50px">
+                                                <span ng-show="item.qtdtl_comp_id !== selectedLine.qtdtl_comp_id">{{item.qtdtl_comp_qty}}</span>
+                                                <input style="width:50px" type="number" ng-show="selectedLine.qtdtl_comp_id === item.qtdtl_comp_id" ng-model="selectedLine.qtdtl_comp_qty" />
+                                            </td>                                            
+                                            <td>
+                                                <i class="glyphicon glyphicon-plus" style="cursor:pointer" ng-show="item.qtdtl_assembly_type" ng-click="showAssemblyBtnClicked(item)"></i>
+                                                <span ng-show="item.tbl_comp.tbl_X_ref.length === 0">{{item.tbl_comp.comp_vend_pn}}</span>
+                                                <a style="cursor:pointer" ng-show="item.tbl_comp.tbl_X_ref.length > 0" ng-click="lineSwitchItemBtnClicked(item)"><span class="label label-warning">{{item.tbl_comp.comp_vend_pn}}</span></a>                                                                                                                                                
+                                            </td>
+                                            <td>{{item.tbl_comp.comp_desc_orig}}</td>
+                                            <td style="width:100px">
+                                                <span ng-show="item.qtdtl_comp_id !== selectedLine.qtdtl_comp_id">{{item.qtdtl_comp_case}}</span>
+                                                <select type="text" style="width:100px"
+                                                        ng-show="selectedLine.qtdtl_comp_id === item.qtdtl_comp_id"
+                                                        ng-model="selectedLine.qtdtl_comp_case"
+                                                        ng-options="option for option in complevels track by option"></select>
+                                            </td>
+                                            <td style="width:50px">
+                                                <i class="glyphicon glyphicon-pencil" style="cursor:pointer" ng-hide="selectedLine.qtdtl_comp_id === item.qtdtl_comp_id" ng-click="lineEditBtnEditClicked(item)"></i>
+                                                <i class="glyphicon glyphicon-ok" style="cursor:pointer" ng-show="item.qtdtl_comp_id === selectedLine.qtdtl_comp_id" ng-click="lineEditBtnOkClicked(item)"></i>
+                                                <i class="glyphicon glyphicon-remove" style="cursor:pointer" ng-show="item.qtdtl_comp_id === selectedLine.qtdtl_comp_id" ng-click="lineEditBtnCancelClicked(item)"></i>
+                                                <i class="glyphicon glyphicon-trash" style="cursor:pointer" ng-hide="item.qtdtl_comp_id === selectedLine.qtdtl_comp_id" ng-click="lineDeleteBtnClicked(item)"></i>
+                                            </td>                                            
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </uib-tab>
+                        <uib-tab index="1" heading="Map"></uib-tab>
+                        <uib-tab index="2" heading="History"></uib-tab>
+                    </uib-tabset>
+                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Annual Usage</label>
+                                        <input type="number" class="form-control" ng-model="quote.qthdr_amu" />
+                                    </div>
+                                </div>                                
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Case Quantity</label>
+                                        <input type="number" class="form-control" ng-model="quote.qthdr_cs_qty" />
+                                    </div>
+                                </div>                                      
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Status</label>
+                                        <!--<input type="text" class="form-control" ng-model="quote.qthdr_status_id" />-->
+                                        <select type="text" class="form-control" ng-model="selectedQuoteStatus"
+                                                ng-options="option.qtstatus_desc for option in quoteStatuses track by option.id"></select>   
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">                                    
+                                    <div class="form-group">
+                                        <label>Notes</label>
+                                        <textarea class="form-control" ng-model="quote.qthdr_instr"></textarea>
+                                    </div>                                    
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <table>
+                                                        <tr>
+                                                            <td>Submit for QC Approval:</td>
+                                                            <td><input type="checkbox" name="qcApproval" ng-model="quote.qthdr_qcApproval" /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Approval Request:</td>
+                                                            <td><input type="radio" name="requestType" /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="text-align:right">Pricing Request:</td>
+                                                            <td><input type="radio" name="requestType"  /></td>
+                                                        </tr>
+                                                    </table>                                                     
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <br />
+                                                    <button class="form-control btn btn-primary">Submit Pack Request</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="form-control btn btn-default">(pdf) Product Quote</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="form-control btn btn-default">(excel) Product Quote</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="form-control btn btn-default">Email Quote</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <hr />
+                                <div class="col-md-12">
+                                    <button class="form-control btn btn-default" ng-click="addAssemblyBtnClicked()">Create a new Sub Assembly</button>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

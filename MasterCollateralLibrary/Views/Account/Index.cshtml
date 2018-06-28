@@ -1,0 +1,25 @@
+﻿<h2>Accounts</h2>
+<div ng-controller="accountIndexController">
+    <br />
+    <div class="row">
+        <div class="col-md-1"><button class="btn btn-warning" ng-click="newBtnClicked()">New</button></div>
+    </div>
+    <br />
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>                
+                <th style="cursor:pointer" ng-click="doSortBy('email')"><i ng-class="sortIcon('email')"></i>Email</th>                
+            </tr>
+            <tr>
+                <th><input type="text" ng-model="param.email" ng-change="filterChanged()" /></th>                
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in items">
+                <td width="100px"><span style="cursor:pointer" ng-click="editBtnClicked(item)">{{item.Email}}</span></td>                
+            </tr>
+        </tbody>
+    </table>
+    <ul uib-pagination class="pagination-sm" total-items="total" items-per-page="param.PageSize" num-pages="numberPages" ng-model="param.PageNumber" ng-change="pageChanged()"
+        max-size="maxSize" boundary-links="true" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+</div>

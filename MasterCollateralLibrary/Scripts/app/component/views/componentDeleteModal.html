@@ -1,0 +1,42 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Delete</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <!--<p>Are you sure? Any Active Quotes and Finished Goods are shown below:</p>-->
+    <h5>{{msg}}</h5>
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>Quote No.</th>
+                <th>Finished Good</th>  <!--header columns display fine-->
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-show="busy">
+                <td colspan="6">
+                    <uib-progressbar class="progress-striped active" value="100">Please wait...</uib-progressbar>
+                </td>
+            </tr>
+            <tr ng-repeat="tray in QuotesByCompID" ng-hide="busy">
+                <!--row data does not display-->
+                <td>
+                    <span style="cursor:pointer">
+                        {{tray.qthdr_qn_basis}}-{{tray.qthdr_rev}}
+                    </span>
+                </td>
+                <td>{{tray.qthdr_fg_num}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul uib-pagination class="pagination-sm" total-items="total" items-per-page="param.PageSize" ng-model="param.PageNumber" ng-change="pageChanged()"
+        max-size="5" boundary-links="true" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+
+    <div class="modal-footer">
+        Do you want to delete anyway?
+        <button class="btn btn-primary" type="button" ng-click="ok()">Ok</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</div>
+
+

@@ -1,0 +1,239 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/angular-ui-tree.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-toastr/2.1.1/angular-toastr.min.css">
+</head>
+<body ng-app="app">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("iPAKS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Component Manager", "Index", "ComponentList")</li>
+                        <li>@Html.ActionLink("Quotes", "Index", "QuoteMaster")</li>
+                        if (@User.IsInRole("Administrator") || @User.IsInRole("TrayEngineer"))
+                        {
+                            <!--Trinity - 01.18.2018 - added Approval count ticker; requires page refresh to update counter-->
+                            <li class="specialNav"><div class="sn">@Html.ActionLink("Quote Approval", "Approval", "QuoteMaster") <label ng-controller="quoteApprovalController" class="badge" style="background-color: #f00;"> {{total}}</label></div></li>
+
+                        }
+                        <li>@Html.ActionLink("Proposal", "Proposal", "QuoteMaster")</li>
+                        @*<li>@Html.ActionLink("Product Groups", "Index", "ProductGroups")</li>*@
+                        <li>@Html.ActionLink("Vendors", "Index", "Vendors")</li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Maintenance<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Accounts", "Index", "ClientAccounts")</li>
+                                @if (@User.IsInRole("Administrator") || @User.IsInRole("TrayEngineer"))
+                                {
+                                    <li>@Html.ActionLink("Boxes", "Index", "Boxes")</li>
+                                    <li>@Html.ActionLink("Categories", "Index", "Categories")</li>
+                                    <li>@Html.ActionLink("Cost Types", "Index", "CostTypes")</li>
+                                    <li>@Html.ActionLink("GPOs", "Index", "GPOs")</li>
+                                    <li>@Html.ActionLink("Materials", "Index", "Materials")</li>
+                                    <li>@Html.ActionLink("Pack Formulas", "Index", "PackFormulas")</li>
+                                    <li>@Html.ActionLink("Product Brands", "Index", "ProductBrands")</li>
+                                    <li>@Html.ActionLink("Product Managers", "Index", "ProductManagers")</li>
+                                    <li>@Html.ActionLink("Quote Status", "Index", "QuoteStatus")</li>
+                                    <li>@Html.ActionLink("Sales Reps", "Index", "SalesReps")</li>
+                                    <li>@Html.ActionLink("User Account", "Index", "Account")</li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-cookies.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-resource.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-toastr/2.1.1/angular-toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-toastr/2.1.1/angular-toastr.tpls.min.js"></script>
+    <script src="~/Scripts/angular-ui-tree.min.js"></script>
+
+    <script src="~/Scripts/ng-file-upload-shim.min.js"></script>
+    <script src="~/Scripts/ng-file-upload.min.js"></script>
+
+    <script src="~/Scripts/ng-infinite-scroll.min.js"></script>
+
+
+    <script src="~/Scripts/app/app.js"></script>
+
+    <!--core-->
+    <script src="~/Scripts/app/core/core.module.js"></script>
+
+    <script src="~/Scripts/app/core/controllers/clearModalController.js"></script>
+    <script src="~/Scripts/app/core/controllers/messageModalController.js"></script>
+    <script src="~/Scripts/app/core/controllers/confirmationModalController.js"></script>
+    <script src="~/Scripts/app/core/services/alertService.js"></script>
+
+
+    <!--component-->
+    <script src="~/Scripts/app/component/component.module.js"></script>
+    <script src="~/Scripts/app/component/services/componentService.js"></script>
+    <!--<script src="~/Scripts/app/component/controllers/componentController.js"></script>-->
+    <script src="~/Scripts/app/component/controllers/componentSearchModalController.js"></script>
+    <script src="~/Scripts/app/component/controllers/componentAdvanceSearchModalController.js"></script>
+    <script src="~/Scripts/app/component/controllers/componentRefModalController.js"></script>
+    <script src="~/Scripts/app/component/controllers/componentIndexController.js"></script>
+    <script src="~/Scripts/app/component/controllers/componentEditController.js"></script>
+    <script src="~/Scripts/app/component/controllers/componentSetCategoryModalController.js"></script>
+    <script src="~/Scripts/app/component/controllers/componentSetCrossRefModalController.js"></script>
+    <script src="~/Scripts/app/component/controllers/componentDeleteModalController.js"></script>
+    <script src="~/Scripts/app/component/controllers/componentRejectReasonModalController.js"></script>
+    <script src="~/Scripts/app/component/controllers/componentRequestReasonModalController.js"></script>
+    <script src="~/Scripts/app/component/controllers/componentAddACLExceptionModalController.js"></script>
+
+    <!--quote-->
+    <script src="~/Scripts/app/quote/quote.module.js"></script>
+    <script src="~/Scripts/app/quote/services/quoteService.js"></script>
+
+    <!--<script src="~/Scripts/app/quote/controllers/quotesController.js"></script>-->
+    <script src="~/Scripts/app/quote/controllers/quoteSearchModalController.js"></script>
+    <script src="~/Scripts/app/quote/controllers/quoteRemoveComponentModalController.js"></script>
+    <script src="~/Scripts/app/quote/controllers/quoteClearModalController.js"></script>
+    <script src="~/Scripts/app/quote/controllers/quoteCreateController.js"></script>
+    <script src="~/Scripts/app/quote/controllers/quoteAddAssemblyModalController.js"></script>
+    <script src="~/Scripts/app/quote/controllers/quoteAssemblyModalController.js"></script>
+    <script src="~/Scripts/app/quote/controllers/quoteIndexController.js"></script>
+    <script src="~/Scripts/app/quote/controllers/quoteApprovalController.js"></script>
+    <script src="~/Scripts/app/quote/controllers/quoteEditController.js"></script>
+    <script src="~/Scripts/app/quote/controllers/quoteRequestNewPartModalController.js"></script>
+    <script src="~/Scripts/app/quote/controllers/quoteProposalController.js"></script>
+    <script src="~/Scripts/app/quote/controllers/quoteNewAwardModalController.js"></script>
+
+    <!--customer-->
+    <script src="~/Scripts/app/customer/customer.module.js"></script>
+    <script src="~/Scripts/app/customer/services/customerService.js"></script>
+    <script src="~/Scripts/app/customer/controllers/customerNewModalController.js"></script>
+
+    <!--product group-->
+    <script src="~/Scripts/app/productGroup/productGroup.module.js"></script>
+    <script src="~/Scripts/app/productGroup/services/productGroupService.js"></script>
+    <script src="~/Scripts/app/productGroup/controllers/productGroupController.js"></script>
+    <script src="~/Scripts/app/productGroup/controllers/productGroupSearchModalController.js"></script>
+    <script src="~/Scripts/app/productGroup/controllers/productGroupRemoveComponentModalController.js"></script>
+
+    <!--vendor-->
+    <script src="~/Scripts/app/vendor/vendor.module.js"></script>
+    <script src="~/Scripts/app/vendor/services/vendorService.js"></script>
+    <script src="~/Scripts/app/vendor/controllers/vendorSearchModalController.js"></script>
+    <script src="~/Scripts/app/vendor/controllers/vendorController.js"></script>
+
+    <!--category-->
+    <script src="~/Scripts/app/categories/category.module.js"></script>
+    <script src="~/Scripts/app/categories/services/categoryService.js"></script>
+    <!--<script src="~/Scripts/app/categories/controllers/categoryController.js"></script>-->
+    <script src="~/Scripts/app/categories/controllers/categoriesIndexController.js"></script>
+    <script src="~/Scripts/app/categories/controllers/categoryAddModalController.js"></script>
+
+    <!--product brand-->
+    <script src="~/Scripts/app/brand/brand.module.js"></script>
+    <script src="~/Scripts/app/brand/services/brandService.js"></script>
+    <script src="~/Scripts/app/brand/controllers/brandIndexController.js"></script>
+    <script src="~/Scripts/app/brand/controllers/brandController.js"></script>
+
+    <!--pack formulas-->
+    <script src="~/Scripts/app/packFormulas/packFormulas.module.js"></script>
+    <script src="~/Scripts/app/packFormulas/services/packFormulasService.js"></script>
+    <script src="~/Scripts/app/packFormulas/controllers/packFormulasIndexController.js"></script>
+    <script src="~/Scripts/app/packFormulas/controllers/packFormulasController.js"></script>
+
+    <!-- materials-->
+    <script src="~/Scripts/app/materials/materials.module.js"></script>
+    <script src="~/Scripts/app/materials/services/materialsService.js"></script>
+    <script src="~/Scripts/app/materials/controllers/materialsController.js"></script>
+    <script src="~/Scripts/app/materials/controllers/newMaterialModalController.js"></script>
+
+    <!-- cost types-->
+    <script src="~/Scripts/app/costTypes/costTypes.module.js"></script>
+    <script src="~/Scripts/app/costTypes/services/costTypesService.js"></script>
+    <script src="~/Scripts/app/costTypes/controllers/costTypesController.js"></script>
+    <script src="~/Scripts/app/costTypes/controllers/newCostTypeModalController.js"></script>
+
+    <!-- boxes-->
+    <script src="~/Scripts/app/boxes/boxes.module.js"></script>
+    <script src="~/Scripts/app/boxes/services/boxesService.js"></script>
+    <script src="~/Scripts/app/boxes/controllers/boxesController.js"></script>
+    <script src="~/Scripts/app/boxes/controllers/newBoxModalController.js"></script>
+
+    <!--sales reps-->
+    <script src="~/Scripts/app/salesReps/salesReps.module.js"></script>
+    <script src="~/Scripts/app/salesReps/services/salesRepsService.js"></script>
+    <script src="~/Scripts/app/salesReps/controllers/salesRepsIndexController.js"></script>
+    <script src="~/Scripts/app/salesReps/controllers/salesRepsController.js"></script>
+
+    <!--Client Accounts-->
+    <script src="~/Scripts/app/clientAccounts/clientAccounts.module.js"></script>
+    <script src="~/Scripts/app/clientAccounts/services/clientAccountsService.js"></script>
+    <script src="~/Scripts/app/clientAccounts/controllers/clientAccountsIndexController.js"></script>
+    <script src="~/Scripts/app/clientAccounts/controllers/clientAccountsController.js"></script>
+    <script src="~/Scripts/app/clientAccounts/controllers/clientAccountCreateModalController.js"></script>
+
+    <!--distributor-->
+    <script src="~/Scripts/app/distributor/distributor.module.js"></script>
+    <script src="~/Scripts/app/distributor/services/distributorService.js"></script>
+
+    <!--gpo-->
+    <script src="~/Scripts/app/gpo/gpo.module.js"></script>
+    <script src="~/Scripts/app/gpo/services/gpoService.js"></script>
+    <script src="~/Scripts/app/gpo/controllers/gpoController.js"></script>
+    <script src="~/Scripts/app/gpo/controllers/newgpoModalController.js"></script>
+
+    <!--account-->
+    <script src="~/Scripts/app/account/account.module.js"></script>
+    <script src="~/Scripts/app/account/services/accountService.js"></script>
+    <script src="~/Scripts/app/account/controllers/accountIndexController.js"></script>
+    <script src="~/Scripts/app/account/controllers/accountEditController.js"></script>
+
+    <!--productManagers-->
+    <script src="~/Scripts/app/productManagers/productManagers.module.js"></script>
+    <script src="~/Scripts/app/productManagers/services/productManagersService.js"></script>
+    <script src="~/Scripts/app/productManagers/controllers/productManagersController.js"></script>
+    <script src="~/Scripts/app/productManagers/controllers/newproductManagersModalController.js"></script>
+
+    <!--quoteStatus-->
+    <script src="~/Scripts/app/quote/controllers/quoteStatusController.js"></script>
+    <script src="~/Scripts/app/quote/controllers/newstatusModalController.js"></script>
+
+    <script src="~/Scripts/app/core/services/profileService.js"></script>
+</body>
+</html>

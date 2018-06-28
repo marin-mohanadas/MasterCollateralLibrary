@@ -1,0 +1,296 @@
+﻿@model MasterCollateralLibrary.Models.quote_master_view
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>quote_master_view</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.qthdr_rev)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qthdr_rev)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qthdr_qn_basis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qthdr_qn_basis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qthdr_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qthdr_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qthdr_acct_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qthdr_acct_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qthdr_lang_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qthdr_lang_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qthdr_amu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qthdr_amu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qthdr_memo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qthdr_memo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qthdr_instr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qthdr_instr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qthdr_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qthdr_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qthdr_date_update)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qthdr_date_update)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qthdr_rep_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qthdr_rep_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qthdr_cs_qty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qthdr_cs_qty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qthdr_HS_code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qthdr_HS_code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qthdr_plant_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qthdr_plant_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qthdr_brand_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qthdr_brand_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qthdr_formula_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qthdr_formula_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qthdr_sterility)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qthdr_sterility)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qthdr_sterility_mthd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qthdr_sterility_mthd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qthdr_sell_crncy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qthdr_sell_crncy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qthdr_box_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qthdr_box_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qthdr_status_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qthdr_status_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qthdr_status_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qthdr_status_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qthdr_fg_num)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qthdr_fg_num)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qthdr_fg_rev)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qthdr_fg_rev)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qthdr_lock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qthdr_lock)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qthdr_mar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qthdr_mar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qtstatus_desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qtstatus_desc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qtstatus_qc_sbmt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qtstatus_qc_sbmt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qtstatus_sls_sbmt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qtstatus_sls_sbmt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qtstatus_lock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qtstatus_lock)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qtstatus_output)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qtstatus_output)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rep_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rep_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rep_fname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rep_fname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rep_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rep_email)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

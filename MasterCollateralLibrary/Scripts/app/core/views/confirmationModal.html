@@ -1,0 +1,11 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Are you sure?</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <p ng-if="data && data.msg">{{data.msg}}</p>
+    <p ng-if="!data || !data.msg">Are you sure?</p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">Yes</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">No</button>
+</div>

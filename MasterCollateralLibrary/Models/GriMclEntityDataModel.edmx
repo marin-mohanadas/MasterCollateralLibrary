@@ -1,0 +1,2691 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GRI_MCLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_acct">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="acct_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="acct_city" Type="nvarchar" MaxLength="255" />
+          <Property Name="acct_state" Type="nvarchar" MaxLength="255" />
+          <Property Name="acct_cntry" Type="nvarchar" MaxLength="255" />
+          <Property Name="acct_3code" Type="nvarchar" MaxLength="3" />
+          <Property Name="acct_whrhs" Type="float" />
+          <Property Name="acct_frght" Type="float" />
+          <Property Name="acct_misc" Type="float" />
+          <Property Name="acct_logstcs" Type="float" />
+          <Property Name="acct_admin" Type="float" />
+          <Property Name="acct_contract_start" Type="datetime2" Precision="0" />
+          <Property Name="acct_contract_end" Type="datetime2" Precision="0" />
+          <Property Name="acct_assoc" Type="int" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_boxes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="box_desc" Type="nvarchar" MaxLength="255" />
+          <Property Name="box_brand" Type="nvarchar" MaxLength="255" />
+          <Property Name="box_lngth" Type="float" />
+          <Property Name="box_wdth" Type="float" />
+          <Property Name="box_hght" Type="float" />
+          <Property Name="box_wght" Type="float" />
+          <Property Name="box_active" Type="bit" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_brand">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="brand_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="brand_location" Type="nvarchar" MaxLength="255" />
+          <Property Name="brand_logo" Type="varbinary(max)" />
+          <Property Name="brand_address1" Type="nvarchar" MaxLength="255" />
+          <Property Name="brand_address2" Type="nvarchar" MaxLength="255" />
+          <Property Name="brand_tel" Type="nvarchar" MaxLength="255" />
+          <Property Name="brand_city" Type="nvarchar" MaxLength="255" />
+          <Property Name="brand_state" Type="nvarchar" MaxLength="255" />
+          <Property Name="brand_zip" Type="nvarchar" MaxLength="255" />
+          <Property Name="brand_country" Type="nvarchar" MaxLength="255" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_cat1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cat1_desc" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tbl_cat2">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cat1_id" Type="int" />
+          <Property Name="cat2_desc" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tbl_CEclass">
+          <Key>
+            <PropertyRef Name="CEclass_ID" />
+          </Key>
+          <Property Name="CEclass_ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CEclass_order" Type="int" />
+          <Property Name="CEclass_desc" Type="nvarchar" MaxLength="255" />
+          <Property Name="CEclass_risk" Type="nvarchar" MaxLength="255" />
+          <Property Name="CEclass_expl" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tbl_comp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="comp_vend_id" Type="int" />
+          <Property Name="comp_mfgr_id" Type="int" />
+          <Property Name="comp_vend_pn" Type="nvarchar" MaxLength="255" />
+          <Property Name="comp_brand" Type="nvarchar" MaxLength="255" />
+          <Property Name="comp_desc_orig" Type="nvarchar" MaxLength="255" />
+          <Property Name="comp_desc_noun" Type="nvarchar" MaxLength="255" />
+          <Property Name="comp_desc_attrbt" Type="nvarchar" MaxLength="255" />
+          <Property Name="comp_desc_adj" Type="nvarchar" MaxLength="255" />
+          <Property Name="comp_desc_alt" Type="nvarchar" MaxLength="255" />
+          <Property Name="comp_desc_kywrd" Type="nvarchar" MaxLength="255" />
+          <Property Name="comp_desc_color" Type="nvarchar" MaxLength="255" />
+          <Property Name="comp_desc_side" Type="nvarchar" MaxLength="255" />
+          <Property Name="comp_size_imp" Type="nvarchar" MaxLength="255" />
+          <Property Name="comp_size_met" Type="nvarchar" MaxLength="255" />
+          <Property Name="comp_coo_id" Type="nvarchar" MaxLength="2" />
+          <Property Name="comp_strlty" Type="int" />
+          <Property Name="comp_status_id" Type="int" />
+          <Property Name="comp_HS_code" Type="float" />
+          <Property Name="comp_moq" Type="int" />
+          <Property Name="comp_ERP_PN" Type="nvarchar" MaxLength="255" />
+          <Property Name="comp_npe" Type="bit" />
+          <Property Name="comp_pm" Type="int" />
+          <Property Name="comp_source" Type="nvarchar" MaxLength="255" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="x" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_coo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="coo_desc" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tbl_cst-type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cst-type_desc" Type="nvarchar" MaxLength="255" />
+          <Property Name="cst-type_mu" Type="float" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_currncy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="currncy_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="currncy_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="currncy_symb" Type="nvarchar" MaxLength="255" />
+          <Property Name="currncy_rate" Type="float" />
+          <Property Name="currncy_base" Type="int" />
+          <Property Name="currncy_dateUpdt" Type="datetime2" Precision="0" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_formulas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="formula_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="formula_locn" Type="nvarchar" MaxLength="255" />
+          <Property Name="formula_labor-rate" Type="float" />
+          <Property Name="formula_labor-time" Type="float" />
+          <Property Name="formula_labor-factor" Type="float" />
+          <Property Name="formula_OH" Type="float" />
+          <Property Name="formula_GA" Type="float" />
+          <Property Name="formula_finance" Type="float" />
+          <Property Name="formula_warehouse" Type="float" />
+          <Property Name="formula_inlndfrgt" Type="float" />
+          <Property Name="formula_inlndfrgt-size" Type="int" />
+          <Property Name="formula_oceanfrgt" Type="float" />
+          <Property Name="formula_oceanfrgt-size" Type="float" />
+          <Property Name="formula_imprtdty" Type="float" />
+          <Property Name="formula_excisetx" Type="float" />
+          <Property Name="formula_MAR" Type="float" />
+          <Property Name="formula_strlzn" Type="float" />
+          <Property Name="formula_strlzn-load" Type="int" />
+          <Property Name="formula_import-ship-rate" Type="float" />
+          <Property Name="formula_updtdate" Type="datetime2" Precision="0" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_grpFAB">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="grpFAB_hdr_id" Type="int" />
+          <Property Name="grpFAB_Feat" Type="nvarchar(max)" />
+          <Property Name="grpFAB_Ben" Type="nvarchar(max)" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_grpHdr">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="grphdr_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="grphdr_pix_id" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_grpLbl">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="grpLbl_hdr_id" Type="int" />
+          <Property Name="grpLbl_ConsultIFU" Type="bit" />
+          <Property Name="grpLbl_SingleUse" Type="bit" />
+          <Property Name="grpLbl_CEclass" Type="nvarchar" MaxLength="255" />
+          <Property Name="grpLbl_Dry" Type="bit" />
+          <Property Name="grpLbl_Caution" Type="bit" />
+          <Property Name="grpLbl_Latex" Type="bit" />
+          <Property Name="grpLbl_StoreDark" Type="bit" />
+          <Property Name="grpLbl_Resterilize" Type="bit" />
+          <Property Name="grpLbl_MfgDate" Type="bit" />
+          <Property Name="grpLbl_Expry" Type="bit" />
+          <Property Name="grpLbl_Flame" Type="bit" />
+          <Property Name="grpLbl_Damage" Type="bit" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_grppix">
+          <Key>
+            <PropertyRef Name="grppix_id" />
+          </Key>
+          <Property Name="grppix_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="grppix_ grphdr_pix_id" Type="int" />
+          <Property Name="qrppix_pix" Type="varbinary(max)" />
+          <Property Name="grppix_order" Type="int" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GRI_DB.dbo.tbl_HScode' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_HScode">
+          <Key>
+            <PropertyRef Name="HS_code" />
+            <PropertyRef Name="SSMA_TimeStamp" />
+          </Key>
+          <Property Name="HS_code" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="HS_desc" Type="nvarchar(max)" />
+          <Property Name="HS_rate" Type="float" />
+          <Property Name="HS_import-locn" Type="nvarchar" MaxLength="255" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_lang">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="lang_fam" Type="nvarchar" MaxLength="255" />
+          <Property Name="lang_desc_en" Type="nvarchar" MaxLength="255" />
+          <Property Name="lang_desc_nv" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tbl_lbl">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="lbl_comp_id" Type="int" Nullable="false" />
+          <Property Name="lbl_lang_id" Type="nvarchar" MaxLength="255" />
+          <Property Name="lbl_desc" Type="nvarchar" MaxLength="255" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_life_cycle">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="life_cycle_desc" Type="nvarchar" MaxLength="255" />
+          <Property Name="life_cycle_order" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_material">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="material_desc" Type="nvarchar" MaxLength="255" />
+          <Property Name="material_abbv" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GRI_DB.dbo.tbl_pix' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_pix">
+          <Key>
+            <PropertyRef Name="SSMA_TimeStamp" />
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="pix_com_id" Type="int" />
+          <Property Name="pix_desc" Type="nvarchar" MaxLength="255" />
+          <Property Name="pix_pix" Type="varbinary(max)" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_plant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="plant_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="plant_city" Type="nvarchar" MaxLength="255" />
+          <Property Name="plant_country" Type="nvarchar" MaxLength="255" />
+          <Property Name="plant_currncy" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_prodmgr">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="prodmgr_Lname" Type="nvarchar" MaxLength="255" />
+          <Property Name="prodmgr_Fname" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tbl_purch">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="purch_comp_id" Type="int" />
+          <Property Name="purch_plant_id" Type="int" />
+          <Property Name="purch_aqsn_cost" Type="float" />
+          <Property Name="purch_currncy_id" Type="int" />
+          <Property Name="purch_puom" Type="nvarchar" MaxLength="255" />
+          <Property Name="purch_suom" Type="nvarchar" MaxLength="255" />
+          <Property Name="purch_uuom" Type="nvarchar" MaxLength="255" />
+          <Property Name="purch_puom_qty" Type="int" />
+          <Property Name="purch_suom_qty" Type="int" />
+          <Property Name="purch_uuom_qty" Type="int" />
+          <Property Name="purch_VAT_refund" Type="float" />
+          <Property Name="purch_inbnd_fgt" Type="float" />
+          <Property Name="purch_import_duty" Type="float" />
+          <Property Name="purch_cost_type_id" Type="int" />
+          <Property Name="purch_eoq_min" Type="int" />
+          <Property Name="purch_eoq_max" Type="int" />
+          <Property Name="purch_cartn_lgt" Type="int" />
+          <Property Name="purch_cartn_wdt" Type="int" />
+          <Property Name="purch_cartn_hgt" Type="int" />
+          <Property Name="purch_cartn_wgt" Type="int" />
+          <Property Name="purch_lead_time" Type="int" />
+          <Property Name="purch_scrap" Type="float" />
+          <Property Name="purch_date_create" Type="datetime2" Precision="0" />
+          <Property Name="purch_expry" Type="bit" />
+          <Property Name="purch_date_expry" Type="datetime2" Precision="0" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_qtdtl">
+          <Key>
+            <PropertyRef Name="qtdtl_qthdr_qn" />
+            <PropertyRef Name="qtdtl_comp_id" />
+          </Key>
+          <Property Name="qtdtl_qthdr_qn" Type="int" Nullable="false" />
+          <Property Name="qtdtl_comp_id" Type="int" Nullable="false" />
+          <Property Name="qtdtl_comp_qty" Type="int" />
+          <Property Name="qtdtl_sub" Type="bit" />
+          <Property Name="qtdtl_comp_case" Type="nvarchar" MaxLength="255" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_qtdtl_replicate">
+          <Key>
+            <PropertyRef Name="qtdtl_qthdr_qn" />
+            <PropertyRef Name="qtdtl_comp_id" />
+          </Key>
+          <Property Name="qtdtl_qthdr_qn" Type="int" Nullable="false" />
+          <Property Name="qtdtl_comp_id" Type="int" Nullable="false" />
+          <Property Name="qtdtl_comp_qty" Type="int" />
+          <Property Name="qtdtl_sub" Type="bit" />
+          <Property Name="qtdtl_comp_case" Type="nvarchar" MaxLength="255" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_qthdr">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="qthdr_rev" Type="nvarchar" MaxLength="255" />
+          <Property Name="qthdr_qn_basis" Type="int" />
+          <Property Name="qthdr_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="qthdr_acct_id" Type="int" />
+          <Property Name="qthdr_lang_id" Type="nvarchar" MaxLength="255" />
+          <Property Name="qthdr_amu" Type="int" />
+          <Property Name="qthdr_memo" Type="nvarchar(max)" />
+          <Property Name="qthdr_instr" Type="nvarchar(max)" />
+          <Property Name="qthdr_date" Type="datetime2" Precision="0" />
+          <Property Name="qthdr_date_update" Type="datetime2" Precision="0" />
+          <Property Name="qthdr_rep_id" Type="int" />
+          <Property Name="qthdr_cs_qty" Type="int" />
+          <Property Name="qthdr_HS_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="qthdr_plant_id" Type="int" />
+          <Property Name="qthdr_brand_id" Type="int" />
+          <Property Name="qthdr_formula_id" Type="int" />
+          <Property Name="qthdr_sterility" Type="bit" />
+          <Property Name="qthdr_sterility-mthd" Type="nvarchar" MaxLength="255" />
+          <Property Name="qthdr_sell-crncy" Type="int" />
+          <Property Name="qthdr_box_id" Type="int" />
+          <Property Name="qthdr_status_id" Type="int" />
+          <Property Name="qthdr_status_date" Type="datetime2" Precision="0" />
+          <Property Name="qthdr_fg_num" Type="nvarchar" MaxLength="255" />
+          <Property Name="qthdr_fg_rev" Type="int" />
+          <Property Name="qthdr_lock" Type="bit" />
+          <Property Name="qthdr_mar" Type="float" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_qtstatus">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="qtstatus_order" Type="int" />
+          <Property Name="qtstatus_desc" Type="nvarchar" MaxLength="255" />
+          <Property Name="qtstatus_defn" Type="nvarchar(max)" />
+          <Property Name="qtstatus_qc_sbmt" Type="bit" />
+          <Property Name="qtstatus_sls_sbmt" Type="bit" />
+          <Property Name="qtstatus_lock" Type="bit" />
+          <Property Name="qtstatus_output" Type="bit" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_rep">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rep_fname" Type="nvarchar" MaxLength="255" />
+          <Property Name="rep_lname" Type="nvarchar" MaxLength="255" />
+          <Property Name="rep_title" Type="nvarchar" MaxLength="255" />
+          <Property Name="rep_phone" Type="nvarchar" MaxLength="255" />
+          <Property Name="rep_mobile" Type="nvarchar" MaxLength="255" />
+          <Property Name="rep_email" Type="nvarchar" MaxLength="255" />
+          <Property Name="rep_address1" Type="nvarchar" MaxLength="255" />
+          <Property Name="rep_address2" Type="nvarchar" MaxLength="255" />
+          <Property Name="rep_city" Type="nvarchar" MaxLength="255" />
+          <Property Name="rep_state" Type="nvarchar" MaxLength="255" />
+          <Property Name="rep_zip" Type="nvarchar" MaxLength="255" />
+          <Property Name="rep_country" Type="nvarchar" MaxLength="255" />
+          <Property Name="rep_company" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_spclty">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="spclty_name" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tbl_stat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="stat_desc" Type="nvarchar" MaxLength="255" />
+          <Property Name="stat_npe" Type="bit" />
+          <Property Name="stat_memo" Type="nvarchar(max)" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_strlty">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="strlty_desc" Type="nvarchar" MaxLength="255" />
+          <Property Name="strlty_mean" Type="nvarchar(max)" />
+          <Property Name="strlty_symbol" Type="varbinary(max)" />
+          <Property Name="strtly_refno" Type="nvarchar" MaxLength="255" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GRI_DB.dbo.tbl_tech' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_tech">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="SSMA_TimeStamp" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tech_grphdr_id" Type="int" />
+          <Property Name="tech_hdng" Type="int" />
+          <Property Name="tech_desc" Type="nvarchar(max)" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_techhdng">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="techhdng_desc" Type="nvarchar" MaxLength="255" />
+          <Property Name="techhdng_order" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_trait">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="trait_desc" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tbl_uom">
+          <Key>
+            <PropertyRef Name="uom_code" />
+          </Key>
+          <Property Name="uom_code" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="uom_desc" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GRI_DB.dbo.tbl_uom_old' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_uom_old">
+          <Key>
+            <PropertyRef Name="uom_code" />
+          </Key>
+          <Property Name="uom_code" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="uom_desc" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tbl_users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_fname" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_lname" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_username" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_password" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tbl_vend">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vend_parent_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="vend_child_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="vend_label_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="vend_memo" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tbl_vendDtl">
+          <Key>
+            <PropertyRef Name="vendDtl_vend_id" />
+            <PropertyRef Name="vendDtl_dtl_id" />
+          </Key>
+          <Property Name="vendDtl_vend_id" Type="int" Nullable="false" />
+          <Property Name="vendDtl_dtl_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vendDtl_conct_lname" Type="nvarchar" MaxLength="255" />
+          <Property Name="vendDtl_conct_fname" Type="nvarchar" MaxLength="255" />
+          <Property Name="vendDtl_conct_email" Type="nvarchar" MaxLength="255" />
+          <Property Name="vendDtl_conct_phone" Type="nvarchar" MaxLength="255" />
+          <Property Name="vendDtl_conct_mobile" Type="nvarchar" MaxLength="255" />
+          <Property Name="vendDtl_conct_notes" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tbl_X_cat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="cat_comp_id" Type="int" Nullable="false" />
+          <Property Name="cat_cat1_id_old" Type="int" Nullable="false" />
+          <Property Name="cat_cat2_id" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cat_cat1_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_X_grpcomp">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="grpcompX_grphdr_id" Type="int" Nullable="false" />
+          <Property Name="grpcomX_comp_id" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_X_material">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="material_comp_id" Type="int" Nullable="false" />
+          <Property Name="material_material_id" Type="int" Nullable="false" />
+          <Property Name="material_primary" Type="bit" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_X_ref">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="xref_comp_id" Type="int" Nullable="false" />
+          <Property Name="xref_equiv_compid" Type="int" Nullable="false" />
+          <Property Name="xref_FE_priority" Type="int" />
+          <Property Name="xref_exact" Type="bit" />
+          <Property Name="xref_life_cycle_id" Type="int" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_X_spclty">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="spclty_comp_id" Type="int" Nullable="false" />
+          <Property Name="spclty_spclty_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_X_trait">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="trait_comp_id" Type="int" Nullable="false" />
+          <Property Name="trait_trait_id" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__tbl_comp__comp_c__2DE6D218">
+          <End Role="tbl_coo" Type="Self.tbl_coo" Multiplicity="0..1" />
+          <End Role="tbl_comp" Type="Self.tbl_comp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_coo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_comp">
+              <PropertyRef Name="comp_coo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_comp__comp_m__2A164134">
+          <End Role="tbl_vend" Type="Self.tbl_vend" Multiplicity="0..1" />
+          <End Role="tbl_comp" Type="Self.tbl_comp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_vend">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_comp">
+              <PropertyRef Name="comp_mfgr_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_comp__comp_p__2CF2ADDF">
+          <End Role="tbl_prodmgr" Type="Self.tbl_prodmgr" Multiplicity="0..1" />
+          <End Role="tbl_comp" Type="Self.tbl_comp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_prodmgr">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_comp">
+              <PropertyRef Name="comp_pm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_comp__comp_s__2BFE89A6">
+          <End Role="tbl_stat" Type="Self.tbl_stat" Multiplicity="0..1" />
+          <End Role="tbl_comp" Type="Self.tbl_comp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_stat">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_comp">
+              <PropertyRef Name="comp_status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_comp__comp_v__29221CFB">
+          <End Role="tbl_vend" Type="Self.tbl_vend" Multiplicity="0..1" />
+          <End Role="tbl_comp" Type="Self.tbl_comp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_vend">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_comp">
+              <PropertyRef Name="comp_vend_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_lbl__lbl_com__3587F3E0">
+          <End Role="tbl_comp" Type="Self.tbl_comp" Multiplicity="1" />
+          <End Role="tbl_lbl" Type="Self.tbl_lbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_comp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_lbl">
+              <PropertyRef Name="lbl_comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_lbl__lbl_lan__367C1819">
+          <End Role="tbl_lang" Type="Self.tbl_lang" Multiplicity="0..1" />
+          <End Role="tbl_lbl" Type="Self.tbl_lbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_lang">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_lbl">
+              <PropertyRef Name="lbl_lang_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_pix__pix_com__37703C52">
+          <End Role="tbl_comp" Type="Self.tbl_comp" Multiplicity="0..1" />
+          <End Role="tbl_pix" Type="Self.tbl_pix" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_comp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_pix">
+              <PropertyRef Name="pix_com_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_purch__purch__151B244E">
+          <End Role="tbl_currncy" Type="Self.tbl_currncy" Multiplicity="0..1" />
+          <End Role="tbl_purch" Type="Self.tbl_purch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_currncy">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_purch">
+              <PropertyRef Name="purch_currncy_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_purch__purch__160F4887">
+          <End Role="tbl_plant" Type="Self.tbl_plant" Multiplicity="0..1" />
+          <End Role="tbl_purch" Type="Self.tbl_purch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_plant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_purch">
+              <PropertyRef Name="purch_plant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_purch__purch__17036CC0">
+          <End Role="tbl_cst-type" Type="Self.tbl_cst-type" Multiplicity="0..1" />
+          <End Role="tbl_purch" Type="Self.tbl_purch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_cst-type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_purch">
+              <PropertyRef Name="purch_cost_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_purch__purch__282DF8C2">
+          <End Role="tbl_comp" Type="Self.tbl_comp" Multiplicity="0..1" />
+          <End Role="tbl_purch" Type="Self.tbl_purch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_comp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_purch">
+              <PropertyRef Name="purch_comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_X_cat__cat_c__2EDAF651">
+          <End Role="tbl_comp" Type="Self.tbl_comp" Multiplicity="1" />
+          <End Role="tbl_X_cat" Type="Self.tbl_X_cat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_comp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_X_cat">
+              <PropertyRef Name="cat_comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_X_cat__cat_c__30C33EC3">
+          <End Role="tbl_cat2" Type="Self.tbl_cat2" Multiplicity="1" />
+          <End Role="tbl_X_cat" Type="Self.tbl_X_cat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_cat2">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_X_cat">
+              <PropertyRef Name="cat_cat2_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_X_cat__cat_c__607251E5">
+          <End Role="tbl_cat1" Type="Self.tbl_cat1" Multiplicity="1" />
+          <End Role="tbl_X_cat" Type="Self.tbl_X_cat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_cat1">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_X_cat">
+              <PropertyRef Name="cat_cat1_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_X_grp__grpco__51300E55">
+          <End Role="tbl_comp" Type="Self.tbl_comp" Multiplicity="1" />
+          <End Role="tbl_X_grpcomp" Type="Self.tbl_X_grpcomp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_comp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_X_grpcomp">
+              <PropertyRef Name="grpcomX_comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_X_grp__grpco__5224328E">
+          <End Role="tbl_grpHdr" Type="Self.tbl_grpHdr" Multiplicity="1" />
+          <End Role="tbl_X_grpcomp" Type="Self.tbl_X_grpcomp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_grpHdr">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_X_grpcomp">
+              <PropertyRef Name="grpcompX_grphdr_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_X_mat__mater__55009F39">
+          <End Role="tbl_comp" Type="Self.tbl_comp" Multiplicity="1" />
+          <End Role="tbl_X_material" Type="Self.tbl_X_material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_comp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_X_material">
+              <PropertyRef Name="material_comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_X_mat__mater__55F4C372">
+          <End Role="tbl_material" Type="Self.tbl_material" Multiplicity="1" />
+          <End Role="tbl_X_material" Type="Self.tbl_X_material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_material">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_X_material">
+              <PropertyRef Name="material_material_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_X_ref__xref___57DD0BE4">
+          <End Role="tbl_comp" Type="Self.tbl_comp" Multiplicity="1" />
+          <End Role="tbl_X_ref" Type="Self.tbl_X_ref" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_comp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_X_ref">
+              <PropertyRef Name="xref_comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_X_ref__xref___58D1301D">
+          <End Role="tbl_comp" Type="Self.tbl_comp" Multiplicity="1" />
+          <End Role="tbl_X_ref" Type="Self.tbl_X_ref" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_comp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_X_ref">
+              <PropertyRef Name="xref_equiv_compid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_X_spc__spclt__5BAD9CC8">
+          <End Role="tbl_comp" Type="Self.tbl_comp" Multiplicity="1" />
+          <End Role="tbl_X_spclty" Type="Self.tbl_X_spclty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_comp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_X_spclty">
+              <PropertyRef Name="spclty_comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_X_spc__spclt__5CA1C101">
+          <End Role="tbl_spclty" Type="Self.tbl_spclty" Multiplicity="1" />
+          <End Role="tbl_X_spclty" Type="Self.tbl_X_spclty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_spclty">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_X_spclty">
+              <PropertyRef Name="spclty_spclty_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GRI_MCLModelStoreContainer">
+          <EntitySet Name="tbl_acct" EntityType="Self.tbl_acct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_boxes" EntityType="Self.tbl_boxes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_brand" EntityType="Self.tbl_brand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_cat1" EntityType="Self.tbl_cat1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_cat2" EntityType="Self.tbl_cat2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CEclass" EntityType="Self.tbl_CEclass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_comp" EntityType="Self.tbl_comp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_coo" EntityType="Self.tbl_coo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_cst-type" EntityType="Self.tbl_cst-type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_currncy" EntityType="Self.tbl_currncy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_formulas" EntityType="Self.tbl_formulas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_grpFAB" EntityType="Self.tbl_grpFAB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_grpHdr" EntityType="Self.tbl_grpHdr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_grpLbl" EntityType="Self.tbl_grpLbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_grppix" EntityType="Self.tbl_grppix" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_lang" EntityType="Self.tbl_lang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_lbl" EntityType="Self.tbl_lbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_life_cycle" EntityType="Self.tbl_life_cycle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_material" EntityType="Self.tbl_material" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_plant" EntityType="Self.tbl_plant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_prodmgr" EntityType="Self.tbl_prodmgr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_purch" EntityType="Self.tbl_purch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_qtdtl" EntityType="Self.tbl_qtdtl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_qtdtl_replicate" EntityType="Self.tbl_qtdtl_replicate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_qthdr" EntityType="Self.tbl_qthdr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_qtstatus" EntityType="Self.tbl_qtstatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_rep" EntityType="Self.tbl_rep" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_spclty" EntityType="Self.tbl_spclty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_stat" EntityType="Self.tbl_stat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_strlty" EntityType="Self.tbl_strlty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_techhdng" EntityType="Self.tbl_techhdng" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_trait" EntityType="Self.tbl_trait" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_uom" EntityType="Self.tbl_uom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_users" EntityType="Self.tbl_users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_vend" EntityType="Self.tbl_vend" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_vendDtl" EntityType="Self.tbl_vendDtl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_X_cat" EntityType="Self.tbl_X_cat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_X_grpcomp" EntityType="Self.tbl_X_grpcomp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_X_material" EntityType="Self.tbl_X_material" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_X_ref" EntityType="Self.tbl_X_ref" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_X_spclty" EntityType="Self.tbl_X_spclty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_X_trait" EntityType="Self.tbl_X_trait" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_HScode" EntityType="Self.tbl_HScode" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_HScode].[HS_code] AS [HS_code], 
+    [tbl_HScode].[HS_desc] AS [HS_desc], 
+    [tbl_HScode].[HS_rate] AS [HS_rate], 
+    [tbl_HScode].[HS_import-locn] AS [HS_import-locn], 
+    [tbl_HScode].[SSMA_TimeStamp] AS [SSMA_TimeStamp]
+    FROM [dbo].[tbl_HScode] AS [tbl_HScode]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_pix" EntityType="Self.tbl_pix" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_pix].[pix_com_id] AS [pix_com_id], 
+    [tbl_pix].[pix_desc] AS [pix_desc], 
+    [tbl_pix].[pix_pix] AS [pix_pix], 
+    [tbl_pix].[SSMA_TimeStamp] AS [SSMA_TimeStamp], 
+    [tbl_pix].[id] AS [id]
+    FROM [dbo].[tbl_pix] AS [tbl_pix]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_tech" EntityType="Self.tbl_tech" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_tech].[id] AS [id], 
+    [tbl_tech].[tech_grphdr_id] AS [tech_grphdr_id], 
+    [tbl_tech].[tech_hdng] AS [tech_hdng], 
+    [tbl_tech].[tech_desc] AS [tech_desc], 
+    [tbl_tech].[SSMA_TimeStamp] AS [SSMA_TimeStamp]
+    FROM [dbo].[tbl_tech] AS [tbl_tech]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_uom_old" EntityType="Self.tbl_uom_old" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_uom_old].[uom_code] AS [uom_code], 
+    [tbl_uom_old].[uom_desc] AS [uom_desc]
+    FROM [dbo].[tbl_uom_old] AS [tbl_uom_old]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__tbl_comp__comp_c__2DE6D218" Association="Self.FK__tbl_comp__comp_c__2DE6D218">
+            <End Role="tbl_coo" EntitySet="tbl_coo" />
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_comp__comp_m__2A164134" Association="Self.FK__tbl_comp__comp_m__2A164134">
+            <End Role="tbl_vend" EntitySet="tbl_vend" />
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_comp__comp_p__2CF2ADDF" Association="Self.FK__tbl_comp__comp_p__2CF2ADDF">
+            <End Role="tbl_prodmgr" EntitySet="tbl_prodmgr" />
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_comp__comp_s__2BFE89A6" Association="Self.FK__tbl_comp__comp_s__2BFE89A6">
+            <End Role="tbl_stat" EntitySet="tbl_stat" />
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_comp__comp_v__29221CFB" Association="Self.FK__tbl_comp__comp_v__29221CFB">
+            <End Role="tbl_vend" EntitySet="tbl_vend" />
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_lbl__lbl_com__3587F3E0" Association="Self.FK__tbl_lbl__lbl_com__3587F3E0">
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+            <End Role="tbl_lbl" EntitySet="tbl_lbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_lbl__lbl_lan__367C1819" Association="Self.FK__tbl_lbl__lbl_lan__367C1819">
+            <End Role="tbl_lang" EntitySet="tbl_lang" />
+            <End Role="tbl_lbl" EntitySet="tbl_lbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_pix__pix_com__37703C52" Association="Self.FK__tbl_pix__pix_com__37703C52">
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+            <End Role="tbl_pix" EntitySet="tbl_pix" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_purch__purch__151B244E" Association="Self.FK__tbl_purch__purch__151B244E">
+            <End Role="tbl_currncy" EntitySet="tbl_currncy" />
+            <End Role="tbl_purch" EntitySet="tbl_purch" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_purch__purch__160F4887" Association="Self.FK__tbl_purch__purch__160F4887">
+            <End Role="tbl_plant" EntitySet="tbl_plant" />
+            <End Role="tbl_purch" EntitySet="tbl_purch" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_purch__purch__17036CC0" Association="Self.FK__tbl_purch__purch__17036CC0">
+            <End Role="tbl_cst-type" EntitySet="tbl_cst-type" />
+            <End Role="tbl_purch" EntitySet="tbl_purch" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_purch__purch__282DF8C2" Association="Self.FK__tbl_purch__purch__282DF8C2">
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+            <End Role="tbl_purch" EntitySet="tbl_purch" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_X_cat__cat_c__2EDAF651" Association="Self.FK__tbl_X_cat__cat_c__2EDAF651">
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+            <End Role="tbl_X_cat" EntitySet="tbl_X_cat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_X_cat__cat_c__30C33EC3" Association="Self.FK__tbl_X_cat__cat_c__30C33EC3">
+            <End Role="tbl_cat2" EntitySet="tbl_cat2" />
+            <End Role="tbl_X_cat" EntitySet="tbl_X_cat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_X_cat__cat_c__607251E5" Association="Self.FK__tbl_X_cat__cat_c__607251E5">
+            <End Role="tbl_cat1" EntitySet="tbl_cat1" />
+            <End Role="tbl_X_cat" EntitySet="tbl_X_cat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_X_grp__grpco__51300E55" Association="Self.FK__tbl_X_grp__grpco__51300E55">
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+            <End Role="tbl_X_grpcomp" EntitySet="tbl_X_grpcomp" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_X_grp__grpco__5224328E" Association="Self.FK__tbl_X_grp__grpco__5224328E">
+            <End Role="tbl_grpHdr" EntitySet="tbl_grpHdr" />
+            <End Role="tbl_X_grpcomp" EntitySet="tbl_X_grpcomp" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_X_mat__mater__55009F39" Association="Self.FK__tbl_X_mat__mater__55009F39">
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+            <End Role="tbl_X_material" EntitySet="tbl_X_material" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_X_mat__mater__55F4C372" Association="Self.FK__tbl_X_mat__mater__55F4C372">
+            <End Role="tbl_material" EntitySet="tbl_material" />
+            <End Role="tbl_X_material" EntitySet="tbl_X_material" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_X_ref__xref___57DD0BE4" Association="Self.FK__tbl_X_ref__xref___57DD0BE4">
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+            <End Role="tbl_X_ref" EntitySet="tbl_X_ref" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_X_ref__xref___58D1301D" Association="Self.FK__tbl_X_ref__xref___58D1301D">
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+            <End Role="tbl_X_ref" EntitySet="tbl_X_ref" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_X_spc__spclt__5BAD9CC8" Association="Self.FK__tbl_X_spc__spclt__5BAD9CC8">
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+            <End Role="tbl_X_spclty" EntitySet="tbl_X_spclty" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_X_spc__spclt__5CA1C101" Association="Self.FK__tbl_X_spc__spclt__5CA1C101">
+            <End Role="tbl_spclty" EntitySet="tbl_spclty" />
+            <End Role="tbl_X_spclty" EntitySet="tbl_X_spclty" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GRI_MCLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="GRI_MCLEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_acct" EntityType="GRI_MCLModel.tbl_acct" />
+          <EntitySet Name="tbl_boxes" EntityType="GRI_MCLModel.tbl_boxes" />
+          <EntitySet Name="tbl_brand" EntityType="GRI_MCLModel.tbl_brand" />
+          <EntitySet Name="tbl_cat1" EntityType="GRI_MCLModel.tbl_cat1" />
+          <EntitySet Name="tbl_cat2" EntityType="GRI_MCLModel.tbl_cat2" />
+          <EntitySet Name="tbl_CEclass" EntityType="GRI_MCLModel.tbl_CEclass" />
+          <EntitySet Name="tbl_comp" EntityType="GRI_MCLModel.tbl_comp" />
+          <EntitySet Name="tbl_coo" EntityType="GRI_MCLModel.tbl_coo" />
+          <EntitySet Name="tbl_cst_type" EntityType="GRI_MCLModel.tbl_cst_type" />
+          <EntitySet Name="tbl_currncy" EntityType="GRI_MCLModel.tbl_currncy" />
+          <EntitySet Name="tbl_formulas" EntityType="GRI_MCLModel.tbl_formulas" />
+          <EntitySet Name="tbl_grpFAB" EntityType="GRI_MCLModel.tbl_grpFAB" />
+          <EntitySet Name="tbl_grpHdr" EntityType="GRI_MCLModel.tbl_grpHdr" />
+          <EntitySet Name="tbl_grpLbl" EntityType="GRI_MCLModel.tbl_grpLbl" />
+          <EntitySet Name="tbl_grppix" EntityType="GRI_MCLModel.tbl_grppix" />
+          <EntitySet Name="tbl_lang" EntityType="GRI_MCLModel.tbl_lang" />
+          <EntitySet Name="tbl_lbl" EntityType="GRI_MCLModel.tbl_lbl" />
+          <EntitySet Name="tbl_life_cycle" EntityType="GRI_MCLModel.tbl_life_cycle" />
+          <EntitySet Name="tbl_material" EntityType="GRI_MCLModel.tbl_material" />
+          <EntitySet Name="tbl_plant" EntityType="GRI_MCLModel.tbl_plant" />
+          <EntitySet Name="tbl_prodmgr" EntityType="GRI_MCLModel.tbl_prodmgr" />
+          <EntitySet Name="tbl_purch" EntityType="GRI_MCLModel.tbl_purch" />
+          <EntitySet Name="tbl_qtdtl" EntityType="GRI_MCLModel.tbl_qtdtl" />
+          <EntitySet Name="tbl_qtdtl_replicate" EntityType="GRI_MCLModel.tbl_qtdtl_replicate" />
+          <EntitySet Name="tbl_qthdr" EntityType="GRI_MCLModel.tbl_qthdr" />
+          <EntitySet Name="tbl_qtstatus" EntityType="GRI_MCLModel.tbl_qtstatus" />
+          <EntitySet Name="tbl_rep" EntityType="GRI_MCLModel.tbl_rep" />
+          <EntitySet Name="tbl_spclty" EntityType="GRI_MCLModel.tbl_spclty" />
+          <EntitySet Name="tbl_stat" EntityType="GRI_MCLModel.tbl_stat" />
+          <EntitySet Name="tbl_strlty" EntityType="GRI_MCLModel.tbl_strlty" />
+          <EntitySet Name="tbl_techhdng" EntityType="GRI_MCLModel.tbl_techhdng" />
+          <EntitySet Name="tbl_trait" EntityType="GRI_MCLModel.tbl_trait" />
+          <EntitySet Name="tbl_uom" EntityType="GRI_MCLModel.tbl_uom" />
+          <EntitySet Name="tbl_users" EntityType="GRI_MCLModel.tbl_users" />
+          <EntitySet Name="tbl_vend" EntityType="GRI_MCLModel.tbl_vend" />
+          <EntitySet Name="tbl_vendDtl" EntityType="GRI_MCLModel.tbl_vendDtl" />
+          <EntitySet Name="tbl_X_cat" EntityType="GRI_MCLModel.tbl_X_cat" />
+          <EntitySet Name="tbl_X_grpcomp" EntityType="GRI_MCLModel.tbl_X_grpcomp" />
+          <EntitySet Name="tbl_X_material" EntityType="GRI_MCLModel.tbl_X_material" />
+          <EntitySet Name="tbl_X_ref" EntityType="GRI_MCLModel.tbl_X_ref" />
+          <EntitySet Name="tbl_X_spclty" EntityType="GRI_MCLModel.tbl_X_spclty" />
+          <EntitySet Name="tbl_X_trait" EntityType="GRI_MCLModel.tbl_X_trait" />
+          <EntitySet Name="tbl_HScode" EntityType="GRI_MCLModel.tbl_HScode" />
+          <EntitySet Name="tbl_pix" EntityType="GRI_MCLModel.tbl_pix" />
+          <EntitySet Name="tbl_tech" EntityType="GRI_MCLModel.tbl_tech" />
+          <EntitySet Name="tbl_uom_old" EntityType="GRI_MCLModel.tbl_uom_old" />
+          <AssociationSet Name="FK__tbl_X_cat__cat_c__607251E5" Association="GRI_MCLModel.FK__tbl_X_cat__cat_c__607251E5">
+            <End Role="tbl_cat1" EntitySet="tbl_cat1" />
+            <End Role="tbl_X_cat" EntitySet="tbl_X_cat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_X_cat__cat_c__30C33EC3" Association="GRI_MCLModel.FK__tbl_X_cat__cat_c__30C33EC3">
+            <End Role="tbl_cat2" EntitySet="tbl_cat2" />
+            <End Role="tbl_X_cat" EntitySet="tbl_X_cat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_comp__comp_c__2DE6D218" Association="GRI_MCLModel.FK__tbl_comp__comp_c__2DE6D218">
+            <End Role="tbl_coo" EntitySet="tbl_coo" />
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_comp__comp_m__2A164134" Association="GRI_MCLModel.FK__tbl_comp__comp_m__2A164134">
+            <End Role="tbl_vend" EntitySet="tbl_vend" />
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_comp__comp_p__2CF2ADDF" Association="GRI_MCLModel.FK__tbl_comp__comp_p__2CF2ADDF">
+            <End Role="tbl_prodmgr" EntitySet="tbl_prodmgr" />
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_comp__comp_s__2BFE89A6" Association="GRI_MCLModel.FK__tbl_comp__comp_s__2BFE89A6">
+            <End Role="tbl_stat" EntitySet="tbl_stat" />
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_comp__comp_v__29221CFB" Association="GRI_MCLModel.FK__tbl_comp__comp_v__29221CFB">
+            <End Role="tbl_vend" EntitySet="tbl_vend" />
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_lbl__lbl_com__3587F3E0" Association="GRI_MCLModel.FK__tbl_lbl__lbl_com__3587F3E0">
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+            <End Role="tbl_lbl" EntitySet="tbl_lbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_pix__pix_com__37703C52" Association="GRI_MCLModel.FK__tbl_pix__pix_com__37703C52">
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+            <End Role="tbl_pix" EntitySet="tbl_pix" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_purch__purch__282DF8C2" Association="GRI_MCLModel.FK__tbl_purch__purch__282DF8C2">
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+            <End Role="tbl_purch" EntitySet="tbl_purch" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_X_cat__cat_c__2EDAF651" Association="GRI_MCLModel.FK__tbl_X_cat__cat_c__2EDAF651">
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+            <End Role="tbl_X_cat" EntitySet="tbl_X_cat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_X_grp__grpco__51300E55" Association="GRI_MCLModel.FK__tbl_X_grp__grpco__51300E55">
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+            <End Role="tbl_X_grpcomp" EntitySet="tbl_X_grpcomp" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_X_mat__mater__55009F39" Association="GRI_MCLModel.FK__tbl_X_mat__mater__55009F39">
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+            <End Role="tbl_X_material" EntitySet="tbl_X_material" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_X_ref__xref___57DD0BE4" Association="GRI_MCLModel.FK__tbl_X_ref__xref___57DD0BE4">
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+            <End Role="tbl_X_ref" EntitySet="tbl_X_ref" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_X_spc__spclt__5BAD9CC8" Association="GRI_MCLModel.FK__tbl_X_spc__spclt__5BAD9CC8">
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+            <End Role="tbl_X_spclty" EntitySet="tbl_X_spclty" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_purch__purch__17036CC0" Association="GRI_MCLModel.FK__tbl_purch__purch__17036CC0">
+            <End Role="tbl_cst_type" EntitySet="tbl_cst_type" />
+            <End Role="tbl_purch" EntitySet="tbl_purch" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_purch__purch__151B244E" Association="GRI_MCLModel.FK__tbl_purch__purch__151B244E">
+            <End Role="tbl_currncy" EntitySet="tbl_currncy" />
+            <End Role="tbl_purch" EntitySet="tbl_purch" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_X_grp__grpco__5224328E" Association="GRI_MCLModel.FK__tbl_X_grp__grpco__5224328E">
+            <End Role="tbl_grpHdr" EntitySet="tbl_grpHdr" />
+            <End Role="tbl_X_grpcomp" EntitySet="tbl_X_grpcomp" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_lbl__lbl_lan__367C1819" Association="GRI_MCLModel.FK__tbl_lbl__lbl_lan__367C1819">
+            <End Role="tbl_lang" EntitySet="tbl_lang" />
+            <End Role="tbl_lbl" EntitySet="tbl_lbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_X_mat__mater__55F4C372" Association="GRI_MCLModel.FK__tbl_X_mat__mater__55F4C372">
+            <End Role="tbl_material" EntitySet="tbl_material" />
+            <End Role="tbl_X_material" EntitySet="tbl_X_material" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_purch__purch__160F4887" Association="GRI_MCLModel.FK__tbl_purch__purch__160F4887">
+            <End Role="tbl_plant" EntitySet="tbl_plant" />
+            <End Role="tbl_purch" EntitySet="tbl_purch" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_X_spc__spclt__5CA1C101" Association="GRI_MCLModel.FK__tbl_X_spc__spclt__5CA1C101">
+            <End Role="tbl_spclty" EntitySet="tbl_spclty" />
+            <End Role="tbl_X_spclty" EntitySet="tbl_X_spclty" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_X_ref__xref___58D1301D" Association="GRI_MCLModel.FK__tbl_X_ref__xref___58D1301D">
+            <End Role="tbl_comp" EntitySet="tbl_comp" />
+            <End Role="tbl_X_ref" EntitySet="tbl_X_ref" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tbl_acct">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="acct_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="acct_city" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="acct_state" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="acct_cntry" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="acct_3code" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="acct_whrhs" Type="Double" />
+          <Property Name="acct_frght" Type="Double" />
+          <Property Name="acct_misc" Type="Double" />
+          <Property Name="acct_logstcs" Type="Double" />
+          <Property Name="acct_admin" Type="Double" />
+          <Property Name="acct_contract_start" Type="DateTime" Precision="0" />
+          <Property Name="acct_contract_end" Type="DateTime" Precision="0" />
+          <Property Name="acct_assoc" Type="Int32" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tbl_boxes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="box_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="box_brand" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="box_lngth" Type="Double" />
+          <Property Name="box_wdth" Type="Double" />
+          <Property Name="box_hght" Type="Double" />
+          <Property Name="box_wght" Type="Double" />
+          <Property Name="box_active" Type="Boolean" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tbl_brand">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="brand_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="brand_location" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="brand_logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="brand_address1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="brand_address2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="brand_tel" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="brand_city" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="brand_state" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="brand_zip" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="brand_country" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tbl_cat1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cat1_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_X_cat" Relationship="GRI_MCLModel.FK__tbl_X_cat__cat_c__607251E5" FromRole="tbl_cat1" ToRole="tbl_X_cat" />
+        </EntityType>
+        <EntityType Name="tbl_cat2">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cat1_id" Type="Int32" />
+          <Property Name="cat2_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_X_cat" Relationship="GRI_MCLModel.FK__tbl_X_cat__cat_c__30C33EC3" FromRole="tbl_cat2" ToRole="tbl_X_cat" />
+        </EntityType>
+        <EntityType Name="tbl_CEclass">
+          <Key>
+            <PropertyRef Name="CEclass_ID" />
+          </Key>
+          <Property Name="CEclass_ID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CEclass_order" Type="Int32" />
+          <Property Name="CEclass_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CEclass_risk" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CEclass_expl" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_comp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="comp_vend_id" Type="Int32" />
+          <Property Name="comp_mfgr_id" Type="Int32" />
+          <Property Name="comp_vend_pn" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="comp_brand" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="comp_desc_orig" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="comp_desc_noun" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="comp_desc_attrbt" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="comp_desc_adj" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="comp_desc_alt" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="comp_desc_kywrd" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="comp_desc_color" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="comp_desc_side" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="comp_size_imp" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="comp_size_met" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="comp_coo_id" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="comp_strlty" Type="Int32" />
+          <Property Name="comp_status_id" Type="Int32" />
+          <Property Name="comp_HS_code" Type="Double" />
+          <Property Name="comp_moq" Type="Int32" />
+          <Property Name="comp_ERP_PN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="comp_npe" Type="Boolean" />
+          <Property Name="comp_pm" Type="Int32" />
+          <Property Name="comp_source" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="x" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_coo" Relationship="GRI_MCLModel.FK__tbl_comp__comp_c__2DE6D218" FromRole="tbl_comp" ToRole="tbl_coo" />
+          <NavigationProperty Name="tbl_vend" Relationship="GRI_MCLModel.FK__tbl_comp__comp_m__2A164134" FromRole="tbl_comp" ToRole="tbl_vend" />
+          <NavigationProperty Name="tbl_prodmgr" Relationship="GRI_MCLModel.FK__tbl_comp__comp_p__2CF2ADDF" FromRole="tbl_comp" ToRole="tbl_prodmgr" />
+          <NavigationProperty Name="tbl_stat" Relationship="GRI_MCLModel.FK__tbl_comp__comp_s__2BFE89A6" FromRole="tbl_comp" ToRole="tbl_stat" />
+          <NavigationProperty Name="tbl_vend1" Relationship="GRI_MCLModel.FK__tbl_comp__comp_v__29221CFB" FromRole="tbl_comp" ToRole="tbl_vend" />
+          <NavigationProperty Name="tbl_lbl" Relationship="GRI_MCLModel.FK__tbl_lbl__lbl_com__3587F3E0" FromRole="tbl_comp" ToRole="tbl_lbl" />
+          <NavigationProperty Name="tbl_pix" Relationship="GRI_MCLModel.FK__tbl_pix__pix_com__37703C52" FromRole="tbl_comp" ToRole="tbl_pix" />
+          <NavigationProperty Name="tbl_purch" Relationship="GRI_MCLModel.FK__tbl_purch__purch__282DF8C2" FromRole="tbl_comp" ToRole="tbl_purch" />
+          <NavigationProperty Name="tbl_X_cat" Relationship="GRI_MCLModel.FK__tbl_X_cat__cat_c__2EDAF651" FromRole="tbl_comp" ToRole="tbl_X_cat" />
+          <NavigationProperty Name="tbl_X_grpcomp" Relationship="GRI_MCLModel.FK__tbl_X_grp__grpco__51300E55" FromRole="tbl_comp" ToRole="tbl_X_grpcomp" />
+          <NavigationProperty Name="tbl_X_material" Relationship="GRI_MCLModel.FK__tbl_X_mat__mater__55009F39" FromRole="tbl_comp" ToRole="tbl_X_material" />
+          <NavigationProperty Name="tbl_X_ref" Relationship="GRI_MCLModel.FK__tbl_X_ref__xref___57DD0BE4" FromRole="tbl_comp" ToRole="tbl_X_ref" />
+          <NavigationProperty Name="tbl_X_spclty" Relationship="GRI_MCLModel.FK__tbl_X_spc__spclt__5BAD9CC8" FromRole="tbl_comp" ToRole="tbl_X_spclty" />
+          <NavigationProperty Name="tbl_X_ref1" Relationship="GRI_MCLModel.FK__tbl_X_ref__xref___58D1301D" FromRole="tbl_comp" ToRole="tbl_X_ref" />
+        </EntityType>
+        <EntityType Name="tbl_coo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="coo_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_comp" Relationship="GRI_MCLModel.FK__tbl_comp__comp_c__2DE6D218" FromRole="tbl_coo" ToRole="tbl_comp" />
+        </EntityType>
+        <EntityType Name="tbl_cst_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cst_type_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="cst_type_mu" Type="Double" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="tbl_purch" Relationship="GRI_MCLModel.FK__tbl_purch__purch__17036CC0" FromRole="tbl_cst_type" ToRole="tbl_purch" />
+        </EntityType>
+        <EntityType Name="tbl_currncy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="currncy_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="currncy_code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="currncy_symb" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="currncy_rate" Type="Double" />
+          <Property Name="currncy_base" Type="Int32" />
+          <Property Name="currncy_dateUpdt" Type="DateTime" Precision="0" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="tbl_purch" Relationship="GRI_MCLModel.FK__tbl_purch__purch__151B244E" FromRole="tbl_currncy" ToRole="tbl_purch" />
+        </EntityType>
+        <EntityType Name="tbl_formulas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="formula_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="formula_locn" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="formula_labor_rate" Type="Double" />
+          <Property Name="formula_labor_time" Type="Double" />
+          <Property Name="formula_labor_factor" Type="Double" />
+          <Property Name="formula_OH" Type="Double" />
+          <Property Name="formula_GA" Type="Double" />
+          <Property Name="formula_finance" Type="Double" />
+          <Property Name="formula_warehouse" Type="Double" />
+          <Property Name="formula_inlndfrgt" Type="Double" />
+          <Property Name="formula_inlndfrgt_size" Type="Int32" />
+          <Property Name="formula_oceanfrgt" Type="Double" />
+          <Property Name="formula_oceanfrgt_size" Type="Double" />
+          <Property Name="formula_imprtdty" Type="Double" />
+          <Property Name="formula_excisetx" Type="Double" />
+          <Property Name="formula_MAR" Type="Double" />
+          <Property Name="formula_strlzn" Type="Double" />
+          <Property Name="formula_strlzn_load" Type="Int32" />
+          <Property Name="formula_import_ship_rate" Type="Double" />
+          <Property Name="formula_updtdate" Type="DateTime" Precision="0" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tbl_grpFAB">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="grpFAB_hdr_id" Type="Int32" />
+          <Property Name="grpFAB_Feat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="grpFAB_Ben" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tbl_grpHdr">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="grphdr_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="grphdr_pix_id" Type="Int32" />
+          <NavigationProperty Name="tbl_X_grpcomp" Relationship="GRI_MCLModel.FK__tbl_X_grp__grpco__5224328E" FromRole="tbl_grpHdr" ToRole="tbl_X_grpcomp" />
+        </EntityType>
+        <EntityType Name="tbl_grpLbl">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="grpLbl_hdr_id" Type="Int32" />
+          <Property Name="grpLbl_ConsultIFU" Type="Boolean" />
+          <Property Name="grpLbl_SingleUse" Type="Boolean" />
+          <Property Name="grpLbl_CEclass" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="grpLbl_Dry" Type="Boolean" />
+          <Property Name="grpLbl_Caution" Type="Boolean" />
+          <Property Name="grpLbl_Latex" Type="Boolean" />
+          <Property Name="grpLbl_StoreDark" Type="Boolean" />
+          <Property Name="grpLbl_Resterilize" Type="Boolean" />
+          <Property Name="grpLbl_MfgDate" Type="Boolean" />
+          <Property Name="grpLbl_Expry" Type="Boolean" />
+          <Property Name="grpLbl_Flame" Type="Boolean" />
+          <Property Name="grpLbl_Damage" Type="Boolean" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tbl_grppix">
+          <Key>
+            <PropertyRef Name="grppix_id" />
+          </Key>
+          <Property Name="grppix_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="grppix__grphdr_pix_id" Type="Int32" />
+          <Property Name="qrppix_pix" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="grppix_order" Type="Int32" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tbl_lang">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="lang_fam" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="lang_desc_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="lang_desc_nv" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_lbl" Relationship="GRI_MCLModel.FK__tbl_lbl__lbl_lan__367C1819" FromRole="tbl_lang" ToRole="tbl_lbl" />
+        </EntityType>
+        <EntityType Name="tbl_lbl">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="lbl_comp_id" Type="Int32" Nullable="false" />
+          <Property Name="lbl_lang_id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="lbl_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="tbl_comp" Relationship="GRI_MCLModel.FK__tbl_lbl__lbl_com__3587F3E0" FromRole="tbl_lbl" ToRole="tbl_comp" />
+          <NavigationProperty Name="tbl_lang" Relationship="GRI_MCLModel.FK__tbl_lbl__lbl_lan__367C1819" FromRole="tbl_lbl" ToRole="tbl_lang" />
+        </EntityType>
+        <EntityType Name="tbl_life_cycle">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="life_cycle_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="life_cycle_order" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_material">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="material_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="material_abbv" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_X_material" Relationship="GRI_MCLModel.FK__tbl_X_mat__mater__55F4C372" FromRole="tbl_material" ToRole="tbl_X_material" />
+        </EntityType>
+        <EntityType Name="tbl_plant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="plant_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="plant_city" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="plant_country" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="plant_currncy" Type="Int32" />
+          <NavigationProperty Name="tbl_purch" Relationship="GRI_MCLModel.FK__tbl_purch__purch__160F4887" FromRole="tbl_plant" ToRole="tbl_purch" />
+        </EntityType>
+        <EntityType Name="tbl_prodmgr">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="prodmgr_Lname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="prodmgr_Fname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_comp" Relationship="GRI_MCLModel.FK__tbl_comp__comp_p__2CF2ADDF" FromRole="tbl_prodmgr" ToRole="tbl_comp" />
+        </EntityType>
+        <EntityType Name="tbl_purch">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="purch_comp_id" Type="Int32" />
+          <Property Name="purch_plant_id" Type="Int32" />
+          <Property Name="purch_aqsn_cost" Type="Double" />
+          <Property Name="purch_currncy_id" Type="Int32" />
+          <Property Name="purch_puom" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="purch_suom" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="purch_uuom" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="purch_puom_qty" Type="Int32" />
+          <Property Name="purch_suom_qty" Type="Int32" />
+          <Property Name="purch_uuom_qty" Type="Int32" />
+          <Property Name="purch_VAT_refund" Type="Double" />
+          <Property Name="purch_inbnd_fgt" Type="Double" />
+          <Property Name="purch_import_duty" Type="Double" />
+          <Property Name="purch_cost_type_id" Type="Int32" />
+          <Property Name="purch_eoq_min" Type="Int32" />
+          <Property Name="purch_eoq_max" Type="Int32" />
+          <Property Name="purch_cartn_lgt" Type="Int32" />
+          <Property Name="purch_cartn_wdt" Type="Int32" />
+          <Property Name="purch_cartn_hgt" Type="Int32" />
+          <Property Name="purch_cartn_wgt" Type="Int32" />
+          <Property Name="purch_lead_time" Type="Int32" />
+          <Property Name="purch_scrap" Type="Double" />
+          <Property Name="purch_date_create" Type="DateTime" Precision="0" />
+          <Property Name="purch_expry" Type="Boolean" />
+          <Property Name="purch_date_expry" Type="DateTime" Precision="0" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="tbl_comp" Relationship="GRI_MCLModel.FK__tbl_purch__purch__282DF8C2" FromRole="tbl_purch" ToRole="tbl_comp" />
+          <NavigationProperty Name="tbl_cst_type" Relationship="GRI_MCLModel.FK__tbl_purch__purch__17036CC0" FromRole="tbl_purch" ToRole="tbl_cst_type" />
+          <NavigationProperty Name="tbl_currncy" Relationship="GRI_MCLModel.FK__tbl_purch__purch__151B244E" FromRole="tbl_purch" ToRole="tbl_currncy" />
+          <NavigationProperty Name="tbl_plant" Relationship="GRI_MCLModel.FK__tbl_purch__purch__160F4887" FromRole="tbl_purch" ToRole="tbl_plant" />
+        </EntityType>
+        <EntityType Name="tbl_qtdtl">
+          <Key>
+            <PropertyRef Name="qtdtl_qthdr_qn" />
+            <PropertyRef Name="qtdtl_comp_id" />
+          </Key>
+          <Property Name="qtdtl_qthdr_qn" Type="Int32" Nullable="false" />
+          <Property Name="qtdtl_comp_id" Type="Int32" Nullable="false" />
+          <Property Name="qtdtl_comp_qty" Type="Int32" />
+          <Property Name="qtdtl_sub" Type="Boolean" />
+          <Property Name="qtdtl_comp_case" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tbl_qtdtl_replicate">
+          <Key>
+            <PropertyRef Name="qtdtl_qthdr_qn" />
+            <PropertyRef Name="qtdtl_comp_id" />
+          </Key>
+          <Property Name="qtdtl_qthdr_qn" Type="Int32" Nullable="false" />
+          <Property Name="qtdtl_comp_id" Type="Int32" Nullable="false" />
+          <Property Name="qtdtl_comp_qty" Type="Int32" />
+          <Property Name="qtdtl_sub" Type="Boolean" />
+          <Property Name="qtdtl_comp_case" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tbl_qthdr">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="qthdr_rev" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="qthdr_qn_basis" Type="Int32" />
+          <Property Name="qthdr_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="qthdr_acct_id" Type="Int32" />
+          <Property Name="qthdr_lang_id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="qthdr_amu" Type="Int32" />
+          <Property Name="qthdr_memo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="qthdr_instr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="qthdr_date" Type="DateTime" Precision="0" />
+          <Property Name="qthdr_date_update" Type="DateTime" Precision="0" />
+          <Property Name="qthdr_rep_id" Type="Int32" />
+          <Property Name="qthdr_cs_qty" Type="Int32" />
+          <Property Name="qthdr_HS_code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="qthdr_plant_id" Type="Int32" />
+          <Property Name="qthdr_brand_id" Type="Int32" />
+          <Property Name="qthdr_formula_id" Type="Int32" />
+          <Property Name="qthdr_sterility" Type="Boolean" />
+          <Property Name="qthdr_sterility_mthd" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="qthdr_sell_crncy" Type="Int32" />
+          <Property Name="qthdr_box_id" Type="Int32" />
+          <Property Name="qthdr_status_id" Type="Int32" />
+          <Property Name="qthdr_status_date" Type="DateTime" Precision="0" />
+          <Property Name="qthdr_fg_num" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="qthdr_fg_rev" Type="Int32" />
+          <Property Name="qthdr_lock" Type="Boolean" />
+          <Property Name="qthdr_mar" Type="Double" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tbl_qtstatus">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="qtstatus_order" Type="Int32" />
+          <Property Name="qtstatus_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="qtstatus_defn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="qtstatus_qc_sbmt" Type="Boolean" />
+          <Property Name="qtstatus_sls_sbmt" Type="Boolean" />
+          <Property Name="qtstatus_lock" Type="Boolean" />
+          <Property Name="qtstatus_output" Type="Boolean" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tbl_rep">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rep_fname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="rep_lname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="rep_title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="rep_phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="rep_mobile" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="rep_email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="rep_address1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="rep_address2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="rep_city" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="rep_state" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="rep_zip" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="rep_country" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="rep_company" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_spclty">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="spclty_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_X_spclty" Relationship="GRI_MCLModel.FK__tbl_X_spc__spclt__5CA1C101" FromRole="tbl_spclty" ToRole="tbl_X_spclty" />
+        </EntityType>
+        <EntityType Name="tbl_stat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="stat_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="stat_npe" Type="Boolean" />
+          <Property Name="stat_memo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="tbl_comp" Relationship="GRI_MCLModel.FK__tbl_comp__comp_s__2BFE89A6" FromRole="tbl_stat" ToRole="tbl_comp" />
+        </EntityType>
+        <EntityType Name="tbl_strlty">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="strlty_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="strlty_mean" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="strlty_symbol" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="strtly_refno" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tbl_techhdng">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="techhdng_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="techhdng_order" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_trait">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="trait_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_uom">
+          <Key>
+            <PropertyRef Name="uom_code" />
+          </Key>
+          <Property Name="uom_code" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="uom_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_fname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_lname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_vend">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vend_parent_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="vend_child_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="vend_label_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="vend_memo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_comp" Relationship="GRI_MCLModel.FK__tbl_comp__comp_m__2A164134" FromRole="tbl_vend" ToRole="tbl_comp" />
+          <NavigationProperty Name="tbl_comp1" Relationship="GRI_MCLModel.FK__tbl_comp__comp_v__29221CFB" FromRole="tbl_vend" ToRole="tbl_comp" />
+        </EntityType>
+        <EntityType Name="tbl_vendDtl">
+          <Key>
+            <PropertyRef Name="vendDtl_vend_id" />
+            <PropertyRef Name="vendDtl_dtl_id" />
+          </Key>
+          <Property Name="vendDtl_vend_id" Type="Int32" Nullable="false" />
+          <Property Name="vendDtl_dtl_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vendDtl_conct_lname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="vendDtl_conct_fname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="vendDtl_conct_email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="vendDtl_conct_phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="vendDtl_conct_mobile" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="vendDtl_conct_notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_X_cat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="cat_comp_id" Type="Int32" Nullable="false" />
+          <Property Name="cat_cat1_id_old" Type="Int32" Nullable="false" />
+          <Property Name="cat_cat2_id" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cat_cat1_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbl_cat1" Relationship="GRI_MCLModel.FK__tbl_X_cat__cat_c__607251E5" FromRole="tbl_X_cat" ToRole="tbl_cat1" />
+          <NavigationProperty Name="tbl_cat2" Relationship="GRI_MCLModel.FK__tbl_X_cat__cat_c__30C33EC3" FromRole="tbl_X_cat" ToRole="tbl_cat2" />
+          <NavigationProperty Name="tbl_comp" Relationship="GRI_MCLModel.FK__tbl_X_cat__cat_c__2EDAF651" FromRole="tbl_X_cat" ToRole="tbl_comp" />
+        </EntityType>
+        <EntityType Name="tbl_X_grpcomp">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="grpcompX_grphdr_id" Type="Int32" Nullable="false" />
+          <Property Name="grpcomX_comp_id" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="tbl_comp" Relationship="GRI_MCLModel.FK__tbl_X_grp__grpco__51300E55" FromRole="tbl_X_grpcomp" ToRole="tbl_comp" />
+          <NavigationProperty Name="tbl_grpHdr" Relationship="GRI_MCLModel.FK__tbl_X_grp__grpco__5224328E" FromRole="tbl_X_grpcomp" ToRole="tbl_grpHdr" />
+        </EntityType>
+        <EntityType Name="tbl_X_material">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="material_comp_id" Type="Int32" Nullable="false" />
+          <Property Name="material_material_id" Type="Int32" Nullable="false" />
+          <Property Name="material_primary" Type="Boolean" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="tbl_comp" Relationship="GRI_MCLModel.FK__tbl_X_mat__mater__55009F39" FromRole="tbl_X_material" ToRole="tbl_comp" />
+          <NavigationProperty Name="tbl_material" Relationship="GRI_MCLModel.FK__tbl_X_mat__mater__55F4C372" FromRole="tbl_X_material" ToRole="tbl_material" />
+        </EntityType>
+        <EntityType Name="tbl_X_ref">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="xref_comp_id" Type="Int32" Nullable="false" />
+          <Property Name="xref_equiv_compid" Type="Int32" Nullable="false" />
+          <Property Name="xref_FE_priority" Type="Int32" />
+          <Property Name="xref_exact" Type="Boolean" />
+          <Property Name="xref_life_cycle_id" Type="Int32" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="tbl_comp" Relationship="GRI_MCLModel.FK__tbl_X_ref__xref___57DD0BE4" FromRole="tbl_X_ref" ToRole="tbl_comp" />
+          <NavigationProperty Name="tbl_comp1" Relationship="GRI_MCLModel.FK__tbl_X_ref__xref___58D1301D" FromRole="tbl_X_ref" ToRole="tbl_comp" />
+        </EntityType>
+        <EntityType Name="tbl_X_spclty">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="spclty_comp_id" Type="Int32" Nullable="false" />
+          <Property Name="spclty_spclty_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbl_comp" Relationship="GRI_MCLModel.FK__tbl_X_spc__spclt__5BAD9CC8" FromRole="tbl_X_spclty" ToRole="tbl_comp" />
+          <NavigationProperty Name="tbl_spclty" Relationship="GRI_MCLModel.FK__tbl_X_spc__spclt__5CA1C101" FromRole="tbl_X_spclty" ToRole="tbl_spclty" />
+        </EntityType>
+        <EntityType Name="tbl_X_trait">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="trait_comp_id" Type="Int32" Nullable="false" />
+          <Property Name="trait_trait_id" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="tbl_HScode">
+          <Key>
+            <PropertyRef Name="HS_code" />
+            <PropertyRef Name="SSMA_TimeStamp" />
+          </Key>
+          <Property Name="HS_code" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HS_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HS_rate" Type="Double" />
+          <Property Name="HS_import_locn" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tbl_pix">
+          <Key>
+            <PropertyRef Name="SSMA_TimeStamp" />
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="pix_com_id" Type="Int32" />
+          <Property Name="pix_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="pix_pix" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="tbl_comp" Relationship="GRI_MCLModel.FK__tbl_pix__pix_com__37703C52" FromRole="tbl_pix" ToRole="tbl_comp" />
+        </EntityType>
+        <EntityType Name="tbl_tech">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="SSMA_TimeStamp" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tech_grphdr_id" Type="Int32" />
+          <Property Name="tech_hdng" Type="Int32" />
+          <Property Name="tech_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tbl_uom_old">
+          <Key>
+            <PropertyRef Name="uom_code" />
+          </Key>
+          <Property Name="uom_code" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="uom_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__tbl_X_cat__cat_c__607251E5">
+          <End Type="GRI_MCLModel.tbl_cat1" Role="tbl_cat1" Multiplicity="1" />
+          <End Type="GRI_MCLModel.tbl_X_cat" Role="tbl_X_cat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_cat1">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_X_cat">
+              <PropertyRef Name="cat_cat1_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_X_cat__cat_c__30C33EC3">
+          <End Type="GRI_MCLModel.tbl_cat2" Role="tbl_cat2" Multiplicity="1" />
+          <End Type="GRI_MCLModel.tbl_X_cat" Role="tbl_X_cat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_cat2">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_X_cat">
+              <PropertyRef Name="cat_cat2_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_comp__comp_c__2DE6D218">
+          <End Type="GRI_MCLModel.tbl_coo" Role="tbl_coo" Multiplicity="0..1" />
+          <End Type="GRI_MCLModel.tbl_comp" Role="tbl_comp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_coo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_comp">
+              <PropertyRef Name="comp_coo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_comp__comp_m__2A164134">
+          <End Type="GRI_MCLModel.tbl_vend" Role="tbl_vend" Multiplicity="0..1" />
+          <End Type="GRI_MCLModel.tbl_comp" Role="tbl_comp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_vend">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_comp">
+              <PropertyRef Name="comp_mfgr_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_comp__comp_p__2CF2ADDF">
+          <End Type="GRI_MCLModel.tbl_prodmgr" Role="tbl_prodmgr" Multiplicity="0..1" />
+          <End Type="GRI_MCLModel.tbl_comp" Role="tbl_comp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_prodmgr">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_comp">
+              <PropertyRef Name="comp_pm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_comp__comp_s__2BFE89A6">
+          <End Type="GRI_MCLModel.tbl_stat" Role="tbl_stat" Multiplicity="0..1" />
+          <End Type="GRI_MCLModel.tbl_comp" Role="tbl_comp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_stat">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_comp">
+              <PropertyRef Name="comp_status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_comp__comp_v__29221CFB">
+          <End Type="GRI_MCLModel.tbl_vend" Role="tbl_vend" Multiplicity="0..1" />
+          <End Type="GRI_MCLModel.tbl_comp" Role="tbl_comp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_vend">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_comp">
+              <PropertyRef Name="comp_vend_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_lbl__lbl_com__3587F3E0">
+          <End Type="GRI_MCLModel.tbl_comp" Role="tbl_comp" Multiplicity="1" />
+          <End Type="GRI_MCLModel.tbl_lbl" Role="tbl_lbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_comp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_lbl">
+              <PropertyRef Name="lbl_comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_pix__pix_com__37703C52">
+          <End Type="GRI_MCLModel.tbl_comp" Role="tbl_comp" Multiplicity="0..1" />
+          <End Type="GRI_MCLModel.tbl_pix" Role="tbl_pix" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_comp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_pix">
+              <PropertyRef Name="pix_com_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_purch__purch__282DF8C2">
+          <End Type="GRI_MCLModel.tbl_comp" Role="tbl_comp" Multiplicity="0..1" />
+          <End Type="GRI_MCLModel.tbl_purch" Role="tbl_purch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_comp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_purch">
+              <PropertyRef Name="purch_comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_X_cat__cat_c__2EDAF651">
+          <End Type="GRI_MCLModel.tbl_comp" Role="tbl_comp" Multiplicity="1" />
+          <End Type="GRI_MCLModel.tbl_X_cat" Role="tbl_X_cat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_comp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_X_cat">
+              <PropertyRef Name="cat_comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_X_grp__grpco__51300E55">
+          <End Type="GRI_MCLModel.tbl_comp" Role="tbl_comp" Multiplicity="1" />
+          <End Type="GRI_MCLModel.tbl_X_grpcomp" Role="tbl_X_grpcomp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_comp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_X_grpcomp">
+              <PropertyRef Name="grpcomX_comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_X_mat__mater__55009F39">
+          <End Type="GRI_MCLModel.tbl_comp" Role="tbl_comp" Multiplicity="1" />
+          <End Type="GRI_MCLModel.tbl_X_material" Role="tbl_X_material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_comp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_X_material">
+              <PropertyRef Name="material_comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_X_ref__xref___57DD0BE4">
+          <End Type="GRI_MCLModel.tbl_comp" Role="tbl_comp" Multiplicity="1" />
+          <End Type="GRI_MCLModel.tbl_X_ref" Role="tbl_X_ref" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_comp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_X_ref">
+              <PropertyRef Name="xref_comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_X_spc__spclt__5BAD9CC8">
+          <End Type="GRI_MCLModel.tbl_comp" Role="tbl_comp" Multiplicity="1" />
+          <End Type="GRI_MCLModel.tbl_X_spclty" Role="tbl_X_spclty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_comp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_X_spclty">
+              <PropertyRef Name="spclty_comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_purch__purch__17036CC0">
+          <End Type="GRI_MCLModel.tbl_cst_type" Role="tbl_cst_type" Multiplicity="0..1" />
+          <End Type="GRI_MCLModel.tbl_purch" Role="tbl_purch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_cst_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_purch">
+              <PropertyRef Name="purch_cost_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_purch__purch__151B244E">
+          <End Type="GRI_MCLModel.tbl_currncy" Role="tbl_currncy" Multiplicity="0..1" />
+          <End Type="GRI_MCLModel.tbl_purch" Role="tbl_purch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_currncy">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_purch">
+              <PropertyRef Name="purch_currncy_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_X_grp__grpco__5224328E">
+          <End Type="GRI_MCLModel.tbl_grpHdr" Role="tbl_grpHdr" Multiplicity="1" />
+          <End Type="GRI_MCLModel.tbl_X_grpcomp" Role="tbl_X_grpcomp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_grpHdr">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_X_grpcomp">
+              <PropertyRef Name="grpcompX_grphdr_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_lbl__lbl_lan__367C1819">
+          <End Type="GRI_MCLModel.tbl_lang" Role="tbl_lang" Multiplicity="0..1" />
+          <End Type="GRI_MCLModel.tbl_lbl" Role="tbl_lbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_lang">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_lbl">
+              <PropertyRef Name="lbl_lang_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_X_mat__mater__55F4C372">
+          <End Type="GRI_MCLModel.tbl_material" Role="tbl_material" Multiplicity="1" />
+          <End Type="GRI_MCLModel.tbl_X_material" Role="tbl_X_material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_material">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_X_material">
+              <PropertyRef Name="material_material_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_purch__purch__160F4887">
+          <End Type="GRI_MCLModel.tbl_plant" Role="tbl_plant" Multiplicity="0..1" />
+          <End Type="GRI_MCLModel.tbl_purch" Role="tbl_purch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_plant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_purch">
+              <PropertyRef Name="purch_plant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_X_spc__spclt__5CA1C101">
+          <End Type="GRI_MCLModel.tbl_spclty" Role="tbl_spclty" Multiplicity="1" />
+          <End Type="GRI_MCLModel.tbl_X_spclty" Role="tbl_X_spclty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_spclty">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_X_spclty">
+              <PropertyRef Name="spclty_spclty_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_X_ref__xref___58D1301D">
+          <End Type="GRI_MCLModel.tbl_comp" Role="tbl_comp" Multiplicity="1" />
+          <End Type="GRI_MCLModel.tbl_X_ref" Role="tbl_X_ref" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_comp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_X_ref">
+              <PropertyRef Name="xref_equiv_compid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GRI_MCLModelStoreContainer" CdmEntityContainer="GRI_MCLEntities">
+          <EntitySetMapping Name="tbl_acct">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_acct">
+              <MappingFragment StoreEntitySet="tbl_acct">
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+                <ScalarProperty Name="acct_assoc" ColumnName="acct_assoc" />
+                <ScalarProperty Name="acct_contract_end" ColumnName="acct_contract_end" />
+                <ScalarProperty Name="acct_contract_start" ColumnName="acct_contract_start" />
+                <ScalarProperty Name="acct_admin" ColumnName="acct_admin" />
+                <ScalarProperty Name="acct_logstcs" ColumnName="acct_logstcs" />
+                <ScalarProperty Name="acct_misc" ColumnName="acct_misc" />
+                <ScalarProperty Name="acct_frght" ColumnName="acct_frght" />
+                <ScalarProperty Name="acct_whrhs" ColumnName="acct_whrhs" />
+                <ScalarProperty Name="acct_3code" ColumnName="acct_3code" />
+                <ScalarProperty Name="acct_cntry" ColumnName="acct_cntry" />
+                <ScalarProperty Name="acct_state" ColumnName="acct_state" />
+                <ScalarProperty Name="acct_city" ColumnName="acct_city" />
+                <ScalarProperty Name="acct_name" ColumnName="acct_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_boxes">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_boxes">
+              <MappingFragment StoreEntitySet="tbl_boxes">
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+                <ScalarProperty Name="box_active" ColumnName="box_active" />
+                <ScalarProperty Name="box_wght" ColumnName="box_wght" />
+                <ScalarProperty Name="box_hght" ColumnName="box_hght" />
+                <ScalarProperty Name="box_wdth" ColumnName="box_wdth" />
+                <ScalarProperty Name="box_lngth" ColumnName="box_lngth" />
+                <ScalarProperty Name="box_brand" ColumnName="box_brand" />
+                <ScalarProperty Name="box_desc" ColumnName="box_desc" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_brand">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_brand">
+              <MappingFragment StoreEntitySet="tbl_brand">
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+                <ScalarProperty Name="brand_country" ColumnName="brand_country" />
+                <ScalarProperty Name="brand_zip" ColumnName="brand_zip" />
+                <ScalarProperty Name="brand_state" ColumnName="brand_state" />
+                <ScalarProperty Name="brand_city" ColumnName="brand_city" />
+                <ScalarProperty Name="brand_tel" ColumnName="brand_tel" />
+                <ScalarProperty Name="brand_address2" ColumnName="brand_address2" />
+                <ScalarProperty Name="brand_address1" ColumnName="brand_address1" />
+                <ScalarProperty Name="brand_logo" ColumnName="brand_logo" />
+                <ScalarProperty Name="brand_location" ColumnName="brand_location" />
+                <ScalarProperty Name="brand_name" ColumnName="brand_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_cat1">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_cat1">
+              <MappingFragment StoreEntitySet="tbl_cat1">
+                <ScalarProperty Name="cat1_desc" ColumnName="cat1_desc" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_cat2">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_cat2">
+              <MappingFragment StoreEntitySet="tbl_cat2">
+                <ScalarProperty Name="cat2_desc" ColumnName="cat2_desc" />
+                <ScalarProperty Name="cat1_id" ColumnName="cat1_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CEclass">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_CEclass">
+              <MappingFragment StoreEntitySet="tbl_CEclass">
+                <ScalarProperty Name="CEclass_expl" ColumnName="CEclass_expl" />
+                <ScalarProperty Name="CEclass_risk" ColumnName="CEclass_risk" />
+                <ScalarProperty Name="CEclass_desc" ColumnName="CEclass_desc" />
+                <ScalarProperty Name="CEclass_order" ColumnName="CEclass_order" />
+                <ScalarProperty Name="CEclass_ID" ColumnName="CEclass_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_comp">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_comp">
+              <MappingFragment StoreEntitySet="tbl_comp">
+                <ScalarProperty Name="x" ColumnName="x" />
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+                <ScalarProperty Name="comp_source" ColumnName="comp_source" />
+                <ScalarProperty Name="comp_pm" ColumnName="comp_pm" />
+                <ScalarProperty Name="comp_npe" ColumnName="comp_npe" />
+                <ScalarProperty Name="comp_ERP_PN" ColumnName="comp_ERP_PN" />
+                <ScalarProperty Name="comp_moq" ColumnName="comp_moq" />
+                <ScalarProperty Name="comp_HS_code" ColumnName="comp_HS_code" />
+                <ScalarProperty Name="comp_status_id" ColumnName="comp_status_id" />
+                <ScalarProperty Name="comp_strlty" ColumnName="comp_strlty" />
+                <ScalarProperty Name="comp_coo_id" ColumnName="comp_coo_id" />
+                <ScalarProperty Name="comp_size_met" ColumnName="comp_size_met" />
+                <ScalarProperty Name="comp_size_imp" ColumnName="comp_size_imp" />
+                <ScalarProperty Name="comp_desc_side" ColumnName="comp_desc_side" />
+                <ScalarProperty Name="comp_desc_color" ColumnName="comp_desc_color" />
+                <ScalarProperty Name="comp_desc_kywrd" ColumnName="comp_desc_kywrd" />
+                <ScalarProperty Name="comp_desc_alt" ColumnName="comp_desc_alt" />
+                <ScalarProperty Name="comp_desc_adj" ColumnName="comp_desc_adj" />
+                <ScalarProperty Name="comp_desc_attrbt" ColumnName="comp_desc_attrbt" />
+                <ScalarProperty Name="comp_desc_noun" ColumnName="comp_desc_noun" />
+                <ScalarProperty Name="comp_desc_orig" ColumnName="comp_desc_orig" />
+                <ScalarProperty Name="comp_brand" ColumnName="comp_brand" />
+                <ScalarProperty Name="comp_vend_pn" ColumnName="comp_vend_pn" />
+                <ScalarProperty Name="comp_mfgr_id" ColumnName="comp_mfgr_id" />
+                <ScalarProperty Name="comp_vend_id" ColumnName="comp_vend_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_coo">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_coo">
+              <MappingFragment StoreEntitySet="tbl_coo">
+                <ScalarProperty Name="coo_desc" ColumnName="coo_desc" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_cst_type">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_cst_type">
+              <MappingFragment StoreEntitySet="tbl_cst-type">
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+                <ScalarProperty Name="cst_type_mu" ColumnName="cst-type_mu" />
+                <ScalarProperty Name="cst_type_desc" ColumnName="cst-type_desc" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_currncy">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_currncy">
+              <MappingFragment StoreEntitySet="tbl_currncy">
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+                <ScalarProperty Name="currncy_dateUpdt" ColumnName="currncy_dateUpdt" />
+                <ScalarProperty Name="currncy_base" ColumnName="currncy_base" />
+                <ScalarProperty Name="currncy_rate" ColumnName="currncy_rate" />
+                <ScalarProperty Name="currncy_symb" ColumnName="currncy_symb" />
+                <ScalarProperty Name="currncy_code" ColumnName="currncy_code" />
+                <ScalarProperty Name="currncy_name" ColumnName="currncy_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_formulas">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_formulas">
+              <MappingFragment StoreEntitySet="tbl_formulas">
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+                <ScalarProperty Name="formula_updtdate" ColumnName="formula_updtdate" />
+                <ScalarProperty Name="formula_import_ship_rate" ColumnName="formula_import-ship-rate" />
+                <ScalarProperty Name="formula_strlzn_load" ColumnName="formula_strlzn-load" />
+                <ScalarProperty Name="formula_strlzn" ColumnName="formula_strlzn" />
+                <ScalarProperty Name="formula_MAR" ColumnName="formula_MAR" />
+                <ScalarProperty Name="formula_excisetx" ColumnName="formula_excisetx" />
+                <ScalarProperty Name="formula_imprtdty" ColumnName="formula_imprtdty" />
+                <ScalarProperty Name="formula_oceanfrgt_size" ColumnName="formula_oceanfrgt-size" />
+                <ScalarProperty Name="formula_oceanfrgt" ColumnName="formula_oceanfrgt" />
+                <ScalarProperty Name="formula_inlndfrgt_size" ColumnName="formula_inlndfrgt-size" />
+                <ScalarProperty Name="formula_inlndfrgt" ColumnName="formula_inlndfrgt" />
+                <ScalarProperty Name="formula_warehouse" ColumnName="formula_warehouse" />
+                <ScalarProperty Name="formula_finance" ColumnName="formula_finance" />
+                <ScalarProperty Name="formula_GA" ColumnName="formula_GA" />
+                <ScalarProperty Name="formula_OH" ColumnName="formula_OH" />
+                <ScalarProperty Name="formula_labor_factor" ColumnName="formula_labor-factor" />
+                <ScalarProperty Name="formula_labor_time" ColumnName="formula_labor-time" />
+                <ScalarProperty Name="formula_labor_rate" ColumnName="formula_labor-rate" />
+                <ScalarProperty Name="formula_locn" ColumnName="formula_locn" />
+                <ScalarProperty Name="formula_name" ColumnName="formula_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_grpFAB">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_grpFAB">
+              <MappingFragment StoreEntitySet="tbl_grpFAB">
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+                <ScalarProperty Name="grpFAB_Ben" ColumnName="grpFAB_Ben" />
+                <ScalarProperty Name="grpFAB_Feat" ColumnName="grpFAB_Feat" />
+                <ScalarProperty Name="grpFAB_hdr_id" ColumnName="grpFAB_hdr_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_grpHdr">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_grpHdr">
+              <MappingFragment StoreEntitySet="tbl_grpHdr">
+                <ScalarProperty Name="grphdr_pix_id" ColumnName="grphdr_pix_id" />
+                <ScalarProperty Name="grphdr_name" ColumnName="grphdr_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_grpLbl">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_grpLbl">
+              <MappingFragment StoreEntitySet="tbl_grpLbl">
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+                <ScalarProperty Name="grpLbl_Damage" ColumnName="grpLbl_Damage" />
+                <ScalarProperty Name="grpLbl_Flame" ColumnName="grpLbl_Flame" />
+                <ScalarProperty Name="grpLbl_Expry" ColumnName="grpLbl_Expry" />
+                <ScalarProperty Name="grpLbl_MfgDate" ColumnName="grpLbl_MfgDate" />
+                <ScalarProperty Name="grpLbl_Resterilize" ColumnName="grpLbl_Resterilize" />
+                <ScalarProperty Name="grpLbl_StoreDark" ColumnName="grpLbl_StoreDark" />
+                <ScalarProperty Name="grpLbl_Latex" ColumnName="grpLbl_Latex" />
+                <ScalarProperty Name="grpLbl_Caution" ColumnName="grpLbl_Caution" />
+                <ScalarProperty Name="grpLbl_Dry" ColumnName="grpLbl_Dry" />
+                <ScalarProperty Name="grpLbl_CEclass" ColumnName="grpLbl_CEclass" />
+                <ScalarProperty Name="grpLbl_SingleUse" ColumnName="grpLbl_SingleUse" />
+                <ScalarProperty Name="grpLbl_ConsultIFU" ColumnName="grpLbl_ConsultIFU" />
+                <ScalarProperty Name="grpLbl_hdr_id" ColumnName="grpLbl_hdr_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_grppix">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_grppix">
+              <MappingFragment StoreEntitySet="tbl_grppix">
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+                <ScalarProperty Name="grppix_order" ColumnName="grppix_order" />
+                <ScalarProperty Name="qrppix_pix" ColumnName="qrppix_pix" />
+                <ScalarProperty Name="grppix__grphdr_pix_id" ColumnName="grppix_ grphdr_pix_id" />
+                <ScalarProperty Name="grppix_id" ColumnName="grppix_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_lang">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_lang">
+              <MappingFragment StoreEntitySet="tbl_lang">
+                <ScalarProperty Name="lang_desc_nv" ColumnName="lang_desc_nv" />
+                <ScalarProperty Name="lang_desc_en" ColumnName="lang_desc_en" />
+                <ScalarProperty Name="lang_fam" ColumnName="lang_fam" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_lbl">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_lbl">
+              <MappingFragment StoreEntitySet="tbl_lbl">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="lbl_desc" ColumnName="lbl_desc" />
+                <ScalarProperty Name="lbl_lang_id" ColumnName="lbl_lang_id" />
+                <ScalarProperty Name="lbl_comp_id" ColumnName="lbl_comp_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_life_cycle">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_life_cycle">
+              <MappingFragment StoreEntitySet="tbl_life_cycle">
+                <ScalarProperty Name="life_cycle_order" ColumnName="life_cycle_order" />
+                <ScalarProperty Name="life_cycle_desc" ColumnName="life_cycle_desc" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_material">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_material">
+              <MappingFragment StoreEntitySet="tbl_material">
+                <ScalarProperty Name="material_abbv" ColumnName="material_abbv" />
+                <ScalarProperty Name="material_desc" ColumnName="material_desc" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_plant">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_plant">
+              <MappingFragment StoreEntitySet="tbl_plant">
+                <ScalarProperty Name="plant_currncy" ColumnName="plant_currncy" />
+                <ScalarProperty Name="plant_country" ColumnName="plant_country" />
+                <ScalarProperty Name="plant_city" ColumnName="plant_city" />
+                <ScalarProperty Name="plant_name" ColumnName="plant_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_prodmgr">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_prodmgr">
+              <MappingFragment StoreEntitySet="tbl_prodmgr">
+                <ScalarProperty Name="prodmgr_Fname" ColumnName="prodmgr_Fname" />
+                <ScalarProperty Name="prodmgr_Lname" ColumnName="prodmgr_Lname" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_purch">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_purch">
+              <MappingFragment StoreEntitySet="tbl_purch">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+                <ScalarProperty Name="purch_date_expry" ColumnName="purch_date_expry" />
+                <ScalarProperty Name="purch_expry" ColumnName="purch_expry" />
+                <ScalarProperty Name="purch_date_create" ColumnName="purch_date_create" />
+                <ScalarProperty Name="purch_scrap" ColumnName="purch_scrap" />
+                <ScalarProperty Name="purch_lead_time" ColumnName="purch_lead_time" />
+                <ScalarProperty Name="purch_cartn_wgt" ColumnName="purch_cartn_wgt" />
+                <ScalarProperty Name="purch_cartn_hgt" ColumnName="purch_cartn_hgt" />
+                <ScalarProperty Name="purch_cartn_wdt" ColumnName="purch_cartn_wdt" />
+                <ScalarProperty Name="purch_cartn_lgt" ColumnName="purch_cartn_lgt" />
+                <ScalarProperty Name="purch_eoq_max" ColumnName="purch_eoq_max" />
+                <ScalarProperty Name="purch_eoq_min" ColumnName="purch_eoq_min" />
+                <ScalarProperty Name="purch_cost_type_id" ColumnName="purch_cost_type_id" />
+                <ScalarProperty Name="purch_import_duty" ColumnName="purch_import_duty" />
+                <ScalarProperty Name="purch_inbnd_fgt" ColumnName="purch_inbnd_fgt" />
+                <ScalarProperty Name="purch_VAT_refund" ColumnName="purch_VAT_refund" />
+                <ScalarProperty Name="purch_uuom_qty" ColumnName="purch_uuom_qty" />
+                <ScalarProperty Name="purch_suom_qty" ColumnName="purch_suom_qty" />
+                <ScalarProperty Name="purch_puom_qty" ColumnName="purch_puom_qty" />
+                <ScalarProperty Name="purch_uuom" ColumnName="purch_uuom" />
+                <ScalarProperty Name="purch_suom" ColumnName="purch_suom" />
+                <ScalarProperty Name="purch_puom" ColumnName="purch_puom" />
+                <ScalarProperty Name="purch_currncy_id" ColumnName="purch_currncy_id" />
+                <ScalarProperty Name="purch_aqsn_cost" ColumnName="purch_aqsn_cost" />
+                <ScalarProperty Name="purch_plant_id" ColumnName="purch_plant_id" />
+                <ScalarProperty Name="purch_comp_id" ColumnName="purch_comp_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_qtdtl">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_qtdtl">
+              <MappingFragment StoreEntitySet="tbl_qtdtl">
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+                <ScalarProperty Name="qtdtl_comp_case" ColumnName="qtdtl_comp_case" />
+                <ScalarProperty Name="qtdtl_sub" ColumnName="qtdtl_sub" />
+                <ScalarProperty Name="qtdtl_comp_qty" ColumnName="qtdtl_comp_qty" />
+                <ScalarProperty Name="qtdtl_comp_id" ColumnName="qtdtl_comp_id" />
+                <ScalarProperty Name="qtdtl_qthdr_qn" ColumnName="qtdtl_qthdr_qn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_qtdtl_replicate">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_qtdtl_replicate">
+              <MappingFragment StoreEntitySet="tbl_qtdtl_replicate">
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+                <ScalarProperty Name="qtdtl_comp_case" ColumnName="qtdtl_comp_case" />
+                <ScalarProperty Name="qtdtl_sub" ColumnName="qtdtl_sub" />
+                <ScalarProperty Name="qtdtl_comp_qty" ColumnName="qtdtl_comp_qty" />
+                <ScalarProperty Name="qtdtl_comp_id" ColumnName="qtdtl_comp_id" />
+                <ScalarProperty Name="qtdtl_qthdr_qn" ColumnName="qtdtl_qthdr_qn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_qthdr">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_qthdr">
+              <MappingFragment StoreEntitySet="tbl_qthdr">
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+                <ScalarProperty Name="qthdr_mar" ColumnName="qthdr_mar" />
+                <ScalarProperty Name="qthdr_lock" ColumnName="qthdr_lock" />
+                <ScalarProperty Name="qthdr_fg_rev" ColumnName="qthdr_fg_rev" />
+                <ScalarProperty Name="qthdr_fg_num" ColumnName="qthdr_fg_num" />
+                <ScalarProperty Name="qthdr_status_date" ColumnName="qthdr_status_date" />
+                <ScalarProperty Name="qthdr_status_id" ColumnName="qthdr_status_id" />
+                <ScalarProperty Name="qthdr_box_id" ColumnName="qthdr_box_id" />
+                <ScalarProperty Name="qthdr_sell_crncy" ColumnName="qthdr_sell-crncy" />
+                <ScalarProperty Name="qthdr_sterility_mthd" ColumnName="qthdr_sterility-mthd" />
+                <ScalarProperty Name="qthdr_sterility" ColumnName="qthdr_sterility" />
+                <ScalarProperty Name="qthdr_formula_id" ColumnName="qthdr_formula_id" />
+                <ScalarProperty Name="qthdr_brand_id" ColumnName="qthdr_brand_id" />
+                <ScalarProperty Name="qthdr_plant_id" ColumnName="qthdr_plant_id" />
+                <ScalarProperty Name="qthdr_HS_code" ColumnName="qthdr_HS_code" />
+                <ScalarProperty Name="qthdr_cs_qty" ColumnName="qthdr_cs_qty" />
+                <ScalarProperty Name="qthdr_rep_id" ColumnName="qthdr_rep_id" />
+                <ScalarProperty Name="qthdr_date_update" ColumnName="qthdr_date_update" />
+                <ScalarProperty Name="qthdr_date" ColumnName="qthdr_date" />
+                <ScalarProperty Name="qthdr_instr" ColumnName="qthdr_instr" />
+                <ScalarProperty Name="qthdr_memo" ColumnName="qthdr_memo" />
+                <ScalarProperty Name="qthdr_amu" ColumnName="qthdr_amu" />
+                <ScalarProperty Name="qthdr_lang_id" ColumnName="qthdr_lang_id" />
+                <ScalarProperty Name="qthdr_acct_id" ColumnName="qthdr_acct_id" />
+                <ScalarProperty Name="qthdr_name" ColumnName="qthdr_name" />
+                <ScalarProperty Name="qthdr_qn_basis" ColumnName="qthdr_qn_basis" />
+                <ScalarProperty Name="qthdr_rev" ColumnName="qthdr_rev" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_qtstatus">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_qtstatus">
+              <MappingFragment StoreEntitySet="tbl_qtstatus">
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+                <ScalarProperty Name="qtstatus_output" ColumnName="qtstatus_output" />
+                <ScalarProperty Name="qtstatus_lock" ColumnName="qtstatus_lock" />
+                <ScalarProperty Name="qtstatus_sls_sbmt" ColumnName="qtstatus_sls_sbmt" />
+                <ScalarProperty Name="qtstatus_qc_sbmt" ColumnName="qtstatus_qc_sbmt" />
+                <ScalarProperty Name="qtstatus_defn" ColumnName="qtstatus_defn" />
+                <ScalarProperty Name="qtstatus_desc" ColumnName="qtstatus_desc" />
+                <ScalarProperty Name="qtstatus_order" ColumnName="qtstatus_order" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_rep">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_rep">
+              <MappingFragment StoreEntitySet="tbl_rep">
+                <ScalarProperty Name="rep_company" ColumnName="rep_company" />
+                <ScalarProperty Name="rep_country" ColumnName="rep_country" />
+                <ScalarProperty Name="rep_zip" ColumnName="rep_zip" />
+                <ScalarProperty Name="rep_state" ColumnName="rep_state" />
+                <ScalarProperty Name="rep_city" ColumnName="rep_city" />
+                <ScalarProperty Name="rep_address2" ColumnName="rep_address2" />
+                <ScalarProperty Name="rep_address1" ColumnName="rep_address1" />
+                <ScalarProperty Name="rep_email" ColumnName="rep_email" />
+                <ScalarProperty Name="rep_mobile" ColumnName="rep_mobile" />
+                <ScalarProperty Name="rep_phone" ColumnName="rep_phone" />
+                <ScalarProperty Name="rep_title" ColumnName="rep_title" />
+                <ScalarProperty Name="rep_lname" ColumnName="rep_lname" />
+                <ScalarProperty Name="rep_fname" ColumnName="rep_fname" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_spclty">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_spclty">
+              <MappingFragment StoreEntitySet="tbl_spclty">
+                <ScalarProperty Name="spclty_name" ColumnName="spclty_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_stat">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_stat">
+              <MappingFragment StoreEntitySet="tbl_stat">
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+                <ScalarProperty Name="stat_memo" ColumnName="stat_memo" />
+                <ScalarProperty Name="stat_npe" ColumnName="stat_npe" />
+                <ScalarProperty Name="stat_desc" ColumnName="stat_desc" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_strlty">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_strlty">
+              <MappingFragment StoreEntitySet="tbl_strlty">
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+                <ScalarProperty Name="strtly_refno" ColumnName="strtly_refno" />
+                <ScalarProperty Name="strlty_symbol" ColumnName="strlty_symbol" />
+                <ScalarProperty Name="strlty_mean" ColumnName="strlty_mean" />
+                <ScalarProperty Name="strlty_desc" ColumnName="strlty_desc" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_techhdng">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_techhdng">
+              <MappingFragment StoreEntitySet="tbl_techhdng">
+                <ScalarProperty Name="techhdng_order" ColumnName="techhdng_order" />
+                <ScalarProperty Name="techhdng_desc" ColumnName="techhdng_desc" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_trait">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_trait">
+              <MappingFragment StoreEntitySet="tbl_trait">
+                <ScalarProperty Name="trait_desc" ColumnName="trait_desc" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_uom">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_uom">
+              <MappingFragment StoreEntitySet="tbl_uom">
+                <ScalarProperty Name="uom_desc" ColumnName="uom_desc" />
+                <ScalarProperty Name="uom_code" ColumnName="uom_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_users">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_users">
+              <MappingFragment StoreEntitySet="tbl_users">
+                <ScalarProperty Name="user_password" ColumnName="user_password" />
+                <ScalarProperty Name="user_username" ColumnName="user_username" />
+                <ScalarProperty Name="user_lname" ColumnName="user_lname" />
+                <ScalarProperty Name="user_fname" ColumnName="user_fname" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_vend">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_vend">
+              <MappingFragment StoreEntitySet="tbl_vend">
+                <ScalarProperty Name="vend_memo" ColumnName="vend_memo" />
+                <ScalarProperty Name="vend_label_name" ColumnName="vend_label_name" />
+                <ScalarProperty Name="vend_child_name" ColumnName="vend_child_name" />
+                <ScalarProperty Name="vend_parent_name" ColumnName="vend_parent_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_vendDtl">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_vendDtl">
+              <MappingFragment StoreEntitySet="tbl_vendDtl">
+                <ScalarProperty Name="vendDtl_conct_notes" ColumnName="vendDtl_conct_notes" />
+                <ScalarProperty Name="vendDtl_conct_mobile" ColumnName="vendDtl_conct_mobile" />
+                <ScalarProperty Name="vendDtl_conct_phone" ColumnName="vendDtl_conct_phone" />
+                <ScalarProperty Name="vendDtl_conct_email" ColumnName="vendDtl_conct_email" />
+                <ScalarProperty Name="vendDtl_conct_fname" ColumnName="vendDtl_conct_fname" />
+                <ScalarProperty Name="vendDtl_conct_lname" ColumnName="vendDtl_conct_lname" />
+                <ScalarProperty Name="vendDtl_dtl_id" ColumnName="vendDtl_dtl_id" />
+                <ScalarProperty Name="vendDtl_vend_id" ColumnName="vendDtl_vend_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_X_cat">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_X_cat">
+              <MappingFragment StoreEntitySet="tbl_X_cat">
+                <ScalarProperty Name="cat_cat1_id" ColumnName="cat_cat1_id" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="cat_cat2_id" ColumnName="cat_cat2_id" />
+                <ScalarProperty Name="cat_cat1_id_old" ColumnName="cat_cat1_id_old" />
+                <ScalarProperty Name="cat_comp_id" ColumnName="cat_comp_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_X_grpcomp">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_X_grpcomp">
+              <MappingFragment StoreEntitySet="tbl_X_grpcomp">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="grpcomX_comp_id" ColumnName="grpcomX_comp_id" />
+                <ScalarProperty Name="grpcompX_grphdr_id" ColumnName="grpcompX_grphdr_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_X_material">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_X_material">
+              <MappingFragment StoreEntitySet="tbl_X_material">
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+                <ScalarProperty Name="material_primary" ColumnName="material_primary" />
+                <ScalarProperty Name="material_material_id" ColumnName="material_material_id" />
+                <ScalarProperty Name="material_comp_id" ColumnName="material_comp_id" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_X_ref">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_X_ref">
+              <MappingFragment StoreEntitySet="tbl_X_ref">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+                <ScalarProperty Name="xref_life_cycle_id" ColumnName="xref_life_cycle_id" />
+                <ScalarProperty Name="xref_exact" ColumnName="xref_exact" />
+                <ScalarProperty Name="xref_FE_priority" ColumnName="xref_FE_priority" />
+                <ScalarProperty Name="xref_equiv_compid" ColumnName="xref_equiv_compid" />
+                <ScalarProperty Name="xref_comp_id" ColumnName="xref_comp_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_X_spclty">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_X_spclty">
+              <MappingFragment StoreEntitySet="tbl_X_spclty">
+                <ScalarProperty Name="spclty_spclty_id" ColumnName="spclty_spclty_id" />
+                <ScalarProperty Name="spclty_comp_id" ColumnName="spclty_comp_id" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_X_trait">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_X_trait">
+              <MappingFragment StoreEntitySet="tbl_X_trait">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="trait_trait_id" ColumnName="trait_trait_id" />
+                <ScalarProperty Name="trait_comp_id" ColumnName="trait_comp_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_HScode">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_HScode">
+              <MappingFragment StoreEntitySet="tbl_HScode">
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+                <ScalarProperty Name="HS_import_locn" ColumnName="HS_import-locn" />
+                <ScalarProperty Name="HS_rate" ColumnName="HS_rate" />
+                <ScalarProperty Name="HS_desc" ColumnName="HS_desc" />
+                <ScalarProperty Name="HS_code" ColumnName="HS_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_pix">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_pix">
+              <MappingFragment StoreEntitySet="tbl_pix">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+                <ScalarProperty Name="pix_pix" ColumnName="pix_pix" />
+                <ScalarProperty Name="pix_desc" ColumnName="pix_desc" />
+                <ScalarProperty Name="pix_com_id" ColumnName="pix_com_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_tech">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_tech">
+              <MappingFragment StoreEntitySet="tbl_tech">
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+                <ScalarProperty Name="tech_desc" ColumnName="tech_desc" />
+                <ScalarProperty Name="tech_hdng" ColumnName="tech_hdng" />
+                <ScalarProperty Name="tech_grphdr_id" ColumnName="tech_grphdr_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_uom_old">
+            <EntityTypeMapping TypeName="GRI_MCLModel.tbl_uom_old">
+              <MappingFragment StoreEntitySet="tbl_uom_old">
+                <ScalarProperty Name="uom_desc" ColumnName="uom_desc" />
+                <ScalarProperty Name="uom_code" ColumnName="uom_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

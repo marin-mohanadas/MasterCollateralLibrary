@@ -1,0 +1,134 @@
+﻿
+<h2>Sales Reps</h2>
+<br/>
+
+
+<div ng-controller="salesRepsController">
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="">Sales Rep Id</label>
+                        <input type="text" class="form-control" ng-model="rep.id" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">First Name</label>
+                        <input type="text" class="form-control" ng-model="rep.rep_fname">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Last Name</label>
+                        <input type="text" class="form-control" ng-model="rep.rep_lname">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Title</label>
+                        <input type="text" class="form-control" ng-model="rep.rep_title">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Phone</label>
+                        <input type="text" class="form-control" ng-model="rep.rep_phone">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Mobile</label>
+                        <input type="text" class="form-control" ng-model="rep.rep_mobile">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Email</label>
+                        <input type="text" class="form-control" ng-model="rep.rep_email">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Address 1</label>
+                        <input type="text" class="form-control" ng-model="rep.rep_address1">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Address 2</label>
+                        <input type="text" class="form-control" ng-model="rep.rep_address2">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">City</label>
+                        <input type="text" class="form-control" ng-model="rep.rep_city">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">State or Province</label>
+                        <input type="text" class="form-control" ng-model="rep.rep_state">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Zip or Postal Code</label>
+                        <input type="text" class="form-control" ng-model="rep.rep_zip">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Country</label>
+                        <input type="text" class="form-control" ng-model="rep.rep_country">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Company</label>
+                        <select type="text" class="form-control" ng-model="selectedCompany"
+                                ng-options="option.brand_name for option in brands track by option.id"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <br />
+    <div class="row">
+        <div class="col-md-1"><button class="btn btn-default" ng-click="cancel()">Cancel</button></div>
+        <div class="col-md-1"><button class="btn btn-primary" ng-click="save()">Save</button></div>
+    </div>
+
+</div>

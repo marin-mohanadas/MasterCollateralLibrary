@@ -1,0 +1,25 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">New Material</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="">Material</label>
+                <input type="text" class="form-control" ng-model="newItem.material_desc">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="">Abbreviation</label>
+                <input type="text" class="form-control" ng-model="newItem.material_abbv">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="save()">Save</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

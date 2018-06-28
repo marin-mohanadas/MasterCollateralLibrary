@@ -1,0 +1,262 @@
+﻿<div ng-controller="quotesController">
+    <br />
+    <div class="row">
+        <div class="col-md-1"><button class="btn btn-warning" ng-click="clear()">Clear</button></div>
+        <div class="col-md-1"><button class="btn btn-primary" ng-click="save()">Save</button></div>
+    </div>
+        
+    <br />
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="">Quote Number</label>
+                <input type="text" class="form-control" ng-model="quote.id" readonly>
+            </div>
+        </div>
+        <div class="col-md-1">
+            <div class="form-group">
+                <label for="">&nbsp;</label>
+                <button type="submit" class="btn btn-default form-control" ng-click="openSearch()">Search</button>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="form-group">
+                <label for="">Pack Quote Name</label>
+                <input type="text" class="form-control" ng-model="quote.qthdr_name">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="">Orig. Quote</label>
+                <input type="text" class="form-control" ng-model="quote.qthdr_qn_basis" readonly>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <label for="">Account Name</label>
+                <select type="text" class="form-control" ng-model="selectedAccount"
+                        ng-options="option.acct_name for option in accounts track by option.id"></select>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="">&nbsp;</label>
+                <button type="submit" class="btn btn-default form-control" ng-click="openNewAccount()">Add New Account</button>
+            </div>
+            
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="">Rev.</label>
+                <input type="text" class="form-control" ng-model="quote.qthdr_rev" readonly>
+            </div>   
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="">Date of Quote</label>
+                <input type="text" class="form-control" value="{{quote.qthdr_date | date:'MM/dd/yyyy'}}" readonly>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="">Date of Last Update</label>
+                <input type="text" class="form-control" value="{{quote.qthdr_date_update | date:'MM/dd/yyyy'}}" readonly>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="OrigQuote">Average Month Usage (each)</label>
+                <input type="text" class="form-control" readonly>
+            </div>
+        </div>
+    </div>
+    
+    <uib-tabset active="active">
+        <uib-tab index="0" heading="Details">
+            <br/>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Print Language</label>
+                        <select class="form-control" ng-model="selectedLanguage"
+                                ng-options="option.lang_desc_en for option in languages track by option.id"></select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Formula</label>
+                        <select class="form-control" ng-model="selectedFormula"
+                                ng-options="option.formula_name for option in formulas track by option.id"></select>
+                    </div>  
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Manufacturing Plant</label>
+                        <select type="text" class="form-control" ng-model="selectedPlant"
+                                ng-options="option.plant_name for option in plants track by option.id"></select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Brand</label>
+                        <select type="text" class="form-control" ng-model="selectedBrand"
+                                ng-options="option.brand_name for option in brands track by option.id"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">HS Code</label>
+                        <select type="text" class="form-control" ng-model="selectedHSCode"
+                                ng-options="option.HS_desc for option in HSCodes track by option.HS_code"></select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Sell Currency</label>
+                        <select type="text" class="form-control" ng-model="selectedSellCurrency"
+                                ng-options="option.currncy_name for option in sellCurrencies track by option.id"></select>
+                    </div>  
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Sales Rep</label>
+                        <select type="text" class="form-control" ng-model="selectedSalesRep"
+                                ng-options="option.rep_fname + ' ' + option.rep_lname for option in salesReps track by option.id"></select>
+                    </div>    
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Box</label>
+                        <select type="text" class="form-control" ng-model="selectedBox"
+                                ng-options="option.box_desc for option in boxes track by option.box_id"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group" style="margin-top:30px;text-align:center">                        
+                        Sterile <input type="checkbox" ng-model="quote.qthdr_sterility" />
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label for="">Sterilization Method</label>
+                        <select type="text" class="form-control" ng-model="selectedSterilizationMethod"
+                                ng-options="option for option in sterilizationMethods track by option"></select>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label for="">Case Qty</label>
+                        <input type="text" class="form-control" ng-model="quote.qthdr_cs_qty">
+                    </div>
+                </div>
+            </div>                                  
+        </uib-tab>                
+        <uib-tab index="1" heading="Raw Material List">
+            <br />            
+            <div style="overflow:auto;max-height:300px">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Comp#</th>
+                            <th>Component <button class="btn btn-default btn-xs btn-primary" ng-click="openSearchComponent()">Search Component</button></th>
+                            <th>Vendor P/N</th>
+                            <th>Vendor</th>
+                            <th>Qty</th>
+                            <th>Comp Level</th>
+                            <th>Sub Allowed</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in lines">
+                            <td>{{item.tbl_comp.id}}</td>
+                            <td>{{item.tbl_comp.comp_desc_orig}}</td>
+                            <td>{{item.tbl_comp.comp_vend_pn}}</td>
+                            <td>{{item.tbl_comp.comp_brand}}</td>
+                            <td style="width:100px"><input style="width:100px" type="number" ng-model="item.qtdtl_comp_qty" /></td>
+                            <td style="width:100px">
+                                <select type="text" style="width:100px"
+                                        class="form-control"
+                                        ng-model="item.qtdtl_comp_case"
+                                        ng-options="option for option in complevels track by option"></select>
+                            </td>
+                            <td style="width:100px"><input type="checkbox" ng-model="item.qtdtl_sub" /></td>
+                            <td><i class="glyphicon glyphicon-ban-circle" ng-click="removeComponent(item)"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </uib-tab>
+        <uib-tab index="2" heading="Comments and Work Instructions">
+            <br />            
+            <div class="form-group">
+                <label style="color:red">Comments (internal: will not print)</label>
+                <textarea class="form-control" rows="6" ng-model="quote.qthdr_memo"></textarea>
+            </div>            
+            <div class="form-group">
+                <label style="color:blue">Notes and Work Instructions (external: will print)</label>
+                <textarea class="form-control" rows="6" ng-model="quote.qthdr_instr"></textarea>
+            </div>            
+        </uib-tab>        
+        <uib-tab index="3" heading="Status and Pricing">
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Quote Status</label>
+                        <select type="text" class="form-control" ng-model="selectedQuoteStatus"
+                                ng-options="option.qtstatus_desc for option in quoteStatuses track by option.id"></select>
+                    </div>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Status Updated Date</label>
+                        <input type="text" class="form-control" value="{{quote.qthdr_status_date | date:'MM/dd/yyyy'}}" readonly>
+                    </div> 
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">CM Customer Magin (%)</label>
+                        <input type="text" class="form-control" ng-model="quote.qthdr_mar">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Finished Good Number</label>
+                        <input type="text" class="form-control" ng-model="quote.qthdr_fg_num">
+                    </div>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Finished Good Revision</label>
+                        <input type="text" class="form-control" ng-model="quote.qthdr_fg_rev">
+                    </div>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+
+        </uib-tab>        
+    </uib-tabset>
+   
+</div>
